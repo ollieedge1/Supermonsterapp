@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Budget Grader — Supermonster</title>
+    <meta name="description" content="How does your weekly shop compare? Enter your household size and spending to get an instant grade, personalised tips, and see how you stack up against the UK average.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --yellow: #F2C506;
+            --yellow-light: #FFF8D6;
+            --dark: #1A1A2E;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --bg: #FAF8F2;
+            --bg-grey: #F0EBE6;
+            --green: #22C55E;
+            --orange: #F59E0B;
+            --red: #EF4444;
+            --max-width: 640px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,248,242,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .nav-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-brand span { font-size: 18px; font-weight: 800; }
+        .nav-cta {
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .hero-monster {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 16px;
+        }
+        .hero-monster img { width: 100%; height: 100%; object-fit: contain; }
+        .hero h1 {
+            font-size: clamp(26px, 5vw, 38px);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Form */
+        .grader-form {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px 40px;
+        }
+        .form-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .form-group .hint {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        /* Household size buttons */
+        .size-options {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .size-btn {
+            flex: 1;
+            min-width: 60px;
+            padding: 14px 8px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            background: #fff;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s;
+            font-family: inherit;
+        }
+        .size-btn:hover { border-color: var(--yellow); }
+        .size-btn.active {
+            border-color: var(--yellow);
+            background: var(--yellow-light);
+        }
+        .size-btn .num {
+            font-size: 22px;
+            font-weight: 800;
+            display: block;
+        }
+        .size-btn .label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* Spend input */
+        .spend-input-wrap {
+            position: relative;
+        }
+        .spend-input-wrap .currency {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+        .spend-input {
+            width: 100%;
+            padding: 16px 16px 16px 36px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: inherit;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.15s;
+            -moz-appearance: textfield;
+        }
+        .spend-input::-webkit-outer-spin-button,
+        .spend-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+        .spend-input:focus { border-color: var(--yellow); }
+
+        /* Period toggle */
+        .period-toggle {
+            display: flex;
+            background: var(--bg-grey);
+            border-radius: 10px;
+            padding: 4px;
+            margin-top: 10px;
+        }
+        .period-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .period-btn.active {
+            background: #fff;
+            color: var(--text);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        /* Grade button */
+        .grade-btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #F2C506, #FFD60A);
+            color: var(--dark);
+            font-size: 17px;
+            font-weight: 800;
+            font-family: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 8px;
+        }
+        .grade-btn:hover { opacity: 0.9; }
+        .grade-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Results */
+        .results {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px 60px;
+            display: none;
+        }
+        .results.show { display: block; }
+
+        .grade-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .grade-letter {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .grade-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .grade-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Comparison bar */
+        .comparison {
+            background: var(--bg-grey);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        .comparison-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .comparison-bar {
+            height: 12px;
+            background: #E5E7EB;
+            border-radius: 6px;
+            position: relative;
+            overflow: visible;
+            margin-bottom: 16px;
+        }
+        .comparison-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.8s ease-out;
+        }
+        .comparison-marker {
+            position: absolute;
+            top: -6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--dark);
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transform: translateX(-50%);
+            transition: left 0.8s ease-out;
+        }
+        .comparison-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .comparison-labels .you {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* Tips */
+        .tips-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+        .tips-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .tip-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 0;
+        }
+        .tip-row + .tip-row { border-top: 1px solid #F3F4F6; }
+        .tip-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .tip-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .tip-text strong { font-weight: 700; }
+
+        /* CTA */
+        .cta-card {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            color: #fff;
+        }
+        .cta-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .cta-card p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .cta-card .store-badge {
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+        .cta-card .store-badge:hover { opacity: 0.85; }
+        .cta-card .store-badge img { height: 48px; }
+
+        /* Share button */
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: 2px solid #E5E7EB;
+            border-radius: 100px;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            color: var(--text);
+            transition: border-color 0.15s;
+            margin-top: 16px;
+        }
+        .share-btn:hover { border-color: var(--yellow); }
+
+        /* Footer */
+        footer {
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--text); }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .form-card { padding: 24px 20px; }
+            .grade-card { padding: 32px 20px; }
+            .size-btn { min-width: 50px; padding: 12px 6px; }
+            .size-btn .num { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-monster"><img src="monster-chester.png" alt="Chester"></div>
+    <h1>How does your grocery spend stack up?</h1>
+    <p>Enter your household details below and get an instant grade with personalised saving tips.</p>
+</section>
+
+<!-- Form -->
+<section class="grader-form">
+    <div class="form-card">
+        <div class="form-group">
+            <label>How many people in your household?</label>
+            <div class="size-options">
+                <button class="size-btn" data-size="1" onclick="selectSize(1)">
+                    <span class="num">1</span>
+                    <span class="label">Solo</span>
+                </button>
+                <button class="size-btn" data-size="2" onclick="selectSize(2)">
+                    <span class="num">2</span>
+                    <span class="label">Couple</span>
+                </button>
+                <button class="size-btn" data-size="3" onclick="selectSize(3)">
+                    <span class="num">3</span>
+                    <span class="label">Small</span>
+                </button>
+                <button class="size-btn" data-size="4" onclick="selectSize(4)">
+                    <span class="num">4</span>
+                    <span class="label">Family</span>
+                </button>
+                <button class="size-btn" data-size="5" onclick="selectSize(5)">
+                    <span class="num">5+</span>
+                    <span class="label">Large</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>How much do you spend on groceries?</label>
+            <div class="spend-input-wrap">
+                <span class="currency">&pound;</span>
+                <input type="number" class="spend-input" id="spend" placeholder="80" min="1" max="9999" inputmode="decimal">
+            </div>
+            <div class="period-toggle">
+                <button class="period-btn active" data-period="week" onclick="selectPeriod('week')">Per week</button>
+                <button class="period-btn" data-period="month" onclick="selectPeriod('month')">Per month</button>
+            </div>
+        </div>
+
+        <button class="grade-btn" id="gradeBtn" onclick="calculateGrade()" disabled>Grade My Spending</button>
+    </div>
+</section>
+
+<!-- Results (hidden until graded) -->
+<section class="results" id="results">
+    <div class="grade-card">
+        <div class="grade-letter" id="gradeLetter">A</div>
+        <h2 class="grade-title" id="gradeTitle">Budget Master!</h2>
+        <p class="grade-subtitle" id="gradeSubtitle">You're spending well below the UK average.</p>
+
+        <div class="comparison">
+            <div class="comparison-label">Your spend vs UK average</div>
+            <div class="comparison-bar">
+                <div class="comparison-fill" id="compFill"></div>
+                <div class="comparison-marker" id="compMarker"></div>
+            </div>
+            <div class="comparison-labels">
+                <span class="you" id="compYou">&pound;60/wk</span>
+                <span id="compAvg">UK avg: &pound;80/wk</span>
+            </div>
+        </div>
+
+        <button class="share-btn" onclick="shareResult()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Share my grade
+        </button>
+    </div>
+
+    <div class="tips-card" id="tipsCard">
+        <h3 class="tips-title" id="tipsTitle">Tips to save more</h3>
+        <div id="tipsContent"></div>
+    </div>
+
+    <div class="cta-card">
+        <h3>Track it properly</h3>
+        <p>Scan your receipts, spot price rises, set budgets, and save as a household.</p>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
+            <img src="apple-download-black-btn.svg" alt="Download on the App Store" style="filter: invert(1);">
+        </a>
+    </div>
+</section>
+
+<footer>
+    <a href="/">supermonsterapp.com</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+</footer>
+
+<script>
+// UK average weekly grocery spend per person (ONS 2024/25 data, adjusted)
+// Source: ONS Family Spending Survey — Food & non-alcoholic drinks
+const AVG_PER_PERSON_WEEKLY = 35;
+
+// Thresholds (percentage of average): A < 75%, B < 95%, C < 115%, D < 140%, F >= 140%
+const GRADES = [
+    { letter: 'A+', max: 0.60, color: '#15803D', title: 'Incredible!', subtitle: 'You\'re spending way below the UK average. Either you\'re a savvy shopper or you\'ve found a secret discount universe.' },
+    { letter: 'A',  max: 0.75, color: '#22C55E', title: 'Budget master', subtitle: 'You\'re well below the UK average. Your trolley game is strong.' },
+    { letter: 'B',  max: 0.95, color: '#65A30D', title: 'Doing well', subtitle: 'You\'re spending a bit less than average. Room to optimise, but you\'re in good shape.' },
+    { letter: 'C',  max: 1.15, color: '#F59E0B', title: 'About average', subtitle: 'You\'re right around the UK average. Not bad, but there\'s room to trim.' },
+    { letter: 'D',  max: 1.40, color: '#F97316', title: 'Above average', subtitle: 'You\'re spending more than most UK households your size. A few tweaks could save you hundreds a year.' },
+    { letter: 'F',  max: 999,  color: '#EF4444', title: 'Needs attention', subtitle: 'You\'re spending significantly more than the UK average. The good news? Small changes can make a big difference.' },
+];
+
+const TIPS = {
+    low: [
+        { icon: '🏆', bg: '#F0FDF4', text: '<strong>You\'re crushing it.</strong> Keep scanning receipts to make sure prices don\'t creep up on your regular items.' },
+        { icon: '📊', bg: '#F0FDF4', text: '<strong>Track your wins.</strong> Use Supermonster to see exactly how much you\'re saving compared to last month.' },
+        { icon: '🛒', bg: '#FFF8D6', text: '<strong>Share your wisdom.</strong> Your household could save even more with shared shopping lists.' },
+    ],
+    mid: [
+        { icon: '🔍', bg: '#FFF8D6', text: '<strong>Check for price creep.</strong> Items you buy every week often rise 5-10% without you noticing. Scan receipts to catch it.' },
+        { icon: '📋', bg: '#FFF8D6', text: '<strong>Stick to a list.</strong> Impulse buys add an average of £15/week. A shared shopping list keeps the whole household honest.' },
+        { icon: '🔄', bg: '#FEF3C7', text: '<strong>Try own-brand swaps.</strong> Switching 5 branded items to own-brand can save £8-12 per shop.' },
+        { icon: '📅', bg: '#FEF3C7', text: '<strong>Set a weekly budget.</strong> Even a rough target helps. Supermonster warns you when you\'re close to your limit.' },
+    ],
+    high: [
+        { icon: '🚨', bg: '#FEF2F2', text: '<strong>Start with one change.</strong> Pick your most expensive regular item and find a cheaper alternative. That alone could save £200/year.' },
+        { icon: '📋', bg: '#FEF2F2', text: '<strong>Plan before you shop.</strong> Households that meal-plan spend 20-30% less. Start with a shared shopping list.' },
+        { icon: '🏪', bg: '#FFF8D6', text: '<strong>Compare stores.</strong> The same basket can cost 30% more at one supermarket vs another. Scan receipts from different shops to see.' },
+        { icon: '🔄', bg: '#FFF8D6', text: '<strong>Swap 5 items.</strong> Pick your top 5 branded items and try own-brand for a month. Most people can\'t taste the difference but save £10+/week.' },
+        { icon: '🎯', bg: '#FEF3C7', text: '<strong>Set a target.</strong> Try cutting just 10% next month. For you, that\'s <strong id="savingAmount">£X</strong> back in your pocket each week.' },
+    ],
+};
+
+let selectedSize = null;
+let selectedPeriod = 'week';
+
+function selectSize(size) {
+    selectedSize = size;
+    document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.size) === size);
+    });
+    checkReady();
+}
+
+function selectPeriod(period) {
+    selectedPeriod = period;
+    document.querySelectorAll('.period-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.period === period);
+    });
+}
+
+function checkReady() {
+    const spend = document.getElementById('spend').value;
+    document.getElementById('gradeBtn').disabled = !(selectedSize && spend > 0);
+}
+
+document.getElementById('spend').addEventListener('input', checkReady);
+
+function calculateGrade() {
+    const rawSpend = parseFloat(document.getElementById('spend').value);
+    if (!selectedSize || !rawSpend) return;
+
+    // Normalise to weekly
+    const weeklySpend = selectedPeriod === 'month' ? rawSpend / 4.33 : rawSpend;
+    const avgWeekly = AVG_PER_PERSON_WEEKLY * selectedSize;
+    const ratio = weeklySpend / avgWeekly;
+
+    // Find grade
+    let grade = GRADES[GRADES.length - 1];
+    for (const g of GRADES) {
+        if (ratio < g.max) { grade = g; break; }
+    }
+
+    // Update grade card
+    document.getElementById('gradeLetter').style.background = grade.color;
+    document.getElementById('gradeLetter').textContent = grade.letter;
+    document.getElementById('gradeTitle').textContent = grade.title;
+    document.getElementById('gradeSubtitle').textContent = grade.subtitle;
+
+    // Update comparison bar
+    const barPct = Math.min(ratio * 50, 100); // 50% = average position
+    const avgPct = 50;
+    const fillColor = ratio <= 1 ? 'var(--green)' : ratio <= 1.4 ? 'var(--orange)' : 'var(--red)';
+    document.getElementById('compFill').style.width = barPct + '%';
+    document.getElementById('compFill').style.background = fillColor;
+    document.getElementById('compMarker').style.left = barPct + '%';
+    document.getElementById('compYou').textContent = '£' + Math.round(weeklySpend) + '/wk (you)';
+    document.getElementById('compAvg').textContent = 'UK avg: £' + Math.round(avgWeekly) + '/wk';
+
+    // Tips
+    let tipSet;
+    if (ratio < 0.95) tipSet = TIPS.low;
+    else if (ratio < 1.15) tipSet = TIPS.mid;
+    else tipSet = TIPS.high;
+
+    const tipsHtml = tipSet.map(tip => {
+        let text = tip.text;
+        if (text.includes('savingAmount')) {
+            const saving = Math.round(weeklySpend * 0.1);
+            text = text.replace('<strong id="savingAmount">£X</strong>', '<strong>£' + saving + '</strong>');
+        }
+        return `<div class="tip-row">
+            <div class="tip-icon" style="background:${tip.bg}">${tip.icon}</div>
+            <div class="tip-text">${text}</div>
+        </div>`;
+    }).join('');
+
+    document.getElementById('tipsContent').innerHTML = tipsHtml;
+    document.getElementById('tipsTitle').textContent = ratio < 0.95 ? 'Keep it up' : 'Tips to save more';
+
+    // Show results
+    const results = document.getElementById('results');
+    results.classList.add('show');
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Store for sharing
+    window._gradeResult = {
+        letter: grade.letter,
+        title: grade.title,
+        weeklySpend: Math.round(weeklySpend),
+        avgWeekly: Math.round(avgWeekly),
+        householdSize: selectedSize,
+    };
+}
+
+function shareResult() {
+    const r = window._gradeResult;
+    if (!r) return;
+
+    const text = `I got a ${r.letter} on the Supermonster Grocery Budget Grader! Spending £${r.weeklySpend}/wk for a household of ${r.householdSize} (UK avg: £${r.avgWeekly}/wk). How do you compare? 🛒\n\nhttps://supermonsterapp.com/grader`;
+
+    if (navigator.share) {
+        navigator.share({ title: 'My Grocery Grade', text: text }).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.querySelector('.share-btn');
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share my grade'; }, 2000);
+        });
+    }
+}
+</script>
+
+</body>
+</html>

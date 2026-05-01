@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tesco vs Lidl: Which Is Cheaper? | Supermonster</title>
+<meta name="description" content="Compare grocery prices at Tesco and Lidl across 20 everyday items. See which UK supermarket saves you the most.">
+<link rel="canonical" href="https://supermonsterapp.com/prices/tesco-vs-lidl.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --yellow: #F2C506; --yellow-light: #FFF8D6; --dark: #1A1A2E; --text: #1A1A2E; --text-secondary: #6B7280; --bg: #FAF8F2; --bg-grey: #F0EBE6; --green: #22C55E; --red: #EF4444; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.nav-inner { max-width: 900px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+.nav-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+.nav-icon img { width: 100%; height: 100%; object-fit: cover; }
+.nav-brand span { font-size: 18px; font-weight: 800; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.nav-cta { background: var(--dark); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.85; }
+.main { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+.breadcrumb { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--text); }
+h1 { font-size: clamp(26px, 4.5vw, 40px); font-weight: 900; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 8px; }
+.subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
+h2 { font-size: 22px; font-weight: 800; margin-top: 40px; margin-bottom: 16px; letter-spacing: -0.02em; }
+p { font-size: 15px; line-height: 1.7; margin-bottom: 16px; color: #374151; }
+strong { color: var(--text); }
+
+/* Price hero card */
+.price-hero { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); margin-bottom: 32px; display: flex; gap: 32px; align-items: center; }
+.price-big { text-align: center; min-width: 120px; }
+.price-big .amount { font-size: 48px; font-weight: 900; line-height: 1; }
+.price-big .unit { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.price-big .change { font-size: 14px; font-weight: 700; margin-top: 8px; padding: 4px 12px; border-radius: 100px; display: inline-block; }
+.change-up { background: #FEF2F2; color: var(--red); }
+.change-down { background: #F0FDF4; color: var(--green); }
+.change-same { background: var(--bg-grey); color: var(--text-secondary); }
+.price-meta { flex: 1; }
+.price-meta .store-name { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.price-meta .updated { font-size: 13px; color: var(--text-secondary); }
+.price-meta .cheapest-note { font-size: 14px; margin-top: 12px; padding: 8px 14px; border-radius: 10px; background: #F0FDF4; color: #15803D; font-weight: 600; }
+.price-meta .not-cheapest { background: #FFF8D6; color: #92400E; }
+
+/* Comparison table */
+.comp-table { width: 100%; border-collapse: collapse; margin: 20px 0 32px; font-size: 14px; }
+.comp-table th { text-align: left; padding: 12px 14px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--dark); }
+.comp-table td { padding: 12px 14px; border-bottom: 1px solid #E5E7EB; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table .cheapest { background: #F0FDF4; font-weight: 700; color: #15803D; }
+.comp-table .current { background: var(--yellow-light); font-weight: 700; }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid #E5E7EB; }
+.faq-q { width: 100%; padding: 16px 0; border: none; background: none; text-align: left; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
+.faq-q::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--text-secondary); transition: transform 0.2s; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p { padding-bottom: 16px; font-size: 14px; }
+
+/* CTA */
+.cta-card { background: var(--dark); border-radius: 20px; padding: 36px; text-align: center; color: #fff; margin: 40px 0; }
+.cta-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.cta-card p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
+.cta-card .btn { display: inline-block; background: var(--yellow); color: var(--dark); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; }
+.cta-card .btn:hover { opacity: 0.9; }
+
+/* Related links */
+.related { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.08); }
+.related h3 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.related-card { background: #fff; border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text); box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: transform 0.15s; font-size: 14px; font-weight: 600; }
+.related-card:hover { transform: translateY(-2px); }
+.related-card .price { color: var(--text-secondary); font-weight: 400; font-size: 13px; margin-top: 4px; }
+
+/* Footer */
+footer { max-width: 900px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; color: var(--text-secondary); }
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.footer-brand-icon { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+.footer-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+.footer-brand span { font-size: 15px; font-weight: 700; color: var(--text); }
+.footer-links { display: flex; gap: 20px; }
+footer a { color: var(--text-secondary); text-decoration: none; }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  .price-hero { flex-direction: column; text-align: center; }
+  .related-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
+  .footer-links { justify-content: center; }
+}
+.vs-hero { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); margin-bottom: 32px; text-align: center; }
+.vs-stores { display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 20px; }
+.vs-store { font-size: 28px; font-weight: 900; }
+.vs-badge { font-size: 16px; font-weight: 800; color: var(--text-secondary); }
+.vs-result { font-size: 18px; font-weight: 700; }
+.vs-result .winner { color: #15803D; }
+.vs-summary { display: flex; justify-content: center; gap: 40px; margin-top: 16px; font-size: 14px; }
+.vs-summary .stat { text-align: center; }
+.vs-summary .stat .num { font-size: 28px; font-weight: 900; display: block; }
+.vs-summary .stat .label { color: var(--text-secondary); }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Tesco vs Lidl: Which Is Cheaper?","description":"Compare grocery prices at Tesco and Lidl across 20 everyday items. See which UK supermarket saves you the most.","author":{"@type":"Organization","name":"Supermonster"},"publisher":{"@type":"Organization","name":"Supermonster","url":"https://supermonsterapp.com"},"datePublished":"2026-05-01"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Tesco or Lidl cheaper for groceries?","acceptedAnswer":{"@type":"Answer","text":"Lidl is 23.1% cheaper than Tesco across 20 everyday grocery items. The total basket costs £34.05 at Tesco versus £26.17 at Lidl, a difference of £7.88. Over a year of weekly shops, that's roughly £409.76 in savings."}},{"@type":"Question","name":"How much can I save switching from Tesco to Lidl?","acceptedAnswer":{"@type":"Answer","text":"Switching from Tesco to Lidl saves approximately £7.88 per shop on a basket of 20 common items. Lidl wins on 20 out of 20 items. Over a year, that adds up to roughly £409.76."}}]}
+</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="nav-brand"><div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div><span>Supermonster</span></a>
+  <div class="nav-links"><a href="/blog">Blog</a><a href="/prices/">Prices</a><a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a></div>
+</div></nav>
+<div class="main">
+<div class="breadcrumb"><a href="/">Home</a> → <a href="/prices/">Prices</a> → Tesco vs Lidl</div>
+
+<h1>Tesco vs Lidl: Which Is Cheaper?</h1>
+<p class="subtitle"><strong>Lidl is 23.1% cheaper than Tesco</strong> across 20 everyday items, saving £7.88 per shop or roughly £409.76 per year.</p>
+
+<div class="vs-hero">
+  <div class="vs-stores">
+    <span class="vs-store">Tesco</span>
+    <span class="vs-badge">vs</span>
+    <span class="vs-store">Lidl</span>
+  </div>
+  <div class="vs-result"><span class="winner">Lidl is 23.1% cheaper</span> across 20 items (saving £7.88)</div>
+  <div class="vs-summary">
+    <div class="stat"><span class="num">£34.05</span><span class="label">Tesco total</span></div>
+    <div class="stat"><span class="num">0</span><span class="label">Tesco wins</span></div>
+    <div class="stat"><span class="num">20</span><span class="label">Lidl wins</span></div>
+    <div class="stat"><span class="num">£26.17</span><span class="label">Lidl total</span></div>
+  </div>
+</div>
+
+<h2>Full price comparison: 20 items</h2>
+<table class="comp-table">
+<thead><tr><th>Item</th><th>Tesco</th><th>Lidl</th><th>Difference</th></tr></thead>
+<tbody><tr><td>Semi-Skimmed Milk<br><small style="color:var(--text-secondary)">2 pint (1.13L)</small></td><td class="">£1.15</td><td class="cheapest">£0.99</td><td>£0.16</td></tr>
+<tr><td>White Bread<br><small style="color:var(--text-secondary)">800g loaf</small></td><td class="">£1.00</td><td class="cheapest">£0.62</td><td>£0.38</td></tr>
+<tr><td>Free Range Eggs<br><small style="color:var(--text-secondary)">box of 10</small></td><td class="">£2.65</td><td class="cheapest">£2.09</td><td>£0.56</td></tr>
+<tr><td>Chicken Breast<br><small style="color:var(--text-secondary)">300g pack</small></td><td class="">£3.25</td><td class="cheapest">£2.69</td><td>£0.56</td></tr>
+<tr><td>Cheddar Cheese<br><small style="color:var(--text-secondary)">400g block</small></td><td class="">£3.10</td><td class="cheapest">£2.55</td><td>£0.55</td></tr>
+<tr><td>Bananas<br><small style="color:var(--text-secondary)">5 pack</small></td><td class="">£0.85</td><td class="cheapest">£0.72</td><td>£0.13</td></tr>
+<tr><td>Pasta<br><small style="color:var(--text-secondary)">500g</small></td><td class="">£0.70</td><td class="cheapest">£0.52</td><td>£0.18</td></tr>
+<tr><td>Tinned Tomatoes<br><small style="color:var(--text-secondary)">400g tin</small></td><td class="">£0.45</td><td class="cheapest">£0.36</td><td>£0.09</td></tr>
+<tr><td>Butter<br><small style="color:var(--text-secondary)">250g block</small></td><td class="">£2.00</td><td class="cheapest">£1.75</td><td>£0.25</td></tr>
+<tr><td>Rice<br><small style="color:var(--text-secondary)">1kg bag</small></td><td class="">£1.45</td><td class="cheapest">£1.05</td><td>£0.40</td></tr>
+<tr><td>Potatoes<br><small style="color:var(--text-secondary)">2.5kg bag</small></td><td class="">£1.65</td><td class="cheapest">£1.35</td><td>£0.30</td></tr>
+<tr><td>Onions<br><small style="color:var(--text-secondary)">1kg bag</small></td><td class="">£0.85</td><td class="cheapest">£0.65</td><td>£0.20</td></tr>
+<tr><td>Baked Beans<br><small style="color:var(--text-secondary)">400g tin</small></td><td class="">£0.65</td><td class="cheapest">£0.32</td><td>£0.33</td></tr>
+<tr><td>Tea Bags<br><small style="color:var(--text-secondary)">80 bags</small></td><td class="">£2.20</td><td class="cheapest">£1.25</td><td>£0.95</td></tr>
+<tr><td>Olive Oil<br><small style="color:var(--text-secondary)">500ml bottle</small></td><td class="">£3.85</td><td class="cheapest">£3.19</td><td>£0.66</td></tr>
+<tr><td>Whole Milk<br><small style="color:var(--text-secondary)">2 pint (1.13L)</small></td><td class="">£1.15</td><td class="cheapest">£0.99</td><td>£0.16</td></tr>
+<tr><td>Toilet Roll<br><small style="color:var(--text-secondary)">9 pack</small></td><td class="">£4.50</td><td class="cheapest">£3.09</td><td>£1.41</td></tr>
+<tr><td>Washing Up Liquid<br><small style="color:var(--text-secondary)">500ml</small></td><td class="">£0.85</td><td class="cheapest">£0.59</td><td>£0.26</td></tr>
+<tr><td>Carrots<br><small style="color:var(--text-secondary)">1kg bag</small></td><td class="">£0.55</td><td class="cheapest">£0.45</td><td>£0.10</td></tr>
+<tr><td>Frozen Peas<br><small style="color:var(--text-secondary)">900g bag</small></td><td class="">£1.20</td><td class="cheapest">£0.95</td><td>£0.25</td></tr></tbody>
+<tfoot><tr style="font-weight:800;background:var(--bg-grey)"><td>Total basket</td><td>£34.05</td><td>£26.17</td><td>£7.88</td></tr></tfoot>
+</table>
+
+<p><strong>Bottom line:</strong> Lidl is cheaper on 20 out of 20 items, saving you £7.88 on this basket. Over a year of weekly shops, that adds up to roughly £409.76.</p>
+
+<p>That said, these are own-brand comparisons. If you buy specific brands, loyalty card offers, or shop different categories, your personal numbers could look different. The best way to know for sure is to track your own receipts.</p>
+
+<div class="cta-card">
+  <h3>Compare your own supermarket spending</h3>
+  <p>Scan receipts from different stores and see which one actually costs you less.</p>
+  <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="btn">Download Supermonster</a>
+</div>
+
+<div class="related">
+  <h3>More supermarket comparisons</h3>
+  <div class="related-grid"><a href="tesco-vs-aldi.html" class="related-card">Tesco vs Aldi</a>
+<a href="tesco-vs-sainsburys.html" class="related-card">Tesco vs Sainsbury's</a>
+<a href="tesco-vs-asda.html" class="related-card">Tesco vs Asda</a>
+<a href="aldi-vs-lidl.html" class="related-card">Aldi vs Lidl</a>
+<a href="sainsburys-vs-asda.html" class="related-card">Sainsbury's vs Asda</a>
+<a href="asda-vs-aldi.html" class="related-card">Asda vs Aldi</a></div>
+</div>
+</div>
+<footer><div class="footer-left">
+  <div class="footer-brand"><div class="footer-brand-icon"><img src="../app-icon.png" alt="Supermonster"></div><span>Supermonster</span></div>
+  <p>Track food prices. Save as a household.</p>
+  <p style="margin-top:8px;">Copyright &copy; 2026 Supermonster. All rights reserved.</p>
+</div><div class="footer-links">
+  <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+</div></footer>
+</body></html>

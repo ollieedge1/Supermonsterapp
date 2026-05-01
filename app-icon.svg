@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8F5E9"/>
+      <stop offset="100%" stop-color="#C8E6C9"/>
+    </linearGradient>
+    <!-- Body gradient -->
+    <radialGradient id="bodyGrad" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0%" stop-color="#7AE4A1"/>
+      <stop offset="70%" stop-color="#6FCF97"/>
+      <stop offset="100%" stop-color="#56C47A"/>
+    </radialGradient>
+    <!-- Belly highlight -->
+    <radialGradient id="bellyGrad" cx="0.5" cy="0.45" r="0.5">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.1)"/>
+    </radialGradient>
+    <!-- Shadow -->
+    <radialGradient id="shadowGrad" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.12)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+    <!-- Antenna body gradient -->
+    <radialGradient id="antennaGrad" cx="0.5" cy="0.4" r="0.5">
+      <stop offset="0%" stop-color="#7AE4A1"/>
+      <stop offset="100%" stop-color="#56C47A"/>
+    </radialGradient>
+    <!-- Gold tip gradient -->
+    <radialGradient id="goldGrad" cx="0.4" cy="0.35" r="0.5">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#F2C94C"/>
+    </radialGradient>
+    <!-- Eye white gradient -->
+    <radialGradient id="eyeWhite" cx="0.45" cy="0.4" r="0.5">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0F0F0"/>
+    </radialGradient>
+    <!-- Pupil gradient -->
+    <radialGradient id="pupilGrad" cx="0.4" cy="0.35" r="0.5">
+      <stop offset="0%" stop-color="#42A5F5"/>
+      <stop offset="100%" stop-color="#2D9CDB"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background with rounded corners (app icon shape) -->
+  <rect width="1024" height="1024" rx="224" ry="224" fill="url(#bgGrad)"/>
+
+  <!-- Subtle pattern dots for texture -->
+  <g opacity="0.04">
+    <circle cx="200" cy="200" r="8" fill="#000"/>
+    <circle cx="300" cy="150" r="6" fill="#000"/>
+    <circle cx="400" cy="220" r="7" fill="#000"/>
+    <circle cx="600" cy="180" r="8" fill="#000"/>
+    <circle cx="700" cy="240" r="6" fill="#000"/>
+    <circle cx="800" cy="190" r="7" fill="#000"/>
+    <circle cx="250" cy="800" r="6" fill="#000"/>
+    <circle cx="500" cy="850" r="7" fill="#000"/>
+    <circle cx="750" cy="820" r="8" fill="#000"/>
+  </g>
+
+  <!-- Ground shadow -->
+  <ellipse cx="512" cy="810" rx="220" ry="30" fill="url(#shadowGrad)"/>
+
+  <!-- Left foot -->
+  <ellipse cx="420" cy="740" rx="65" ry="35" fill="#56C47A"/>
+  <ellipse cx="420" cy="735" rx="60" ry="30" fill="#6FCF97"/>
+
+  <!-- Right foot -->
+  <ellipse cx="604" cy="740" rx="65" ry="35" fill="#56C47A"/>
+  <ellipse cx="604" cy="735" rx="60" ry="30" fill="#6FCF97"/>
+
+  <!-- Left antenna stalk -->
+  <ellipse cx="400" cy="310" rx="38" ry="58" fill="url(#antennaGrad)"/>
+  <!-- Left antenna gold tip -->
+  <circle cx="400" cy="262" r="20" fill="url(#goldGrad)"/>
+  <circle cx="395" cy="257" r="6" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- Right antenna stalk -->
+  <ellipse cx="624" cy="310" rx="38" ry="58" fill="url(#antennaGrad)"/>
+  <!-- Right antenna gold tip -->
+  <circle cx="624" cy="262" r="20" fill="url(#goldGrad)"/>
+  <circle cx="619" cy="257" r="6" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- Main body -->
+  <ellipse cx="512" cy="540" rx="230" ry="215" fill="url(#bodyGrad)"/>
+
+  <!-- Body highlight (top) -->
+  <ellipse cx="490" cy="440" rx="140" ry="80" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- Belly -->
+  <ellipse cx="512" cy="570" rx="148" ry="130" fill="url(#bellyGrad)"/>
+
+  <!-- Left cheek -->
+  <ellipse cx="355" cy="580" rx="38" ry="25" fill="rgba(242,153,74,0.45)" />
+
+  <!-- Right cheek -->
+  <ellipse cx="669" cy="580" rx="38" ry="25" fill="rgba(242,153,74,0.45)" />
+
+  <!-- Left eye white -->
+  <ellipse cx="440" cy="490" rx="52" ry="58" fill="url(#eyeWhite)"/>
+  <!-- Left eye outline -->
+  <ellipse cx="440" cy="490" rx="52" ry="58" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
+  <!-- Left pupil -->
+  <circle cx="445" cy="495" r="26" fill="url(#pupilGrad)"/>
+  <!-- Left pupil dark center -->
+  <circle cx="447" cy="497" r="14" fill="#1A6FB5"/>
+  <!-- Left eye highlight -->
+  <circle cx="432" cy="480" r="10" fill="rgba(255,255,255,0.8)"/>
+  <circle cx="452" cy="502" r="5" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- Right eye white -->
+  <ellipse cx="584" cy="490" rx="52" ry="58" fill="url(#eyeWhite)"/>
+  <!-- Right eye outline -->
+  <ellipse cx="584" cy="490" rx="52" ry="58" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
+  <!-- Right pupil -->
+  <circle cx="589" cy="495" r="26" fill="url(#pupilGrad)"/>
+  <!-- Right pupil dark center -->
+  <circle cx="591" cy="497" r="14" fill="#1A6FB5"/>
+  <!-- Right eye highlight -->
+  <circle cx="576" cy="480" r="10" fill="rgba(255,255,255,0.8)"/>
+  <circle cx="596" cy="502" r="5" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- Smile -->
+  <path d="M 472 620 Q 512 660 552 620" fill="none" stroke="#2D3436" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Tiny receipt in hand/belly area -->
+  <g transform="translate(540, 650) rotate(-8)">
+    <!-- Receipt paper -->
+    <rect x="0" y="0" width="50" height="70" rx="3" fill="white" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+    <!-- Receipt lines -->
+    <line x1="8" y1="12" x2="42" y2="12" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <line x1="8" y1="22" x2="35" y2="22" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="8" y1="30" x2="38" y2="30" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="8" y1="38" x2="32" y2="38" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="8" y1="48" x2="42" y2="48" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <!-- £ symbol -->
+    <text x="10" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="rgba(86,196,122,0.8)">£</text>
+  </g>
+
+  <!-- Sparkle top-left -->
+  <g transform="translate(280, 340)" opacity="0.6">
+    <path d="M 0 -12 L 3 -3 L 12 0 L 3 3 L 0 12 L -3 3 L -12 0 L -3 -3 Z" fill="#F2C94C"/>
+  </g>
+
+  <!-- Sparkle top-right -->
+  <g transform="translate(740, 360)" opacity="0.5">
+    <path d="M 0 -10 L 2.5 -2.5 L 10 0 L 2.5 2.5 L 0 10 L -2.5 2.5 L -10 0 L -2.5 -2.5 Z" fill="#F2C94C"/>
+  </g>
+
+  <!-- Sparkle bottom -->
+  <g transform="translate(310, 700)" opacity="0.4">
+    <path d="M 0 -8 L 2 -2 L 8 0 L 2 2 L 0 8 L -2 2 L -8 0 L -2 -2 Z" fill="#F2C94C"/>
+  </g>
+</svg>

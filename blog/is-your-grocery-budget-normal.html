@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Your Grocery Budget Normal? Here's What the Data Says — Supermonster</title>
+    <meta name="description" content="That nagging feeling you're spending too much at the supermarket? We use ONS data to show what's normal for your household size, and what you can do about it.">
+    <link rel="canonical" href="https://supermonsterapp.com/blog/is-your-grocery-budget-normal">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --yellow: #F2C506; --yellow-light: #FFF8D6; --dark: #1A1A2E; --text: #1A1A2E; --text-secondary: #6B7280; --bg: #FAF8F2; --bg-grey: #F0EBE6; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 900px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+        .nav-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+        .nav-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-brand span { font-size: 18px; font-weight: 800; }
+        .nav-cta { background: var(--dark); color: #fff; padding: 10px 24px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 600; transition: opacity 0.2s; }
+        .nav-cta:hover { opacity: 0.85; }
+        article { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; }
+        .breadcrumb { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+        .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--text); }
+        article h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .article-meta { font-size: 14px; color: var(--text-secondary); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        article h2 { font-size: 24px; font-weight: 800; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.02em; }
+        article h3 { font-size: 18px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; }
+        article p { font-size: 16px; line-height: 1.75; margin-bottom: 20px; color: #374151; }
+        article strong { color: var(--text); }
+        .grade-example {
+            display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0 32px;
+        }
+        .grade-pill {
+            display: flex; align-items: center; gap: 10px; background: #fff;
+            padding: 12px 18px; border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04); flex: 1; min-width: 200px;
+        }
+        .grade-dot {
+            width: 36px; height: 36px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 900; color: #fff; flex-shrink: 0;
+        }
+        .grade-pill-text { font-size: 13px; line-height: 1.4; }
+        .grade-pill-text strong { display: block; font-size: 14px; }
+        .callout { background: var(--yellow-light); border-radius: 16px; padding: 24px 28px; margin: 32px 0; border-left: 4px solid var(--yellow); }
+        .callout p { margin-bottom: 0; font-size: 15px; }
+        .big-number { text-align: center; margin: 40px 0; }
+        .big-number .num { font-size: clamp(48px, 8vw, 72px); font-weight: 900; color: var(--dark); line-height: 1; }
+        .big-number .label { font-size: 16px; color: var(--text-secondary); margin-top: 8px; }
+        .article-cta { background: var(--dark); border-radius: 20px; padding: 36px; text-align: center; color: #fff; margin: 48px 0; }
+        .article-cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #fff; }
+        .article-cta p { font-size: 15px; opacity: 0.75; margin-bottom: 20px; color: #fff; }
+        .article-cta .btn-primary { display: inline-block; background: var(--yellow); color: var(--dark); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+        .article-cta .btn-primary:hover { opacity: 0.9; }
+        .article-cta .btn-secondary { display: inline-block; color: rgba(255,255,255,0.7); font-size: 13px; text-decoration: none; margin-top: 12px; }
+        .article-cta .btn-secondary:hover { color: #fff; }
+        .related { margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+        .related h3 { font-size: 18px; font-weight: 800; margin-bottom: 20px; }
+        .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .related-card { background: #fff; border-radius: 14px; padding: 20px; text-decoration: none; color: var(--text); box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: transform 0.2s; }
+        .related-card:hover { transform: translateY(-2px); }
+        .related-card h4 { font-size: 15px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+        .related-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 0; }
+        footer { max-width: 900px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; color: var(--text-secondary); }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .footer-brand-icon { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+        .footer-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-brand span { font-size: 15px; font-weight: 700; color: var(--text); }
+        .footer-links { display: flex; gap: 20px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: var(--text); }
+        @media (max-width: 640px) {
+            .grade-example { flex-direction: column; }
+            .related-grid { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
+            .footer-links { justify-content: center; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Is Your Grocery Budget Normal? Here's What the Data Says",
+        "description": "Find out if your grocery spending is typical for your household size, using ONS data and a free grading tool.",
+        "author": { "@type": "Organization", "name": "Supermonster" },
+        "publisher": { "@type": "Organization", "name": "Supermonster", "url": "https://supermonsterapp.com" },
+        "datePublished": "2026-05-01",
+        "dateModified": "2026-05-01"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is my grocery budget normal?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The UK average grocery spend is £35 per person per week. For a couple, that's £70/week; for a family of four, £140/week. If your per-person spend is within 15% of £35, you're about average. Below 75% of the average puts you in excellent territory, while 40%+ above average suggests room to optimise."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much should I spend on groceries per week UK?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A good benchmark is £35 per person per week, based on ONS data. That's £70 for a couple and £140 for a family of four. Spending varies by location (London is 10-15% higher), dietary needs, and whether you buy organic or speciality products."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why do I spend so much on groceries?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most people underestimate their grocery spend by 20-30%. Common reasons include gradual price increases on regular items, impulse purchases averaging £12-15/week, brand loyalty when own-brand is cheaper, and not comparing prices across stores. The gap between perceived and actual spending is where money disappears."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+    </div>
+</nav>
+
+<article>
+    <div class="breadcrumb"><a href="/blog">Blog</a> &rarr; Is Your Grocery Budget Normal?</div>
+
+    <h1>Is Your Grocery Budget Normal? Here's What the Data Says</h1>
+    <div class="article-meta">May 2026 &middot; 4 min read</div>
+
+    <p><strong>A normal grocery budget in the UK is around £35 per person per week, or £140/week for a family of four.</strong> If you're within 15% of that, you're about average. Below it? You're doing well. Significantly above? There's probably room to optimise — but only if you know your actual number.</p>
+
+    <p>Most people underestimate their grocery spend by 20-30%. Here's how to find out where you really stand.</p>
+
+    <div class="big-number">
+        <div class="num">&pound;35</div>
+        <div class="label">per person, per week — that's the UK average for groceries</div>
+    </div>
+
+    <p>That number comes from the ONS Family Spending Survey and covers food and non-alcoholic drinks from supermarkets. It doesn't include eating out, takeaways, or alcohol.</p>
+
+    <p>For a couple, that's &pound;70/week. For a family of four, &pound;140. If you're well above that, you're not alone — but there's probably room to optimise. If you're below it, you're doing something right.</p>
+
+    <h2>How do I know if my grocery spend is normal?</h2>
+
+    <p>We built a free grading tool that takes your household size and weekly spend, then grades you against the UK average. The grades work like this:</p>
+
+    <div class="grade-example">
+        <div class="grade-pill">
+            <div class="grade-dot" style="background: #22C55E;">A</div>
+            <div class="grade-pill-text"><strong>Below average</strong>You're spending less than 75% of the UK average.</div>
+        </div>
+        <div class="grade-pill">
+            <div class="grade-dot" style="background: #F59E0B;">C</div>
+            <div class="grade-pill-text"><strong>About average</strong>You're within 15% of the UK benchmark.</div>
+        </div>
+        <div class="grade-pill">
+            <div class="grade-dot" style="background: #EF4444;">F</div>
+            <div class="grade-pill-text"><strong>Well above</strong>You're spending 40%+ more than average.</div>
+        </div>
+    </div>
+
+    <div class="callout">
+        <p><strong>Find out your grade in 10 seconds.</strong> Our free <a href="/#grader" style="color: var(--dark); font-weight: 700;">Grocery Budget Grader</a> gives you an instant score and personalised tips based on your household size.</p>
+    </div>
+
+    <h2>What affects how much you spend on groceries?</h2>
+
+    <p>The UK average is a useful benchmark, but your situation has its own context. Several factors push spending legitimately higher or lower:</p>
+
+    <p><strong>Where you live.</strong> Grocery prices in London and the South East tend to run 10-15% above the national average. If you're in a major city, being slightly above "average" might actually mean you're doing well.</p>
+
+    <p><strong>Dietary needs.</strong> Coeliac, vegan, or allergy-friendly diets often cost more because speciality products carry a premium. This isn't overspending — it's the cost of eating safely.</p>
+
+    <p><strong>Children's ages.</strong> A household of four with teenagers eats very differently to one with toddlers. The &pound;35/person figure treats all household members equally, but a 16-year-old eats significantly more than a 3-year-old.</p>
+
+    <p><strong>Conscious choices.</strong> Organic produce, free-range meat, and sustainably sourced fish all cost more. If you're spending more because of values-based choices, that's a feature, not a bug — as long as it's deliberate.</p>
+
+    <h2>Why do most people overspend on groceries without realising?</h2>
+
+    <p>The real danger zone isn't spending &pound;120/week when the average is &pound;70. It's spending &pound;120/week and <em>thinking</em> you're spending &pound;80. Most people underestimate their grocery spend by 20-30% when asked to guess.</p>
+
+    <p>The gap between perception and reality is where money disappears. A few pence of price creep here, an impulse buy there, a forgotten top-up shop mid-week — it adds up without ever feeling like a single big decision.</p>
+
+    <p>That's why tracking matters more than budgeting. You don't need to set a strict limit. You just need to know the actual number so you can decide if you're comfortable with it.</p>
+
+    <h2>How can I start spending less on groceries this week?</h2>
+
+    <p><strong>Take the 10-second test.</strong> Use the <a href="/#grader" style="color: var(--dark); font-weight: 700;">Grocery Budget Grader</a> to get your grade. Even a rough estimate of your weekly spend will give you a useful starting point.</p>
+
+    <p><strong>Scan your next receipt.</strong> Just one. Look at the total and the individual items. Is there anything on there you didn't plan to buy? How much did those unplanned items add up to?</p>
+
+    <p><strong>Compare your last four weeks.</strong> If you keep receipts (or scan them with an app), add up your last four weekly shops. Divide by four. That's your real weekly average — and it's almost certainly different from what you'd guess.</p>
+
+    <div class="article-cta">
+        <h3>Get your grocery grade</h3>
+        <p>10 seconds. Your household size and spend. Instant grade with personalised tips.</p>
+        <a href="/#grader" class="btn-primary">Try the free grader</a>
+        <br>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="btn-secondary">or download Supermonster to track every receipt &rarr;</a>
+    </div>
+
+    <div class="related">
+        <h3>Related articles</h3>
+        <div class="related-grid">
+            <a href="average-uk-grocery-spend.html" class="related-card">
+                <h4>Average UK Grocery Spend in 2026</h4>
+                <p>The full data breakdown by household size.</p>
+            </a>
+            <a href="tesco-vs-aldi-vs-lidl.html" class="related-card">
+                <h4>Tesco vs Aldi vs Lidl: Which Is Cheapest?</h4>
+                <p>20 items, 3 stores, one clear winner.</p>
+            </a>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <div class="footer-left">
+        <div class="footer-brand">
+            <div class="footer-brand-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </div>
+        <p>Track food prices. Save as a household.</p>
+        <p style="margin-top: 8px;">Copyright &copy; 2026 Supermonster. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/support">Support</a>
+    </div>
+</footer>
+
+</body>
+</html>

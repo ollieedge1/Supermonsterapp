@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Grocery Prices by Supermarket — Supermonster</title>
+<meta name="description" content="Compare grocery prices across Tesco, Aldi, Lidl, Sainsbury's, Asda, Morrisons, Waitrose and Co-op. Updated May 2026.">
+<link rel="canonical" href="https://supermonsterapp.com/prices/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --yellow: #F2C506; --yellow-light: #FFF8D6; --dark: #1A1A2E; --text: #1A1A2E; --text-secondary: #6B7280; --bg: #FAF8F2; --bg-grey: #F0EBE6; --green: #22C55E; --red: #EF4444; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.nav-inner { max-width: 900px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+.nav-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+.nav-icon img { width: 100%; height: 100%; object-fit: cover; }
+.nav-brand span { font-size: 18px; font-weight: 800; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.nav-cta { background: var(--dark); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.85; }
+.main { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+.breadcrumb { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--text); }
+h1 { font-size: clamp(26px, 4.5vw, 40px); font-weight: 900; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 8px; }
+.subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
+h2 { font-size: 22px; font-weight: 800; margin-top: 40px; margin-bottom: 16px; letter-spacing: -0.02em; }
+p { font-size: 15px; line-height: 1.7; margin-bottom: 16px; color: #374151; }
+strong { color: var(--text); }
+
+/* Price hero card */
+.price-hero { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); margin-bottom: 32px; display: flex; gap: 32px; align-items: center; }
+.price-big { text-align: center; min-width: 120px; }
+.price-big .amount { font-size: 48px; font-weight: 900; line-height: 1; }
+.price-big .unit { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.price-big .change { font-size: 14px; font-weight: 700; margin-top: 8px; padding: 4px 12px; border-radius: 100px; display: inline-block; }
+.change-up { background: #FEF2F2; color: var(--red); }
+.change-down { background: #F0FDF4; color: var(--green); }
+.change-same { background: var(--bg-grey); color: var(--text-secondary); }
+.price-meta { flex: 1; }
+.price-meta .store-name { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.price-meta .updated { font-size: 13px; color: var(--text-secondary); }
+.price-meta .cheapest-note { font-size: 14px; margin-top: 12px; padding: 8px 14px; border-radius: 10px; background: #F0FDF4; color: #15803D; font-weight: 600; }
+.price-meta .not-cheapest { background: #FFF8D6; color: #92400E; }
+
+/* Comparison table */
+.comp-table { width: 100%; border-collapse: collapse; margin: 20px 0 32px; font-size: 14px; }
+.comp-table th { text-align: left; padding: 12px 14px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--dark); }
+.comp-table td { padding: 12px 14px; border-bottom: 1px solid #E5E7EB; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table .cheapest { background: #F0FDF4; font-weight: 700; color: #15803D; }
+.comp-table .current { background: var(--yellow-light); font-weight: 700; }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid #E5E7EB; }
+.faq-q { width: 100%; padding: 16px 0; border: none; background: none; text-align: left; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
+.faq-q::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--text-secondary); transition: transform 0.2s; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p { padding-bottom: 16px; font-size: 14px; }
+
+/* CTA */
+.cta-card { background: var(--dark); border-radius: 20px; padding: 36px; text-align: center; color: #fff; margin: 40px 0; }
+.cta-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.cta-card p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
+.cta-card .btn { display: inline-block; background: var(--yellow); color: var(--dark); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; }
+.cta-card .btn:hover { opacity: 0.9; }
+
+/* Related links */
+.related { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.08); }
+.related h3 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.related-card { background: #fff; border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text); box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: transform 0.15s; font-size: 14px; font-weight: 600; }
+.related-card:hover { transform: translateY(-2px); }
+.related-card .price { color: var(--text-secondary); font-weight: 400; font-size: 13px; margin-top: 4px; }
+
+/* Footer */
+footer { max-width: 900px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; color: var(--text-secondary); }
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.footer-brand-icon { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+.footer-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+.footer-brand span { font-size: 15px; font-weight: 700; color: var(--text); }
+.footer-links { display: flex; gap: 20px; }
+footer a { color: var(--text-secondary); text-decoration: none; }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  .price-hero { flex-direction: column; text-align: center; }
+  .related-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
+  .footer-links { justify-content: center; }
+}
+.idx-item { background: #fff; border-radius: 14px; padding: 20px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+.idx-name { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+.idx-unit { font-weight: 400; color: var(--text-secondary); font-size: 14px; }
+.idx-cheapest { font-size: 14px; color: #15803D; margin-bottom: 8px; }
+.idx-links { font-size: 13px; line-height: 1.8; }
+.idx-links a { color: var(--text-secondary); text-decoration: none; }
+.idx-links a:hover { color: var(--text); }
+.section-title { font-size: 18px; font-weight: 800; margin: 32px 0 16px; }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="nav-brand"><div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div><span>Supermonster</span></a>
+  <div class="nav-links"><a href="/blog">Blog</a><a href="/prices/">Prices</a><a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a></div>
+</div></nav>
+<div class="main">
+<h1>UK Grocery Prices by Supermarket</h1>
+<p class="subtitle">Compare own-brand prices across 8 major UK supermarkets. Updated May 2026. Click any item to see the full breakdown.</p>
+
+<h2>Supermarket comparisons</h2>
+<div class="related-grid" style="margin-bottom:40px;"><a href="tesco-vs-aldi.html" class="related-card">Tesco vs Aldi</a>
+<a href="tesco-vs-lidl.html" class="related-card">Tesco vs Lidl</a>
+<a href="tesco-vs-sainsburys.html" class="related-card">Tesco vs Sainsbury's</a>
+<a href="tesco-vs-asda.html" class="related-card">Tesco vs Asda</a>
+<a href="aldi-vs-lidl.html" class="related-card">Aldi vs Lidl</a>
+<a href="sainsburys-vs-asda.html" class="related-card">Sainsbury's vs Asda</a>
+<a href="asda-vs-aldi.html" class="related-card">Asda vs Aldi</a>
+<a href="waitrose-vs-tesco.html" class="related-card">Waitrose vs Tesco</a>
+<a href="morrisons-vs-aldi.html" class="related-card">Morrisons vs Aldi</a>
+<a href="coop-vs-tesco.html" class="related-card">Co-op vs Tesco</a></div>
+
+<h2>All items</h2>
+<div class="idx-item">
+    <div class="idx-name">Semi-Skimmed Milk <span class="idx-unit">2 pint (1.13L)</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.99</strong></div>
+    <div class="idx-links"><a href="semi-skimmed-milk-tesco.html">Tesco (£1.15)</a> · <a href="semi-skimmed-milk-sainsburys.html">Sainsbury's (£1.15)</a> · <a href="semi-skimmed-milk-asda.html">Asda (£1.09)</a> · <a href="semi-skimmed-milk-morrisons.html">Morrisons (£1.15)</a> · <a href="semi-skimmed-milk-aldi.html">Aldi (£0.99)</a> · <a href="semi-skimmed-milk-lidl.html">Lidl (£0.99)</a> · <a href="semi-skimmed-milk-waitrose.html">Waitrose (£1.25)</a> · <a href="semi-skimmed-milk-coop.html">Co-op (£1.20)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">White Bread <span class="idx-unit">800g loaf</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.59</strong></div>
+    <div class="idx-links"><a href="white-bread-tesco.html">Tesco (£1.00)</a> · <a href="white-bread-sainsburys.html">Sainsbury's (£1.00)</a> · <a href="white-bread-asda.html">Asda (£0.85)</a> · <a href="white-bread-morrisons.html">Morrisons (£0.95)</a> · <a href="white-bread-aldi.html">Aldi (£0.59)</a> · <a href="white-bread-lidl.html">Lidl (£0.62)</a> · <a href="white-bread-waitrose.html">Waitrose (£1.15)</a> · <a href="white-bread-coop.html">Co-op (£1.10)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Free Range Eggs <span class="idx-unit">box of 10</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £1.99</strong></div>
+    <div class="idx-links"><a href="free-range-eggs-tesco.html">Tesco (£2.65)</a> · <a href="free-range-eggs-sainsburys.html">Sainsbury's (£2.75)</a> · <a href="free-range-eggs-asda.html">Asda (£2.50)</a> · <a href="free-range-eggs-morrisons.html">Morrisons (£2.60)</a> · <a href="free-range-eggs-aldi.html">Aldi (£1.99)</a> · <a href="free-range-eggs-lidl.html">Lidl (£2.09)</a> · <a href="free-range-eggs-waitrose.html">Waitrose (£3.20)</a> · <a href="free-range-eggs-coop.html">Co-op (£2.80)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Chicken Breast <span class="idx-unit">300g pack</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Lidl £2.69</strong></div>
+    <div class="idx-links"><a href="chicken-breast-tesco.html">Tesco (£3.25)</a> · <a href="chicken-breast-sainsburys.html">Sainsbury's (£3.40)</a> · <a href="chicken-breast-asda.html">Asda (£3.00)</a> · <a href="chicken-breast-morrisons.html">Morrisons (£3.15)</a> · <a href="chicken-breast-aldi.html">Aldi (£2.79)</a> · <a href="chicken-breast-lidl.html">Lidl (£2.69)</a> · <a href="chicken-breast-waitrose.html">Waitrose (£4.50)</a> · <a href="chicken-breast-coop.html">Co-op (£3.60)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Cheddar Cheese <span class="idx-unit">400g block</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £2.49</strong></div>
+    <div class="idx-links"><a href="cheddar-cheese-tesco.html">Tesco (£3.10)</a> · <a href="cheddar-cheese-sainsburys.html">Sainsbury's (£3.15)</a> · <a href="cheddar-cheese-asda.html">Asda (£2.85)</a> · <a href="cheddar-cheese-morrisons.html">Morrisons (£3.00)</a> · <a href="cheddar-cheese-aldi.html">Aldi (£2.49)</a> · <a href="cheddar-cheese-lidl.html">Lidl (£2.55)</a> · <a href="cheddar-cheese-waitrose.html">Waitrose (£3.75)</a> · <a href="cheddar-cheese-coop.html">Co-op (£3.25)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Bananas <span class="idx-unit">5 pack</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.69</strong></div>
+    <div class="idx-links"><a href="bananas-tesco.html">Tesco (£0.85)</a> · <a href="bananas-sainsburys.html">Sainsbury's (£0.85)</a> · <a href="bananas-asda.html">Asda (£0.79)</a> · <a href="bananas-morrisons.html">Morrisons (£0.85)</a> · <a href="bananas-aldi.html">Aldi (£0.69)</a> · <a href="bananas-lidl.html">Lidl (£0.72)</a> · <a href="bananas-waitrose.html">Waitrose (£0.90)</a> · <a href="bananas-coop.html">Co-op (£0.89)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Pasta <span class="idx-unit">500g</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.49</strong></div>
+    <div class="idx-links"><a href="pasta-tesco.html">Tesco (£0.70)</a> · <a href="pasta-sainsburys.html">Sainsbury's (£0.75)</a> · <a href="pasta-asda.html">Asda (£0.65)</a> · <a href="pasta-morrisons.html">Morrisons (£0.70)</a> · <a href="pasta-aldi.html">Aldi (£0.49)</a> · <a href="pasta-lidl.html">Lidl (£0.52)</a> · <a href="pasta-waitrose.html">Waitrose (£0.95)</a> · <a href="pasta-coop.html">Co-op (£0.85)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Tinned Tomatoes <span class="idx-unit">400g tin</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.35</strong></div>
+    <div class="idx-links"><a href="tinned-tomatoes-tesco.html">Tesco (£0.45)</a> · <a href="tinned-tomatoes-sainsburys.html">Sainsbury's (£0.50)</a> · <a href="tinned-tomatoes-asda.html">Asda (£0.40)</a> · <a href="tinned-tomatoes-morrisons.html">Morrisons (£0.45)</a> · <a href="tinned-tomatoes-aldi.html">Aldi (£0.35)</a> · <a href="tinned-tomatoes-lidl.html">Lidl (£0.36)</a> · <a href="tinned-tomatoes-waitrose.html">Waitrose (£0.65)</a> · <a href="tinned-tomatoes-coop.html">Co-op (£0.55)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Butter <span class="idx-unit">250g block</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Lidl £1.75</strong></div>
+    <div class="idx-links"><a href="butter-tesco.html">Tesco (£2.00)</a> · <a href="butter-sainsburys.html">Sainsbury's (£2.10)</a> · <a href="butter-asda.html">Asda (£1.85)</a> · <a href="butter-morrisons.html">Morrisons (£1.95)</a> · <a href="butter-aldi.html">Aldi (£1.79)</a> · <a href="butter-lidl.html">Lidl (£1.75)</a> · <a href="butter-waitrose.html">Waitrose (£2.50)</a> · <a href="butter-coop.html">Co-op (£2.15)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Rice <span class="idx-unit">1kg bag</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.99</strong></div>
+    <div class="idx-links"><a href="rice-tesco.html">Tesco (£1.45)</a> · <a href="rice-sainsburys.html">Sainsbury's (£1.50)</a> · <a href="rice-asda.html">Asda (£1.30)</a> · <a href="rice-morrisons.html">Morrisons (£1.40)</a> · <a href="rice-aldi.html">Aldi (£0.99)</a> · <a href="rice-lidl.html">Lidl (£1.05)</a> · <a href="rice-waitrose.html">Waitrose (£1.95)</a> · <a href="rice-coop.html">Co-op (£1.60)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Potatoes <span class="idx-unit">2.5kg bag</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £1.29</strong></div>
+    <div class="idx-links"><a href="potatoes-tesco.html">Tesco (£1.65)</a> · <a href="potatoes-sainsburys.html">Sainsbury's (£1.70)</a> · <a href="potatoes-asda.html">Asda (£1.50)</a> · <a href="potatoes-morrisons.html">Morrisons (£1.55)</a> · <a href="potatoes-aldi.html">Aldi (£1.29)</a> · <a href="potatoes-lidl.html">Lidl (£1.35)</a> · <a href="potatoes-waitrose.html">Waitrose (£2.00)</a> · <a href="potatoes-coop.html">Co-op (£1.75)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Onions <span class="idx-unit">1kg bag</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.59</strong></div>
+    <div class="idx-links"><a href="onions-tesco.html">Tesco (£0.85)</a> · <a href="onions-sainsburys.html">Sainsbury's (£0.89)</a> · <a href="onions-asda.html">Asda (£0.75)</a> · <a href="onions-morrisons.html">Morrisons (£0.80)</a> · <a href="onions-aldi.html">Aldi (£0.59)</a> · <a href="onions-lidl.html">Lidl (£0.65)</a> · <a href="onions-waitrose.html">Waitrose (£1.00)</a> · <a href="onions-coop.html">Co-op (£0.90)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Baked Beans <span class="idx-unit">400g tin</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.29</strong></div>
+    <div class="idx-links"><a href="baked-beans-tesco.html">Tesco (£0.65)</a> · <a href="baked-beans-sainsburys.html">Sainsbury's (£0.70)</a> · <a href="baked-beans-asda.html">Asda (£0.55)</a> · <a href="baked-beans-morrisons.html">Morrisons (£0.60)</a> · <a href="baked-beans-aldi.html">Aldi (£0.29)</a> · <a href="baked-beans-lidl.html">Lidl (£0.32)</a> · <a href="baked-beans-waitrose.html">Waitrose (£0.85)</a> · <a href="baked-beans-coop.html">Co-op (£0.75)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Tea Bags <span class="idx-unit">80 bags</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £1.19</strong></div>
+    <div class="idx-links"><a href="tea-bags-tesco.html">Tesco (£2.20)</a> · <a href="tea-bags-sainsburys.html">Sainsbury's (£2.30)</a> · <a href="tea-bags-asda.html">Asda (£2.00)</a> · <a href="tea-bags-morrisons.html">Morrisons (£2.15)</a> · <a href="tea-bags-aldi.html">Aldi (£1.19)</a> · <a href="tea-bags-lidl.html">Lidl (£1.25)</a> · <a href="tea-bags-waitrose.html">Waitrose (£2.75)</a> · <a href="tea-bags-coop.html">Co-op (£2.40)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Olive Oil <span class="idx-unit">500ml bottle</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Lidl £3.19</strong></div>
+    <div class="idx-links"><a href="olive-oil-tesco.html">Tesco (£3.85)</a> · <a href="olive-oil-sainsburys.html">Sainsbury's (£4.00)</a> · <a href="olive-oil-asda.html">Asda (£3.60)</a> · <a href="olive-oil-morrisons.html">Morrisons (£3.75)</a> · <a href="olive-oil-aldi.html">Aldi (£3.29)</a> · <a href="olive-oil-lidl.html">Lidl (£3.19)</a> · <a href="olive-oil-waitrose.html">Waitrose (£4.95)</a> · <a href="olive-oil-coop.html">Co-op (£4.20)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Whole Milk <span class="idx-unit">2 pint (1.13L)</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.99</strong></div>
+    <div class="idx-links"><a href="whole-milk-tesco.html">Tesco (£1.15)</a> · <a href="whole-milk-sainsburys.html">Sainsbury's (£1.15)</a> · <a href="whole-milk-asda.html">Asda (£1.09)</a> · <a href="whole-milk-morrisons.html">Morrisons (£1.15)</a> · <a href="whole-milk-aldi.html">Aldi (£0.99)</a> · <a href="whole-milk-lidl.html">Lidl (£0.99)</a> · <a href="whole-milk-waitrose.html">Waitrose (£1.25)</a> · <a href="whole-milk-coop.html">Co-op (£1.20)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Toilet Roll <span class="idx-unit">9 pack</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £2.89</strong></div>
+    <div class="idx-links"><a href="toilet-roll-tesco.html">Tesco (£4.50)</a> · <a href="toilet-roll-sainsburys.html">Sainsbury's (£4.75)</a> · <a href="toilet-roll-asda.html">Asda (£4.00)</a> · <a href="toilet-roll-morrisons.html">Morrisons (£4.25)</a> · <a href="toilet-roll-aldi.html">Aldi (£2.89)</a> · <a href="toilet-roll-lidl.html">Lidl (£3.09)</a> · <a href="toilet-roll-waitrose.html">Waitrose (£5.50)</a> · <a href="toilet-roll-coop.html">Co-op (£4.80)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Washing Up Liquid <span class="idx-unit">500ml</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.55</strong></div>
+    <div class="idx-links"><a href="washing-up-liquid-tesco.html">Tesco (£0.85)</a> · <a href="washing-up-liquid-sainsburys.html">Sainsbury's (£0.90)</a> · <a href="washing-up-liquid-asda.html">Asda (£0.75)</a> · <a href="washing-up-liquid-morrisons.html">Morrisons (£0.80)</a> · <a href="washing-up-liquid-aldi.html">Aldi (£0.55)</a> · <a href="washing-up-liquid-lidl.html">Lidl (£0.59)</a> · <a href="washing-up-liquid-waitrose.html">Waitrose (£1.10)</a> · <a href="washing-up-liquid-coop.html">Co-op (£0.95)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Carrots <span class="idx-unit">1kg bag</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.43</strong></div>
+    <div class="idx-links"><a href="carrots-tesco.html">Tesco (£0.55)</a> · <a href="carrots-sainsburys.html">Sainsbury's (£0.60)</a> · <a href="carrots-asda.html">Asda (£0.50)</a> · <a href="carrots-morrisons.html">Morrisons (£0.52)</a> · <a href="carrots-aldi.html">Aldi (£0.43)</a> · <a href="carrots-lidl.html">Lidl (£0.45)</a> · <a href="carrots-waitrose.html">Waitrose (£0.70)</a> · <a href="carrots-coop.html">Co-op (£0.60)</a></div>
+  </div>
+<div class="idx-item">
+    <div class="idx-name">Frozen Peas <span class="idx-unit">900g bag</span></div>
+    <div class="idx-cheapest">Cheapest: <strong>Aldi £0.89</strong></div>
+    <div class="idx-links"><a href="frozen-peas-tesco.html">Tesco (£1.20)</a> · <a href="frozen-peas-sainsburys.html">Sainsbury's (£1.25)</a> · <a href="frozen-peas-asda.html">Asda (£1.10)</a> · <a href="frozen-peas-morrisons.html">Morrisons (£1.15)</a> · <a href="frozen-peas-aldi.html">Aldi (£0.89)</a> · <a href="frozen-peas-lidl.html">Lidl (£0.95)</a> · <a href="frozen-peas-waitrose.html">Waitrose (£1.60)</a> · <a href="frozen-peas-coop.html">Co-op (£1.30)</a></div>
+  </div>
+
+<div class="cta-card">
+  <h3>Track your own grocery prices</h3>
+  <p>Scan receipts and build a personal price database. Know when prices rise before your wallet does.</p>
+  <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="btn">Download Supermonster</a>
+</div>
+</div>
+<footer><div class="footer-left">
+  <div class="footer-brand"><div class="footer-brand-icon"><img src="../app-icon.png" alt="Supermonster"></div><span>Supermonster</span></div>
+  <p>Track food prices. Save as a household.</p>
+  <p style="margin-top:8px;">Copyright &copy; 2026 Supermonster. All rights reserved.</p>
+</div><div class="footer-links">
+  <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+</div></footer>
+</body></html>

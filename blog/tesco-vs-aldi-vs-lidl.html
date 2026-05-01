@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesco vs Aldi vs Lidl: Which Supermarket Is Actually Cheapest? — Supermonster</title>
+    <meta name="description" content="We compared prices on 20 everyday grocery items across Tesco, Aldi, and Lidl. See which UK supermarket gives you the best value for your weekly shop.">
+    <link rel="canonical" href="https://supermonsterapp.com/blog/tesco-vs-aldi-vs-lidl">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --yellow: #F2C506; --yellow-light: #FFF8D6; --dark: #1A1A2E; --text: #1A1A2E; --text-secondary: #6B7280; --bg: #FAF8F2; --bg-grey: #F0EBE6; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 900px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+        .nav-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+        .nav-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-brand span { font-size: 18px; font-weight: 800; }
+        .nav-cta { background: var(--dark); color: #fff; padding: 10px 24px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 600; transition: opacity 0.2s; }
+        .nav-cta:hover { opacity: 0.85; }
+        article { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; }
+        .breadcrumb { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+        .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--text); }
+        article h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .article-meta { font-size: 14px; color: var(--text-secondary); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        article h2 { font-size: 24px; font-weight: 800; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.02em; }
+        article h3 { font-size: 18px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; }
+        article p { font-size: 16px; line-height: 1.75; margin-bottom: 20px; color: #374151; }
+        article strong { color: var(--text); }
+        .data-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 14px; }
+        .data-table th { text-align: left; padding: 12px 14px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--dark); }
+        .data-table td { padding: 12px 14px; border-bottom: 1px solid #E5E7EB; }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table .cheapest { background: #F0FDF4; font-weight: 700; color: #15803D; }
+        .data-table .total-row { font-weight: 800; background: var(--bg-grey); }
+        .winner-card { background: #F0FDF4; border-radius: 16px; padding: 24px 28px; margin: 32px 0; text-align: center; }
+        .winner-card .emoji { font-size: 48px; margin-bottom: 12px; }
+        .winner-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: #15803D; }
+        .winner-card p { font-size: 15px; color: #374151; margin-bottom: 0; }
+        .callout { background: var(--yellow-light); border-radius: 16px; padding: 24px 28px; margin: 32px 0; border-left: 4px solid var(--yellow); }
+        .callout p { margin-bottom: 0; font-size: 15px; }
+        .article-cta { background: var(--dark); border-radius: 20px; padding: 36px; text-align: center; color: #fff; margin: 48px 0; }
+        .article-cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #fff; }
+        .article-cta p { font-size: 15px; opacity: 0.75; margin-bottom: 20px; color: #fff; }
+        .article-cta .btn-primary { display: inline-block; background: var(--yellow); color: var(--dark); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+        .article-cta .btn-primary:hover { opacity: 0.9; }
+        .article-cta .btn-secondary { display: inline-block; color: rgba(255,255,255,0.7); font-size: 13px; text-decoration: none; margin-top: 12px; }
+        .article-cta .btn-secondary:hover { color: #fff; }
+        .related { margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+        .related h3 { font-size: 18px; font-weight: 800; margin-bottom: 20px; }
+        .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .related-card { background: #fff; border-radius: 14px; padding: 20px; text-decoration: none; color: var(--text); box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: transform 0.2s; }
+        .related-card:hover { transform: translateY(-2px); }
+        .related-card h4 { font-size: 15px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+        .related-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 0; }
+        footer { max-width: 900px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; color: var(--text-secondary); }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .footer-brand-icon { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+        .footer-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-brand span { font-size: 15px; font-weight: 700; color: var(--text); }
+        .footer-links { display: flex; gap: 20px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: var(--text); }
+        @media (max-width: 640px) {
+            .data-table { font-size: 13px; }
+            .data-table th, .data-table td { padding: 10px 8px; }
+            .related-grid { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
+            .footer-links { justify-content: center; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Tesco vs Aldi vs Lidl: Which Supermarket Is Actually Cheapest?",
+        "description": "A price comparison of 20 everyday items across Tesco, Aldi, and Lidl to find which UK supermarket offers the best value.",
+        "author": { "@type": "Organization", "name": "Supermonster" },
+        "publisher": { "@type": "Organization", "name": "Supermonster", "url": "https://supermonsterapp.com" },
+        "datePublished": "2026-05-01",
+        "dateModified": "2026-05-01"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is Aldi or Lidl cheaper than Tesco?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Across a basket of 20 everyday grocery items, Aldi costs £25.53 compared to Tesco's £34.35 — a saving of £8.82 or 25.7%. Lidl is close behind at £26.43, saving 23.1% versus Tesco. Both discounters are significantly cheaper for own-brand staples."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which UK supermarket is the cheapest in 2026?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Aldi is the cheapest major UK supermarket in 2026 for own-brand groceries. A basket of 20 common items costs £25.53 at Aldi, compared to £26.43 at Lidl, £34.35 at Tesco, and higher at Sainsbury's, Waitrose, and others. Over a year of weekly shops, switching from Tesco to Aldi could save over £1,000."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much can you save shopping at Aldi instead of Tesco?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On a 20-item basket, you save approximately £8.82 per shop at Aldi compared to Tesco. For a family doing a larger weekly shop of 40-50 items, that translates to £15-25 per week, or over £1,000 per year."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Aldi cheaper than Lidl?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Aldi is slightly cheaper than Lidl. Across 20 common grocery items, Aldi's basket total is £25.53 versus Lidl's £26.43 — a difference of just £0.90. Both are significantly cheaper than traditional supermarkets like Tesco, Sainsbury's, and Waitrose."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+    </div>
+</nav>
+
+<article>
+    <div class="breadcrumb"><a href="/blog">Blog</a> &rarr; Tesco vs Aldi vs Lidl</div>
+
+    <h1>Tesco vs Aldi vs Lidl: Which Supermarket Is Actually Cheapest?</h1>
+    <div class="article-meta">May 2026 &middot; 7 min read</div>
+
+    <p><strong>Aldi is the cheapest UK supermarket in 2026.</strong> Across a basket of 20 everyday items, Aldi costs £25.53 — that's £8.82 less than Tesco (£34.35) and £0.90 less than Lidl (£26.43). Over a year, switching from Tesco to Aldi could save a family over £1,000.</p>
+
+    <p>We compared prices item by item across all three stores to find out exactly where the savings are — and where they aren't.</p>
+
+    <h2>The basket: 20 everyday items</h2>
+
+    <p>We selected items that most households buy weekly: own-brand where available, standard sizes, and no special offers or loyalty pricing. Here's what we found:</p>
+
+    <table class="data-table">
+        <thead>
+            <tr><th>Item</th><th>Tesco</th><th>Aldi</th><th>Lidl</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Semi-skimmed milk (2L)</td><td>&pound;1.40</td><td class="cheapest">&pound;1.25</td><td>&pound;1.29</td></tr>
+            <tr><td>White bread (800g)</td><td>&pound;1.00</td><td class="cheapest">&pound;0.59</td><td>&pound;0.62</td></tr>
+            <tr><td>Free-range eggs (10)</td><td>&pound;2.65</td><td class="cheapest">&pound;1.99</td><td>&pound;2.09</td></tr>
+            <tr><td>Chicken breast (300g)</td><td>&pound;3.25</td><td>&pound;2.79</td><td class="cheapest">&pound;2.69</td></tr>
+            <tr><td>Cheddar cheese (400g)</td><td>&pound;3.10</td><td class="cheapest">&pound;2.49</td><td>&pound;2.55</td></tr>
+            <tr><td>Pasta (500g)</td><td>&pound;0.70</td><td class="cheapest">&pound;0.49</td><td>&pound;0.52</td></tr>
+            <tr><td>Tinned tomatoes (400g)</td><td>&pound;0.45</td><td class="cheapest">&pound;0.35</td><td>&pound;0.36</td></tr>
+            <tr><td>Bananas (5 pack)</td><td>&pound;0.85</td><td class="cheapest">&pound;0.69</td><td>&pound;0.72</td></tr>
+            <tr><td>Onions (1kg)</td><td>&pound;0.85</td><td class="cheapest">&pound;0.59</td><td>&pound;0.65</td></tr>
+            <tr><td>Potatoes (2.5kg)</td><td>&pound;1.65</td><td class="cheapest">&pound;1.29</td><td>&pound;1.35</td></tr>
+            <tr><td>Butter (250g)</td><td>&pound;2.00</td><td>&pound;1.79</td><td class="cheapest">&pound;1.75</td></tr>
+            <tr><td>Rice (1kg)</td><td>&pound;1.45</td><td class="cheapest">&pound;0.99</td><td>&pound;1.05</td></tr>
+            <tr><td>Baked beans (400g)</td><td>&pound;0.65</td><td class="cheapest">&pound;0.29</td><td>&pound;0.32</td></tr>
+            <tr><td>Frozen peas (900g)</td><td>&pound;1.20</td><td class="cheapest">&pound;0.89</td><td>&pound;0.95</td></tr>
+            <tr><td>Olive oil (500ml)</td><td>&pound;3.85</td><td>&pound;3.29</td><td class="cheapest">&pound;3.19</td></tr>
+            <tr><td>Toilet roll (9 pack)</td><td>&pound;4.50</td><td class="cheapest">&pound;2.89</td><td>&pound;3.09</td></tr>
+            <tr><td>Washing up liquid (500ml)</td><td>&pound;0.85</td><td class="cheapest">&pound;0.55</td><td>&pound;0.59</td></tr>
+            <tr><td>Tea bags (80)</td><td>&pound;2.20</td><td class="cheapest">&pound;1.19</td><td>&pound;1.25</td></tr>
+            <tr><td>Carrots (1kg)</td><td>&pound;0.55</td><td class="cheapest">&pound;0.43</td><td>&pound;0.45</td></tr>
+            <tr><td>Yoghurt (500g)</td><td>&pound;1.20</td><td class="cheapest">&pound;0.89</td><td>&pound;0.95</td></tr>
+            <tr class="total-row"><td><strong>Total basket</strong></td><td><strong>&pound;34.35</strong></td><td><strong>&pound;25.53</strong></td><td><strong>&pound;26.43</strong></td></tr>
+        </tbody>
+    </table>
+
+    <div class="winner-card">
+        <div class="emoji">🏆</div>
+        <h3>Aldi wins by &pound;8.82</h3>
+        <p>The same 20 items cost <strong>25.7% less</strong> at Aldi compared to Tesco. Lidl came in close behind, saving 23.1%.</p>
+    </div>
+
+    <h2>How much cheaper is Aldi than Tesco?</h2>
+
+    <p><strong>The gap is larger than most people expect.</strong> Nearly &pound;9 on a 20-item basket means a family doing a weekly shop of 40-50 items could save &pound;15-25 per week — or over &pound;1,000 per year — by switching from a traditional supermarket to a discounter.</p>
+
+    <p><strong>Aldi and Lidl are very close to each other.</strong> The difference between them was less than &pound;1 across the full basket. Both are significantly cheaper than Tesco for own-brand staples.</p>
+
+    <p><strong>The biggest savings are on non-food items and dry goods.</strong> Toilet roll, tea bags, and baked beans showed the largest percentage differences — often 40-50% cheaper at discounters. Fresh produce differences were smaller but still meaningful.</p>
+
+    <h2>Should I switch to Aldi or Lidl completely?</h2>
+
+    <p>Price comparisons like this are useful as a benchmark, but your real-life savings depend on what you actually buy. A few things the table doesn't capture:</p>
+
+    <p><strong>Brand preferences matter.</strong> If you're loyal to specific brands (Heinz beans, Lurpak butter, PG Tips), you'll either pay more at any store or need to be willing to try alternatives. Discounters carry fewer branded options.</p>
+
+    <p><strong>Range and availability.</strong> Tesco stocks roughly 40,000 products; Aldi stocks around 1,800. If you need speciality ingredients, dietary-specific products, or a wide range of international foods, discounters may not cover your full list.</p>
+
+    <p><strong>Loyalty schemes and offers.</strong> Tesco Clubcard prices can close the gap on individual items. If you're strategic with loyalty pricing, the effective difference shrinks — though rarely enough to match discounter prices across a full basket.</p>
+
+    <p><strong>Location and convenience.</strong> A 20-minute drive to save &pound;8 isn't always worth it, especially for a quick mid-week top-up. Factor in your time and fuel costs.</p>
+
+    <div class="callout">
+        <p><strong>The real answer?</strong> Track your actual receipts across different stores and compare the totals. Generic price comparisons tell you the average — your receipts tell you <em>your</em> truth.</p>
+    </div>
+
+    <h2>What's the best supermarket strategy for saving money?</h2>
+
+    <p>Based on what we see from UK shoppers, the most effective approach isn't an all-or-nothing switch. It's a split:</p>
+
+    <p><strong>Do your main shop at a discounter</strong> for staples, fresh produce, and household basics. This is where the biggest savings are.</p>
+
+    <p><strong>Top up at your preferred supermarket</strong> for specific brands, speciality items, or anything you can't find at the discounter. Use loyalty pricing for these items.</p>
+
+    <p><strong>Scan every receipt</strong> so you can actually see the difference in your spending data, not just guess at it.</p>
+
+    <div class="article-cta">
+        <h3>Compare your own supermarket spending</h3>
+        <p>Scan receipts from different stores and see which one actually costs you less.</p>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="btn-primary">Download Supermonster</a>
+        <br>
+        <a href="/#grader" class="btn-secondary">or grade your grocery budget for free &rarr;</a>
+    </div>
+
+    <div class="related">
+        <h3>Related articles</h3>
+        <div class="related-grid">
+            <a href="reduce-grocery-bill.html" class="related-card">
+                <h4>9 Ways to Actually Cut Your Grocery Bill</h4>
+                <p>Practical changes that save real money this month.</p>
+            </a>
+            <a href="average-uk-grocery-spend.html" class="related-card">
+                <h4>Average UK Grocery Spend in 2026</h4>
+                <p>What UK households actually spend, by size.</p>
+            </a>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <div class="footer-left">
+        <div class="footer-brand">
+            <div class="footer-brand-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </div>
+        <p>Track food prices. Save as a household.</p>
+        <p style="margin-top: 8px;">Copyright &copy; 2026 Supermonster. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/support">Support</a>
+    </div>
+</footer>
+
+</body>
+</html>

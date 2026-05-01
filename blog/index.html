@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Supermonster | UK Grocery Spending Tips & Insights</title>
+    <meta name="description" content="Practical tips on reducing your grocery bill, UK supermarket price comparisons, and insights on food spending. From the makers of Supermonster.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --yellow: #F2C506;
+            --yellow-light: #FFF8D6;
+            --dark: #1A1A2E;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --bg: #FAF8F2;
+            --bg-grey: #F0EBE6;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(250,248,242,0.92);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 900px; margin: 0 auto; padding: 16px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: var(--text);
+        }
+        .nav-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+        .nav-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-brand span { font-size: 18px; font-weight: 800; }
+        .nav-cta {
+            background: var(--dark); color: #fff; padding: 10px 24px;
+            border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* Hero */
+        .blog-hero {
+            max-width: 900px; margin: 0 auto; padding: 60px 24px 40px;
+        }
+        .blog-hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900; letter-spacing: -0.03em;
+            line-height: 1.1; margin-bottom: 12px;
+        }
+        .blog-hero p {
+            font-size: 17px; color: var(--text-secondary);
+            max-width: 560px; line-height: 1.6;
+        }
+
+        /* Article grid */
+        .articles {
+            max-width: 900px; margin: 0 auto; padding: 0 24px 80px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+        }
+        .article-card {
+            background: #fff; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none; color: var(--text);
+            display: flex; flex-direction: column;
+        }
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .article-thumb {
+            height: 180px; display: flex; align-items: center; justify-content: center;
+            font-size: 64px;
+        }
+        .article-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+        .article-meta {
+            font-size: 12px; font-weight: 600; color: var(--text-secondary);
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;
+        }
+        .article-body h2 {
+            font-size: 20px; font-weight: 800; line-height: 1.25;
+            letter-spacing: -0.01em; margin-bottom: 8px;
+        }
+        .article-body p {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.6;
+            flex: 1;
+        }
+        .article-read {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 13px; font-weight: 700; color: var(--dark);
+            margin-top: 16px;
+        }
+        .article-read svg { transition: transform 0.2s; }
+        .article-card:hover .article-read svg { transform: translateX(3px); }
+
+        /* Featured (first card spans full width) */
+        .article-card.featured { grid-column: 1 / -1; flex-direction: row; }
+        .article-card.featured .article-thumb { width: 320px; height: auto; min-height: 240px; flex-shrink: 0; }
+        .article-card.featured .article-body { padding: 32px; }
+        .article-card.featured h2 { font-size: 26px; }
+        .article-card.featured p { font-size: 15px; }
+
+        /* Grader CTA banner */
+        .blog-cta {
+            max-width: 900px; margin: 0 auto 60px; padding: 0 24px;
+        }
+        .blog-cta-inner {
+            background: var(--dark); border-radius: 20px; padding: 40px;
+            display: flex; align-items: center; justify-content: space-between; gap: 32px;
+            color: #fff;
+        }
+        .blog-cta-inner h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+        .blog-cta-inner p { font-size: 14px; opacity: 0.7; line-height: 1.6; }
+        .blog-cta-inner a {
+            display: inline-block; background: var(--yellow); color: var(--dark);
+            padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700;
+            text-decoration: none; white-space: nowrap; transition: opacity 0.2s;
+        }
+        .blog-cta-inner a:hover { opacity: 0.9; }
+
+        /* Footer */
+        footer {
+            max-width: 900px; margin: 0 auto; padding: 32px 24px;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            font-size: 13px; color: var(--text-secondary);
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .footer-brand-icon { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+        .footer-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-brand span { font-size: 15px; font-weight: 700; color: var(--text); }
+        .footer-links { display: flex; gap: 20px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 640px) {
+            .articles { grid-template-columns: 1fr; }
+            .article-card.featured { flex-direction: column; }
+            .article-card.featured .article-thumb { width: 100%; height: 180px; min-height: unset; }
+            .blog-cta-inner { flex-direction: column; text-align: center; padding: 32px 24px; }
+            footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
+            .footer-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+    </div>
+</nav>
+
+<section class="blog-hero">
+    <h1>The Supermonster Blog</h1>
+    <p>Practical ways to spend less on groceries, UK price insights, and the data behind your weekly shop.</p>
+</section>
+
+<div class="articles">
+
+    <a href="average-uk-grocery-spend.html" class="article-card featured">
+        <div class="article-thumb" style="background: var(--yellow-light);">🧾</div>
+        <div class="article-body">
+            <div class="article-meta">May 2026 &middot; 6 min read</div>
+            <h2>Average UK Grocery Spend in 2026: How Does Your Household Compare?</h2>
+            <p>We break down the latest ONS data on what British households actually spend on food each week — by household size, region, and income. Plus a free tool to grade your own spending.</p>
+            <span class="article-read">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+    </a>
+
+    <a href="reduce-grocery-bill.html" class="article-card">
+        <div class="article-thumb" style="background: #F0FDF4;">💷</div>
+        <div class="article-body">
+            <div class="article-meta">May 2026 &middot; 5 min read</div>
+            <h2>9 Ways to Actually Cut Your Grocery Bill This Month</h2>
+            <p>Skip the generic advice. These are the changes that save real money — backed by spending data from thousands of UK shoppers.</p>
+            <span class="article-read">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+    </a>
+
+    <a href="tesco-vs-aldi-vs-lidl.html" class="article-card">
+        <div class="article-thumb" style="background: #FEF3C7;">🏪</div>
+        <div class="article-body">
+            <div class="article-meta">May 2026 &middot; 7 min read</div>
+            <h2>Tesco vs Aldi vs Lidl: Which Supermarket Is Actually Cheapest?</h2>
+            <p>We compared prices on 20 everyday items across the big three. The results might change where you do your weekly shop.</p>
+            <span class="article-read">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+    </a>
+
+    <a href="is-your-grocery-budget-normal.html" class="article-card">
+        <div class="article-thumb" style="background: #FEF2F2;">🤔</div>
+        <div class="article-body">
+            <div class="article-meta">May 2026 &middot; 4 min read</div>
+            <h2>Is Your Grocery Budget Normal? Here's What the Data Says</h2>
+            <p>That nagging feeling you're spending too much at the supermarket? Let's put a number on it and find out where you actually stand.</p>
+            <span class="article-read">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+    </a>
+
+</div>
+
+<div class="blog-cta">
+    <div class="blog-cta-inner">
+        <div>
+            <h3>Grade your grocery spending</h3>
+            <p>Find out how your weekly shop compares to the UK average. Takes 10 seconds.</p>
+        </div>
+        <a href="/#grader">Try the grader</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-left">
+        <div class="footer-brand">
+            <div class="footer-brand-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </div>
+        <p>Track food prices. Save as a household.</p>
+        <p style="margin-top: 8px;">Copyright &copy; 2026 Supermonster. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/support">Support</a>
+    </div>
+</footer>
+
+</body>
+</html>
