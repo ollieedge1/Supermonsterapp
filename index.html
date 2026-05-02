@@ -579,6 +579,117 @@
         }
         .footer-links a:hover { color: var(--text); }
 
+        /* ─── ANIMATIONS ─── */
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children — each child delays slightly */
+        .stagger-children > .reveal:nth-child(1) { transition-delay: 0s; }
+        .stagger-children > .reveal:nth-child(2) { transition-delay: 0.08s; }
+        .stagger-children > .reveal:nth-child(3) { transition-delay: 0.16s; }
+        .stagger-children > .reveal:nth-child(4) { transition-delay: 0.24s; }
+        .stagger-children > .reveal:nth-child(5) { transition-delay: 0.32s; }
+        .stagger-children > .reveal:nth-child(6) { transition-delay: 0.40s; }
+
+        /* Hero stagger — tighter timing */
+        .hero-stagger > * {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-stagger > *:nth-child(3) { animation-delay: 0.35s; }
+        .hero-stagger > *:nth-child(4) { animation-delay: 0.5s; }
+        .hero-stagger > *:nth-child(5) { animation-delay: 0.65s; }
+
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating bob on hero icon */
+        .hero-icon {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Phone frames slide up from further down */
+        .phone-frame.reveal {
+            transform: translateY(60px);
+        }
+
+        /* Subtle scale-in for feature cards */
+        .feature-card.reveal {
+            transform: translateY(40px) scale(0.97);
+        }
+        .feature-card.reveal.visible {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Nav slide down on load */
+        nav {
+            animation: navSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes navSlideDown {
+            from { opacity: 0; transform: translateY(-100%); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shimmer on CTA button */
+        .nav-cta {
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-cta::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0%, 100% { left: -100%; }
+            50% { left: 150%; }
+        }
+
+        /* Grade button pulse when enabled */
+        .grade-btn:not(:disabled) {
+            animation: subtlePulse 2.5s ease-in-out infinite;
+        }
+        @keyframes subtlePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(242,197,6,0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(242,197,6,0); }
+        }
+
+        /* Blog card hover lift is already there, add scale */
+        .blog-card {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: none; opacity: 1; transform: none; }
+            .hero-stagger > * { animation: none; opacity: 1; transform: none; }
+            .hero-icon { animation: none; }
+            nav { animation: none; }
+            .nav-cta::after { animation: none; }
+            .grade-btn:not(:disabled) { animation: none; }
+        }
+
         /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             .hero { padding: 60px 20px 40px; }
@@ -672,7 +783,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-stagger">
     <div class="hero-icon"><img src="app-icon.png" alt="Supermonster mascot"></div>
     <div class="hero-label">Supermonster</div>
     <h1>Track food prices. Save as a household.</h1>
@@ -686,10 +797,10 @@
 
 <!-- GROCERY BUDGET GRADER -->
 <section class="grader" id="grader">
-    <h2>How does your grocery spend stack up?</h2>
-    <p class="grader-sub">Enter your household details and get an instant grade against the UK average.</p>
+    <h2 class="reveal">How does your grocery spend stack up?</h2>
+    <p class="grader-sub reveal">Enter your household details and get an instant grade against the UK average.</p>
 
-    <div class="grader-card">
+    <div class="grader-card reveal">
         <div class="grader-group">
             <label>How many people in your household?</label>
             <div class="size-options">
@@ -745,10 +856,17 @@
                 </div>
             </div>
 
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button class="share-btn" id="shareImgBtn" onclick="graderShareImage()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Share as image
+            </button>
             <button class="share-btn" onclick="graderShare()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                Share my grade
+                Share as text
             </button>
+        </div>
+        <canvas id="graderCanvas" style="display:none;"></canvas>
         </div>
 
         <div class="grade-result-card tips-list" id="graderTipsCard">
@@ -767,8 +885,8 @@
 
 <!-- SCREENSHOTS -->
 <section class="screenshots">
-    <div class="screenshots-row">
-        <div class="phone-frame">
+    <div class="screenshots-row stagger-children">
+        <div class="phone-frame reveal">
             <div class="phone-notch"><div class="phone-notch-pill"></div></div>
             <div class="phone-content">
                 <div class="phone-monster"><img src="monster-receipt.png" alt="Receipt monster"></div>
@@ -776,7 +894,7 @@
                 <p>Point your camera at any shop receipt. Every item and price extracted in seconds.</p>
             </div>
         </div>
-        <div class="phone-frame">
+        <div class="phone-frame reveal">
             <div class="phone-notch"><div class="phone-notch-pill"></div></div>
             <div class="phone-content">
                 <div class="phone-monster"><img src="monster-wally.png" alt="Wally the deal finder"></div>
@@ -784,7 +902,7 @@
                 <p>See which items went up or down since your last shop. Stay on top of inflation.</p>
             </div>
         </div>
-        <div class="phone-frame">
+        <div class="phone-frame reveal">
             <div class="phone-notch"><div class="phone-notch-pill"></div></div>
             <div class="phone-content">
                 <div class="phone-monster"><img src="monster-basket.png" alt="Basket the big shopper"></div>
@@ -792,7 +910,7 @@
                 <p>Weekly or monthly budgets shared with your household. Track progress together.</p>
             </div>
         </div>
-        <div class="phone-frame">
+        <div class="phone-frame reveal">
             <div class="phone-notch"><div class="phone-notch-pill"></div></div>
             <div class="phone-content">
                 <div class="phone-monster"><img src="monster-grumpus.png" alt="Grumpus the list keeper"></div>
@@ -800,7 +918,7 @@
                 <p>Shared lists that sync in real time. See what your partner added or checked off.</p>
             </div>
         </div>
-        <div class="phone-frame">
+        <div class="phone-frame reveal">
             <div class="phone-notch"><div class="phone-notch-pill"></div></div>
             <div class="phone-content">
                 <div class="phone-monster"><img src="monster-pixel.png" alt="Pixel the tech-savvy one"></div>
@@ -813,34 +931,34 @@
 
 <!-- FEATURES -->
 <section class="features">
-    <h2>Everything you need to save on groceries</h2>
-    <div class="features-grid">
-        <div class="feature-card">
+    <h2 class="reveal">Everything you need to save on groceries</h2>
+    <div class="features-grid stagger-children">
+        <div class="feature-card reveal">
             <h3>Instant receipt scanning</h3>
             <p>Point your camera at any supermarket receipt. Supermonster reads every item, price, and discount in seconds using AI.</p>
             <div class="feature-card-img"><img src="monster-chester.png" alt="Receipt scanning"></div>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <h3>Price tracking over time</h3>
             <p>See exactly which items have gone up or down since your last shop. Know whether your weekly spend is rising — and why.</p>
             <div class="feature-card-img"><img src="monster-wally.png" alt="Price tracking"></div>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <h3>Household sharing</h3>
             <p>Link with your partner or family. Shared shopping lists, combined spending view, and household budgets — all synced in real time.</p>
             <div class="feature-card-img"><img src="monster-fuzzy.png" alt="Household sharing"></div>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <h3>Smart shopping lists</h3>
             <p>Create shared lists with your household. Supermonster suggests your regular items and tracks what you've checked off.</p>
             <div class="feature-card-img"><img src="monster-grumpus.png" alt="Shopping lists"></div>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <h3>Budget goals</h3>
             <p>Set weekly or monthly budgets for your whole shop or specific categories. Get warnings when you're close to the limit.</p>
             <div class="feature-card-img"><img src="monster-fluffbert.png" alt="Budget goals"></div>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <h3>Quests & levelling</h3>
             <p>Complete weekly spending challenges, earn XP, and evolve your monster from Newbie to Money Monster across 10 levels.</p>
             <div class="feature-card-img"><img src="monster-pixel.png" alt="Quests and levelling"></div>
@@ -850,8 +968,8 @@
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
-    <h2>What our users are saying</h2>
-    <div class="testimonial-card">
+    <h2 class="reveal">What our users are saying</h2>
+    <div class="testimonial-card reveal">
         <div class="testimonial-quote-icon">❝</div>
         <p class="testimonial-text">We had no idea how much we were spending on groceries until Supermonster showed us. Saved over £200 in the first month just by being more aware.</p>
         <div class="testimonial-author">Sarah & Tom</div>
@@ -862,22 +980,22 @@
 <!-- BLOG -->
 <section class="blog-preview">
     <div class="blog-inner">
-        <h2>From the blog</h2>
-        <p class="blog-sub">Tips and data to help you spend smarter at the supermarket.</p>
-        <div class="blog-grid">
-            <a href="/blog/average-uk-grocery-spend.html" class="blog-card">
+        <h2 class="reveal">From the blog</h2>
+        <p class="blog-sub reveal">Tips and data to help you spend smarter at the supermarket.</p>
+        <div class="blog-grid stagger-children">
+            <a href="/blog/average-uk-grocery-spend.html" class="blog-card reveal">
                 <div class="blog-emoji">🧾</div>
                 <h3>Average UK Grocery Spend in 2026</h3>
                 <p>What British households actually spend each week, broken down by size.</p>
                 <span class="read-link">Read &rarr;</span>
             </a>
-            <a href="/blog/reduce-grocery-bill.html" class="blog-card">
+            <a href="/blog/reduce-grocery-bill.html" class="blog-card reveal">
                 <div class="blog-emoji">💷</div>
                 <h3>9 Ways to Cut Your Grocery Bill</h3>
                 <p>Practical changes that save real money — not the same old generic tips.</p>
                 <span class="read-link">Read &rarr;</span>
             </a>
-            <a href="/blog/tesco-vs-aldi-vs-lidl.html" class="blog-card">
+            <a href="/blog/tesco-vs-aldi-vs-lidl.html" class="blog-card reveal">
                 <div class="blog-emoji">🏪</div>
                 <h3>Tesco vs Aldi vs Lidl</h3>
                 <p>We compared 20 items across the big three. The gap might surprise you.</p>
@@ -891,7 +1009,7 @@
 <!-- FAQ -->
 <section class="faq">
     <div class="faq-inner">
-        <h2>Frequently Asked Questions</h2>
+        <h2 class="reveal">Frequently Asked Questions</h2>
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
@@ -1077,26 +1195,169 @@ function toggleFaq(button) {
         results.classList.add('show');
         results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        gradeResult = { letter: grade.letter, title: grade.title, weeklySpend: Math.round(weeklySpend), avgWeekly: Math.round(avgWeekly), householdSize: selectedSize };
+        gradeResult = { letter: grade.letter, title: grade.title, gradeColor: grade.color, weeklySpend: Math.round(weeklySpend), avgWeekly: Math.round(avgWeekly), householdSize: selectedSize };
+    };
+
+    function graderDrawCard() {
+        var r = gradeResult;
+        if (!r) return null;
+        var c = document.getElementById('graderCanvas');
+        var W = 600, H = 340;
+        c.width = W * 2; c.height = H * 2;
+        c.style.width = W + 'px'; c.style.height = H + 'px';
+        var ctx = c.getContext('2d');
+        ctx.scale(2, 2);
+
+        // Background
+        ctx.fillStyle = '#1A1A2E';
+        ctx.beginPath();
+        ctx.roundRect(0, 0, W, H, 20);
+        ctx.fill();
+
+        // Grade circle
+        var cx = 90, cy = 120;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 52, 0, Math.PI * 2);
+        ctx.fillStyle = r.gradeColor;
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.font = '900 46px Inter, -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(r.letter, cx, cy);
+
+        // Title + subtitle
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#fff';
+        ctx.font = '800 26px Inter, -apple-system, sans-serif';
+        ctx.fillText(r.title, 164, 90);
+        ctx.fillStyle = 'rgba(255,255,255,0.6)';
+        ctx.font = '500 14px Inter, -apple-system, sans-serif';
+        ctx.fillText('Household of ' + r.householdSize, 164, 118);
+
+        // Stats row
+        var statsY = 160;
+        // Your spend
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        ctx.beginPath(); ctx.roundRect(164, statsY, 180, 60, 10); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '600 11px Inter, -apple-system, sans-serif';
+        ctx.fillText('YOUR SPEND', 180, statsY + 20);
+        ctx.fillStyle = '#fff';
+        ctx.font = '800 22px Inter, -apple-system, sans-serif';
+        ctx.fillText('£' + r.weeklySpend + '/week', 180, statsY + 46);
+
+        // UK average
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        ctx.beginPath(); ctx.roundRect(358, statsY, 180, 60, 10); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '600 11px Inter, -apple-system, sans-serif';
+        ctx.fillText('UK AVERAGE', 374, statsY + 20);
+        ctx.fillStyle = '#fff';
+        ctx.font = '800 22px Inter, -apple-system, sans-serif';
+        ctx.fillText('£' + r.avgWeekly + '/week', 374, statsY + 46);
+
+        // Comparison bar
+        var barY = 240, barX = 164, barW = 374;
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        ctx.beginPath(); ctx.roundRect(barX, barY, barW, 8, 4); ctx.fill();
+        var pct = Math.min(r.weeklySpend / (r.avgWeekly * 1.6), 1);
+        var avgPct = 1 / 1.6;
+        ctx.fillStyle = r.gradeColor;
+        ctx.beginPath(); ctx.roundRect(barX, barY, barW * pct, 8, 4); ctx.fill();
+        // Average marker
+        var avgX = barX + barW * avgPct;
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(avgX, barY - 6); ctx.lineTo(avgX, barY + 14); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.font = '500 10px Inter, -apple-system, sans-serif';
+        ctx.fillText('avg', avgX - 8, barY + 26);
+
+        // Yellow accent line
+        ctx.fillStyle = '#F2C506';
+        ctx.beginPath(); ctx.roundRect(24, 280, 552, 3, 1.5); ctx.fill();
+
+        // Footer: branding + CTA
+        ctx.fillStyle = '#F2C506';
+        ctx.font = '800 16px Inter, -apple-system, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Supermonster', 24, 314);
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '500 13px Inter, -apple-system, sans-serif';
+        ctx.fillText('supermonsterapp.com', 162, 314);
+
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#F2C506';
+        ctx.font = '700 13px Inter, -apple-system, sans-serif';
+        ctx.fillText('Get your grade free →', W - 24, 314);
+
+        return c;
+    }
+
+    window.graderShareImage = function() {
+        if (!gradeResult) return;
+        var c = graderDrawCard();
+        if (!c) return;
+
+        c.toBlob(function(blob) {
+            var file = new File([blob], 'my-grocery-grade.png', { type: 'image/png' });
+            var r = gradeResult;
+            var text = 'I got a ' + r.letter + ' on the Supermonster Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare?\n\nhttps://supermonsterapp.com/#grader';
+
+            if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                navigator.share({ title: 'My Grocery Grade', text: text, files: [file] }).catch(function(){});
+            } else {
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'my-grocery-grade.png';
+                a.click();
+                URL.revokeObjectURL(url);
+                var btn = document.getElementById('shareImgBtn');
+                btn.textContent = 'Image saved!';
+                setTimeout(function() {
+                    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Share as image';
+                }, 2000);
+            }
+        }, 'image/png');
     };
 
     window.graderShare = function() {
         if (!gradeResult) return;
-        const r = gradeResult;
-        const text = 'I got a ' + r.letter + ' on the Supermonster Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare? \u{1F6D2}\n\nhttps://supermonsterapp.com/grader';
+        var r = gradeResult;
+        var text = 'I got a ' + r.letter + ' on the Supermonster Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare? \u{1F6D2}\n\nhttps://supermonsterapp.com/#grader';
 
         if (navigator.share) {
             navigator.share({ title: 'My Grocery Grade', text: text }).catch(function(){});
         } else {
             navigator.clipboard.writeText(text).then(function() {
-                var btn = document.querySelector('.grader .share-btn');
+                var btn = document.querySelectorAll('.grader .share-btn')[1];
                 btn.textContent = 'Copied!';
                 setTimeout(function() {
-                    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share my grade';
+                    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share as text';
                 }, 2000);
             });
         }
     };
+})();
+
+/* ─── SCROLL REVEAL ─── */
+(function() {
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+    });
 })();
 </script>
 
