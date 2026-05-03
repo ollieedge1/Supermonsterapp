@@ -296,7 +296,7 @@ function generateItemPage(item, storeKey) {
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>${SHARED_CSS}</style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"${item.name}","description":"${item.name} (${item.unit}) at ${store.name}","offers":{"@type":"Offer","price":"${price.toFixed(2)}","priceCurrency":"GBP","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"${store.name}"}}}
+{"@context":"https://schema.org","@type":"Product","name":"${item.name} (${item.unit})","description":"${item.name} (${item.unit}) at ${store.name}","image":"https://supermonsterapp.com/app-icon.png","brand":{"@type":"Brand","name":"${store.name} Own Brand"},"offers":{"@type":"Offer","price":"${price.toFixed(2)}","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://supermonsterapp.com/prices/${item.slug}-${store.slug}.html","seller":{"@type":"Organization","name":"${store.name}"},"shippingDetails":{"@type":"OfferShippingDetails","shippingDestination":{"@type":"DefinedRegion","addressCountry":"GB"}},"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"GB","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[${faqs.map(f => `{"@type":"Question","name":"${f.q.replace(/"/g, '\\"')}","acceptedAnswer":{"@type":"Answer","text":"${f.a.replace(/"/g, '\\"')}"}}`).join(',')}]}
