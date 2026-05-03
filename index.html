@@ -134,7 +134,7 @@
             transition: opacity 0.2s;
         }
         .store-badge:hover { opacity: 0.85; }
-        .store-badge img { height: 54px; }
+        .store-badge img { height: 81px; }
 
         /* ─── GRADER TOOL ─── */
         .grader {
@@ -795,94 +795,6 @@
     </div>
 </section>
 
-<!-- GROCERY BUDGET GRADER -->
-<section class="grader" id="grader">
-    <h2 class="reveal">How does your grocery spend stack up?</h2>
-    <p class="grader-sub reveal">Enter your household details and get an instant grade against the UK average.</p>
-
-    <div class="grader-card reveal">
-        <div class="grader-group">
-            <label>How many people in your household?</label>
-            <div class="size-options">
-                <button class="size-btn" data-size="1" onclick="graderSelectSize(1)">
-                    <span class="num">1</span><span class="lbl">Solo</span>
-                </button>
-                <button class="size-btn" data-size="2" onclick="graderSelectSize(2)">
-                    <span class="num">2</span><span class="lbl">Couple</span>
-                </button>
-                <button class="size-btn" data-size="3" onclick="graderSelectSize(3)">
-                    <span class="num">3</span><span class="lbl">Small</span>
-                </button>
-                <button class="size-btn" data-size="4" onclick="graderSelectSize(4)">
-                    <span class="num">4</span><span class="lbl">Family</span>
-                </button>
-                <button class="size-btn" data-size="5" onclick="graderSelectSize(5)">
-                    <span class="num">5+</span><span class="lbl">Large</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="grader-group">
-            <label>How much do you spend on groceries?</label>
-            <div class="spend-wrap">
-                <span class="cur">&pound;</span>
-                <input type="number" class="spend-input" id="graderSpend" placeholder="80" min="1" max="9999" inputmode="decimal">
-            </div>
-            <div class="period-toggle">
-                <button class="period-btn active" data-period="week" onclick="graderSelectPeriod('week')">Per week</button>
-                <button class="period-btn" data-period="month" onclick="graderSelectPeriod('month')">Per month</button>
-            </div>
-        </div>
-
-        <button class="grade-btn" id="graderBtn" onclick="graderCalculate()" disabled>Grade My Spending</button>
-    </div>
-
-    <!-- Results (hidden until graded) -->
-    <div class="grader-results" id="graderResults">
-        <div class="grade-result-card">
-            <div class="grade-letter" id="graderLetter">A</div>
-            <h3 class="grade-title" id="graderTitle">Budget Master!</h3>
-            <p class="grade-subtitle" id="graderSubtitle">You're spending well below the UK average.</p>
-
-            <div class="comp-bar-wrap">
-                <div class="comp-label">Your spend vs UK average</div>
-                <div class="comp-bar">
-                    <div class="comp-fill" id="graderFill"></div>
-                    <div class="comp-marker" id="graderMarker"></div>
-                </div>
-                <div class="comp-labels">
-                    <span class="you" id="graderYou">&pound;60/wk</span>
-                    <span id="graderAvg">UK avg: &pound;80/wk</span>
-                </div>
-            </div>
-
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <button class="share-btn" id="shareImgBtn" onclick="graderShareImage()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Share as image
-            </button>
-            <button class="share-btn" onclick="graderShare()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                Share as text
-            </button>
-        </div>
-        <canvas id="graderCanvas" style="display:none;"></canvas>
-        </div>
-
-        <div class="grade-result-card tips-list" id="graderTipsCard">
-            <h3 class="grade-title" id="graderTipsTitle" style="text-align:left;font-size:16px;">Tips to save more</h3>
-            <div id="graderTipsContent"></div>
-        </div>
-
-        <div class="grader-cta">
-            <p>Track it properly with Supermonster</p>
-            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
-                <img src="apple-download-black-btn.svg" alt="Download on the App Store">
-            </a>
-        </div>
-    </div>
-</section>
-
 <!-- SCREENSHOTS -->
 <section class="screenshots">
     <div class="screenshots-row stagger-children">
@@ -974,6 +886,94 @@
         <p class="testimonial-text">We had no idea how much we were spending on groceries until Supermonster showed us. Saved over £200 in the first month just by being more aware.</p>
         <div class="testimonial-author">Sarah & Tom</div>
         <div class="testimonial-role">Household of 4, Manchester</div>
+    </div>
+</section>
+
+<!-- GROCERY BUDGET GRADER -->
+<section class="grader" id="grader">
+    <h2 class="reveal">How does your grocery spend stack up?</h2>
+    <p class="grader-sub reveal">Enter your household details and get an instant grade against the UK average.</p>
+
+    <div class="grader-card reveal">
+        <div class="grader-group">
+            <label>How many people in your household?</label>
+            <div class="size-options">
+                <button class="size-btn" data-size="1" onclick="graderSelectSize(1)">
+                    <span class="num">1</span><span class="lbl">Solo</span>
+                </button>
+                <button class="size-btn" data-size="2" onclick="graderSelectSize(2)">
+                    <span class="num">2</span><span class="lbl">Couple</span>
+                </button>
+                <button class="size-btn" data-size="3" onclick="graderSelectSize(3)">
+                    <span class="num">3</span><span class="lbl">Small</span>
+                </button>
+                <button class="size-btn" data-size="4" onclick="graderSelectSize(4)">
+                    <span class="num">4</span><span class="lbl">Family</span>
+                </button>
+                <button class="size-btn" data-size="5" onclick="graderSelectSize(5)">
+                    <span class="num">5+</span><span class="lbl">Large</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="grader-group">
+            <label>How much do you spend on groceries?</label>
+            <div class="spend-wrap">
+                <span class="cur">&pound;</span>
+                <input type="number" class="spend-input" id="graderSpend" placeholder="80" min="1" max="9999" inputmode="decimal">
+            </div>
+            <div class="period-toggle">
+                <button class="period-btn active" data-period="week" onclick="graderSelectPeriod('week')">Per week</button>
+                <button class="period-btn" data-period="month" onclick="graderSelectPeriod('month')">Per month</button>
+            </div>
+        </div>
+
+        <button class="grade-btn" id="graderBtn" onclick="graderCalculate()" disabled>Grade My Spending</button>
+    </div>
+
+    <!-- Results (hidden until graded) -->
+    <div class="grader-results" id="graderResults">
+        <div class="grade-result-card">
+            <div class="grade-letter" id="graderLetter">A</div>
+            <h3 class="grade-title" id="graderTitle">Budget Master!</h3>
+            <p class="grade-subtitle" id="graderSubtitle">You're spending well below the UK average.</p>
+
+            <div class="comp-bar-wrap">
+                <div class="comp-label">Your spend vs UK average</div>
+                <div class="comp-bar">
+                    <div class="comp-fill" id="graderFill"></div>
+                    <div class="comp-marker" id="graderMarker"></div>
+                </div>
+                <div class="comp-labels">
+                    <span class="you" id="graderYou">&pound;60/wk</span>
+                    <span id="graderAvg">UK avg: &pound;80/wk</span>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button class="share-btn" id="shareImgBtn" onclick="graderShareImage()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Share as image
+            </button>
+            <button class="share-btn" onclick="graderShare()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Share as text
+            </button>
+        </div>
+        <canvas id="graderCanvas" style="display:none;"></canvas>
+        </div>
+
+        <div class="grade-result-card tips-list" id="graderTipsCard">
+            <h3 class="grade-title" id="graderTipsTitle" style="text-align:left;font-size:16px;">Tips to save more</h3>
+            <div id="graderTipsContent"></div>
+        </div>
+
+        <div class="grader-cta">
+            <p>Track it properly with Supermonster</p>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
+                <img src="apple-download-black-btn.svg" alt="Download on the App Store">
+            </a>
+        </div>
     </div>
 </section>
 
