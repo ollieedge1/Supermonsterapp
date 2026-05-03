@@ -617,9 +617,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Floating bob on hero icon */
+        /* Floating bob on hero icon — chain after heroFadeUp so opacity still transitions */
         .hero-icon {
-            animation: float 4s ease-in-out infinite;
+            animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+                       float 4s ease-in-out 0.8s infinite;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
