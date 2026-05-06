@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — Supermonster</title>
+    <meta name="description" content="Review the terms and conditions for using Supermonster, our grocery tracking app.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --yellow: #F2C506;
+            --yellow-light: #FFF8D6;
+            --dark: #1A1A2E;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --bg: #FAF8F2;
+            --bg-grey: #F0EBE6;
+            --max-width: 1100px;
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,248,242,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .nav-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-brand span {
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .nav-cta {
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* ─── PAGE CONTENT ─── */
+        .page-header {
+            padding: 60px 24px 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .page-header .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .page-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .page-content p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .page-content h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 40px 0 16px;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .page-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 24px 0 8px;
+            color: var(--text);
+        }
+        .page-content ul {
+            margin: 12px 0 16px 24px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .page-content li {
+            margin-bottom: 8px;
+        }
+        .page-content strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+        .page-content a {
+            color: var(--dark);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+        .page-content a:hover {
+            opacity: 0.7;
+        }
+
+        .effective-date {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 48px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .footer-brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .footer-brand-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .footer-brand span {
+            font-size: 16px;
+            font-weight: 800;
+        }
+        .footer-left p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+
+        /* ─── NAV ANIMATION ─── */
+        nav {
+            animation: navSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes navSlideDown {
+            from { opacity: 0; transform: translateY(-100%); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .page-header { padding: 40px 20px 30px; }
+            footer { flex-direction: column; text-align: center; align-items: center; }
+            .footer-links { justify-content: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <div style="display:flex;align-items:center;gap:20px;">
+            <a href="/blog" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Blog</a>
+            <a href="/prices/" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Prices</a>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <h1>Terms of Use</h1>
+    <p class="subtitle">Please read these terms carefully</p>
+</section>
+
+<!-- PAGE CONTENT -->
+<section class="page-content">
+    <p class="effective-date">Effective date: 6 May 2026</p>
+
+    <p>By using Supermonster ("the app"), you agree to these terms. Please read them carefully.</p>
+
+    <h2>1. The service</h2>
+    <p>Supermonster is a personal spending tracker that lets you scan receipts, track prices, compare stores, set budgets, create shopping lists, and view spending insights. The app is provided "as is" for personal, non-commercial use.</p>
+
+    <h2>2. Your account</h2>
+    <p>You are responsible for maintaining the security of your account. You must provide accurate information when creating an account. You may not create accounts for others without their permission.</p>
+
+    <h2>3. Your data</h2>
+    <p>You retain ownership of all data you enter into the app, including receipt data, budgets, shopping lists, and preferences. We store this data to provide the service to you. We may also use anonymised, aggregated versions of this data as described in our <a href="/privacy">Privacy Policy</a>.</p>
+
+    <h2>4. Accuracy of information</h2>
+    <p>Supermonster uses AI and optical character recognition to extract data from receipts. While we strive for accuracy, we cannot guarantee that every item, price, or total will be read correctly. You should verify important information and use the edit feature to correct any errors.</p>
+    <p>Price comparisons, spending insights, and budget tracking are based on the data you provide through scanned receipts. They should be used as a general guide, not as financial advice.</p>
+
+    <h2>5. Subscriptions</h2>
+    <p>Some features require a paid subscription (Supermonster Pro). Subscriptions are billed through Apple's App Store and are subject to Apple's terms. You can manage or cancel subscriptions in your device's Settings > Subscriptions.</p>
+    <ul>
+        <li>Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period</li>
+        <li>Your account will be charged for renewal within 24 hours prior to the end of the current period</li>
+        <li>Free trial periods, if offered, will convert to paid subscriptions unless cancelled before the trial ends</li>
+        <li>Free tier users are limited to 4 receipt scans per calendar month</li>
+    </ul>
+
+    <h2>6. Household sharing</h2>
+    <p>You may invite other users to join your household. When you share a household, all members can see shared spending data, shopping lists, and budgets. You are responsible for ensuring that anyone you invite to your household consents to sharing their data with other household members.</p>
+
+    <h2>7. Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul>
+        <li>Use the app for any unlawful purpose</li>
+        <li>Attempt to reverse engineer, decompile, or extract the source code of the app</li>
+        <li>Use the app to collect data about other people without their consent</li>
+        <li>Interfere with or disrupt the app's infrastructure</li>
+        <li>Create multiple accounts to circumvent usage limits</li>
+        <li>Upload fraudulent, fabricated, or manipulated receipt images</li>
+    </ul>
+
+    <h2>8. Intellectual property</h2>
+    <p>The app, including its design, code, Monster characters, and branding, is owned by Supermonster. You may not copy, modify, or distribute any part of the app without our written permission.</p>
+
+    <h2>9. Limitation of liability</h2>
+    <p>To the fullest extent permitted by law, Supermonster shall not be liable for any indirect, incidental, or consequential damages arising from your use of the app. This includes, but is not limited to, financial decisions made based on information provided by the app.</p>
+    <p>Supermonster is a spending tracker, not a financial advisor. We do not provide financial, investment, or tax advice.</p>
+
+    <h2>10. Termination</h2>
+    <p>We may suspend or terminate your access to the app if you violate these terms. You may delete your account at any time through the app's Settings page, which will permanently remove your personal data within 30 days.</p>
+
+    <h2>11. Changes to these terms</h2>
+    <p>We may update these terms from time to time. If we make significant changes, we will notify you through the app. Continued use of the app after changes are posted constitutes acceptance of the updated terms.</p>
+
+    <h2>12. Governing law</h2>
+    <p>These terms are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+    <h2>13. Contact</h2>
+    <p>Questions about these terms? Email us at <a href="mailto:hello@supermonsterapp.com">hello@supermonsterapp.com</a>.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">
+        <div class="footer-brand">
+            <div class="footer-brand-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </div>
+        <p>Track food prices. Save as a household.</p>
+        <p style="margin-top: 8px;">Built with ❤️ by the Supermonster team</p>
+        <p style="margin-top: 4px; font-size: 13px; color: #9CA3AF;">Copyright © 2026 Supermonster. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/support">Support</a>
+    </div>
+</footer>
+
+</body>
+</html>

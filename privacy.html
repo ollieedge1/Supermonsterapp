@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Supermonster</title>
+    <meta name="description" content="Learn how Supermonster protects your privacy and how we handle your receipt and spending data.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --yellow: #F2C506;
+            --yellow-light: #FFF8D6;
+            --dark: #1A1A2E;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --bg: #FAF8F2;
+            --bg-grey: #F0EBE6;
+            --max-width: 1100px;
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,248,242,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .nav-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-brand span {
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .nav-cta {
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* ─── PAGE CONTENT ─── */
+        .page-header {
+            padding: 60px 24px 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .page-header .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .page-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .page-content p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .page-content h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 40px 0 16px;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .page-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 24px 0 8px;
+            color: var(--text);
+        }
+        .page-content ul {
+            margin: 12px 0 16px 24px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .page-content li {
+            margin-bottom: 8px;
+        }
+        .page-content strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+        .page-content a {
+            color: var(--dark);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+        .page-content a:hover {
+            opacity: 0.7;
+        }
+
+        .effective-date {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 48px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .footer-brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .footer-brand-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .footer-brand span {
+            font-size: 16px;
+            font-weight: 800;
+        }
+        .footer-left p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+
+        /* ─── NAV ANIMATION ─── */
+        nav {
+            animation: navSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes navSlideDown {
+            from { opacity: 0; transform: translateY(-100%); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .page-header { padding: 40px 20px 30px; }
+            footer { flex-direction: column; text-align: center; align-items: center; }
+            .footer-links { justify-content: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <div style="display:flex;align-items:center;gap:20px;">
+            <a href="/blog" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Blog</a>
+            <a href="/prices/" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Prices</a>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">How we protect and handle your data</p>
+</section>
+
+<!-- PAGE CONTENT -->
+<section class="page-content">
+    <p class="effective-date">Effective date: 6 May 2026</p>
+
+    <p>Supermonster ("we", "our", "the app") respects your privacy. This policy explains what data we collect, how we use it, who we may share it with, and your rights.</p>
+
+    <h2>1. What we collect</h2>
+
+    <h3>Account information</h3>
+    <p>When you create an account, we collect your email address and display name. If you sign in with Apple, we receive the information you choose to share (which may include a private relay email).</p>
+
+    <h3>Receipt and purchase data</h3>
+    <p>When you scan a receipt, the app extracts item names, prices, quantities, store names, dates, and totals. This data is stored in your account to power spending insights, price tracking, store comparisons, and budgets.</p>
+
+    <h3>Usage data</h3>
+    <p>We collect basic analytics about how you use the app (screens viewed, features used, crash reports) to improve the product. We also record your subscription status and scan count.</p>
+
+    <h3>Device information</h3>
+    <p>We collect your device type and operating system version for compatibility and debugging purposes.</p>
+
+    <h2>2. How we process your data</h2>
+
+    <h3>On-device scanning</h3>
+    <p>Receipt text is first extracted on your device using Apple's Vision framework. No images of your receipts are sent to our servers.</p>
+
+    <h3>AI-enhanced parsing</h3>
+    <p>To improve accuracy, the extracted text (not the image) may be sent to our secure cloud service for processing by an AI model. This text is used solely to parse your receipt and generate personalised insights.</p>
+
+    <h3>Data storage</h3>
+    <p>Your account and receipt data is stored using Google Firebase. Data is encrypted in transit and at rest.</p>
+
+    <h2>3. How we share your data</h2>
+
+    <h3>Service providers</h3>
+    <p>We use the following third-party services to operate the app:</p>
+    <ul>
+        <li><strong>Firebase (Google)</strong> — authentication, database, and cloud functions</li>
+        <li><strong>RevenueCat</strong> — subscription management</li>
+        <li><strong>Anthropic (Claude)</strong> — AI-powered receipt parsing and content generation</li>
+    </ul>
+    <p>Each of these services processes data in accordance with their own privacy policies.</p>
+
+    <h3>Anonymised and aggregated data</h3>
+    <p>We may share anonymised, aggregated data with third parties, including market research firms, consumer goods companies, and retail analytics providers. This data is derived from the purchase information you provide through scanned receipts.</p>
+    <p>Anonymised data is stripped of all personally identifiable information. It cannot be used to identify you or your household. Examples of anonymised data include: average basket sizes by region, price trends for product categories, and store-switching patterns across the user base.</p>
+    <p>We do not sell your personal data. Personal data means information that can be used to identify you individually, such as your name, email address, or individual purchase history.</p>
+
+    <h3>Legal requirements</h3>
+    <p>We may disclose your data if required by law, regulation, or legal process, or to protect the rights, property, or safety of Supermonster, our users, or the public.</p>
+
+    <h2>4. Your rights</h2>
+    <p>Under UK GDPR, you have the right to:</p>
+    <ul>
+        <li><strong>Access</strong> your data — request a copy of what we hold about you</li>
+        <li><strong>Correct</strong> inaccurate data</li>
+        <li><strong>Delete</strong> your account and all associated data (available in Settings > Delete Account, or by emailing us)</li>
+        <li><strong>Export</strong> your data in a portable format (available to Pro subscribers)</li>
+        <li><strong>Object</strong> to processing of your data, including the use of your anonymised data in aggregated datasets</li>
+        <li><strong>Withdraw consent</strong> at any time for any processing based on consent</li>
+    </ul>
+    <p>To exercise any of these rights, email us at <a href="mailto:privacy@supermonsterapp.com">privacy@supermonsterapp.com</a>. We will respond within 30 days.</p>
+
+    <h2>5. Lawful basis for processing</h2>
+    <p>We process your data under the following lawful bases:</p>
+    <ul>
+        <li><strong>Contract</strong> — to provide the service you signed up for (receipt scanning, spending tracking, budgets)</li>
+        <li><strong>Legitimate interest</strong> — to improve the app, prevent fraud, and generate anonymised market insights</li>
+        <li><strong>Consent</strong> — for optional features like push notifications</li>
+    </ul>
+
+    <h2>6. Children's privacy</h2>
+    <p>Supermonster is designed for families and is rated 4+. We do not knowingly collect personal information from children under 13 without parental consent. The app is intended to be used by parents and guardians to track household spending.</p>
+
+    <h2>7. Data retention</h2>
+    <p>We retain your account and receipt data for as long as your account is active. If you delete your account, all personally identifiable data is permanently removed within 30 days. Anonymised data that has already been included in aggregated datasets may be retained indefinitely, as it cannot be linked back to you.</p>
+
+    <h2>8. International transfers</h2>
+    <p>Your data may be processed in countries outside the UK, including the United States (where our cloud service providers operate). Where data is transferred internationally, we ensure appropriate safeguards are in place in accordance with UK GDPR.</p>
+
+    <h2>9. Changes to this policy</h2>
+    <p>We may update this privacy policy from time to time. If we make significant changes, we will notify you through the app. The "effective date" at the top of this page indicates when the policy was last updated.</p>
+
+    <h2>10. Contact us</h2>
+    <p>If you have questions about this privacy policy or how we handle your data, please email us at <a href="mailto:privacy@supermonsterapp.com">privacy@supermonsterapp.com</a>.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">
+        <div class="footer-brand">
+            <div class="footer-brand-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </div>
+        <p>Track food prices. Save as a household.</p>
+        <p style="margin-top: 8px;">Built with ❤️ by the Supermonster team</p>
+        <p style="margin-top: 4px; font-size: 13px; color: #9CA3AF;">Copyright © 2026 Supermonster. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/support">Support</a>
+    </div>
+</footer>
+
+</body>
+</html>

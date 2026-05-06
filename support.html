@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Supermonster</title>
+    <meta name="description" content="Get help with Supermonster. Find answers to common questions about receipt scanning, household sharing, subscriptions, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --yellow: #F2C506;
+            --yellow-light: #FFF8D6;
+            --dark: #1A1A2E;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --bg: #FAF8F2;
+            --bg-grey: #F0EBE6;
+            --max-width: 1100px;
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,248,242,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .nav-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-brand span {
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .nav-cta {
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* ─── PAGE HEADER ─── */
+        .page-header {
+            padding: 60px 24px 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .page-header .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        /* ─── QUICK LINKS ─── */
+        .quick-links {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #fff;
+            border-radius: var(--radius);
+            border: 1px solid #E5E7EB;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .quick-link:hover {
+            border-color: var(--yellow);
+            background: var(--yellow-light);
+        }
+        .quick-link svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ─── FAQ ─── */
+        .faq-section {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .faq-section h2 {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 40px 0 24px;
+            padding: 16px 0;
+            border-top: 2px solid var(--bg-grey);
+            color: var(--text);
+        }
+        .faq-section:first-of-type h2 {
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+            border-radius: var(--radius);
+            background: #fff;
+            border: 1px solid #E5E7EB;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .faq-item:hover {
+            border-color: var(--yellow);
+            box-shadow: 0 2px 8px rgba(242,197,6,0.1);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 16px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .faq-question:hover {
+            color: var(--dark);
+        }
+
+        .faq-chevron {
+            font-size: 18px;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: var(--yellow-light);
+        }
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+            padding: 0 16px 16px 16px;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .faq-answer p + p {
+            margin-top: 12px;
+        }
+
+        .faq-answer strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .faq-answer a {
+            color: var(--dark);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+        .faq-answer a:hover {
+            opacity: 0.7;
+        }
+
+        /* ─── CONTACT SECTION ─── */
+        .contact-section {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .contact-card {
+            background: #fff;
+            border: 2px solid var(--yellow);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .contact-card h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .contact-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .contact-card a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--dark);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .contact-card a:hover {
+            opacity: 0.85;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 48px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .footer-brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .footer-brand-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .footer-brand span {
+            font-size: 16px;
+            font-weight: 800;
+        }
+        .footer-left p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+
+        /* ─── NAV ANIMATION ─── */
+        nav {
+            animation: navSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes navSlideDown {
+            from { opacity: 0; transform: translateY(-100%); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .page-header { padding: 40px 20px 30px; }
+            .quick-links { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            footer { flex-direction: column; text-align: center; align-items: center; }
+            .footer-links { justify-content: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <div class="nav-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </a>
+        <div style="display:flex;align-items:center;gap:20px;">
+            <a href="/blog" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Blog</a>
+            <a href="/prices/" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Prices</a>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <h1>Support & Help</h1>
+    <p class="subtitle">Find answers to common questions about Supermonster</p>
+</section>
+
+<!-- QUICK LINKS -->
+<div class="quick-links">
+    <button class="quick-link" onclick="scrollToSection('receipts')">
+        <span style="font-size: 16px;">📸</span>
+        Receipt Scanning
+    </button>
+    <button class="quick-link" onclick="scrollToSection('household')">
+        <span style="font-size: 16px;">👥</span>
+        Household Sharing
+    </button>
+    <button class="quick-link" onclick="scrollToSection('subscription')">
+        <span style="font-size: 16px;">💳</span>
+        Subscription
+    </button>
+    <button class="quick-link" onclick="scrollToSection('account')">
+        <span style="font-size: 16px;">⚙️</span>
+        Account
+    </button>
+</div>
+
+<!-- FAQ SECTIONS -->
+<div class="faq-section" id="receipts">
+    <h2>Receipt Scanning</h2>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How do I scan a receipt?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>Open the app</strong> and tap the camera button at the bottom of the screen. Point your phone's camera at a supermarket receipt and hold it steady. The app will automatically extract the items, prices, and totals in a few seconds. Once it's complete, you can review, edit, or save the receipt.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            What supermarkets does Supermonster work with?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Supermonster works with receipts from all major UK supermarkets including Tesco, Sainsbury's, Asda, Morrisons, Waitrose, Aldi, Lidl, Co-op, and more. The app uses AI to read receipts from any UK store, even smaller independent retailers.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Can I edit items after scanning?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Yes. The app lets you review every item before saving. If an item or price is incorrect, just tap it to edit. You can also add items, delete items, or change quantities directly in the receipt view.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How many receipts can I scan per month?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>Free users:</strong> Up to 4 scans per calendar month. <strong>Pro subscribers:</strong> Unlimited scans. You can upgrade to Pro anytime in the app's Settings.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Is there a way to scan receipts offline?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>The initial receipt scanning happens on your device, but some features require an internet connection. We recommend scanning receipts when connected to WiFi or mobile data for the best experience.</p>
+        </div>
+    </div>
+</div>
+
+<div class="faq-section" id="household">
+    <h2>Household Sharing</h2>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How do I share my household with my partner?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>In Settings,</strong> tap "Household" and then "Invite a member." You'll get a unique code. Share this code with your partner via text, email, or however you prefer. They'll enter the code in their app, and you'll be linked immediately. Once linked, you'll both see shared budgets, spending totals, and shopping lists.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Can I see my partner's individual receipts?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>You can see the combined household spending and which items were bought, but Supermonster doesn't track which household member scanned each receipt. It's all about the household's total spending, not individual spending.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How do shopping lists work in a household?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>Shopping lists sync in real time</strong> between household members. One person adds an item, and it appears instantly on everyone's list. When you check an item off, the rest of the household sees it marked complete immediately. Perfect for staying coordinated at the supermarket.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Can I remove someone from my household?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Yes. Go to Settings > Household and tap the "Remove" button next to the member's name. You can also leave a household from the same menu. Once removed, you won't share budgets or shopping lists anymore, but your previous receipt data remains in your account.</p>
+        </div>
+    </div>
+</div>
+
+<div class="faq-section" id="subscription">
+    <h2>Subscription & Billing</h2>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            What's the difference between the free and Pro plans?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>Free Plan:</strong> 4 receipt scans per month, basic spending insights, household sharing, shopping lists. <strong>Pro Plan:</strong> Unlimited scans, advanced price tracking, data export (coming soon), and priority support. Most households don't need Pro, but it's perfect if you shop frequently or want unlimited tracking.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How do I upgrade to Pro?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>In the app,</strong> go to Settings > Upgrade to Pro. You'll see the current price (usually a monthly or annual option). Tap the plan you want, and the App Store will handle the payment. You can manage your subscription in your device's Settings > Subscriptions.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How do I cancel my subscription?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>On your iPhone,</strong> go to Settings > [Your Name] > Subscriptions. Find Supermonster and tap "Manage Subscription." Select "Cancel Subscription." You'll remain on Pro until the end of your current billing period, then revert to the free plan.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Do both household members need Pro?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>No. Pro is per account. If one partner has Pro, they can scan unlimited times on their phone. The other partner will still be limited to 4 scans per month. You can share a household either way.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Can I get a refund?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Refunds are handled by the App Store, not directly by us. If you're unhappy within 14 days of purchase, <a href="mailto:hello@supermonsterapp.com">contact us</a> and we can help you with an App Store refund request.</p>
+        </div>
+    </div>
+</div>
+
+<div class="faq-section" id="account">
+    <h2>Account & Data</h2>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How do I delete my account?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p><strong>In the app,</strong> go to Settings > Account > Delete Account. You'll be asked to confirm. Once deleted, all your personal data (email, receipts, budgets) will be permanently removed within 30 days. This action cannot be undone, so make sure you want to do this.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            How is my data kept safe?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Your data is encrypted in transit and at rest using industry-standard encryption. We use Google Firebase for secure storage, and your receipt images are processed on your device — they're never sent to our servers. For full details, see our <a href="/privacy">Privacy Policy</a>.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Can I download my data?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Yes. Pro subscribers can export their data in a portable format through Settings > Export Data. This feature is coming to free users soon. You have the right to download your data anytime under UK GDPR.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            Can I sign in with a different account?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>Yes. Go to Settings > Sign Out, then you'll be taken back to the login screen. You can then sign in with a different email or Apple ID. Your old account's data remains and can be accessed by signing back in.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            What if I forgot my password?
+            <span class="faq-chevron">⌵</span>
+        </button>
+        <div class="faq-answer">
+            <p>If you're signing in with an email and password, tap "Forgot password?" on the login screen. We'll send you a password reset link via email. If you signed in with Apple, just use "Sign in with Apple" and your phone will authenticate you.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<div class="contact-section">
+    <div class="contact-card">
+        <h2>Didn't find what you're looking for?</h2>
+        <p>Get in touch with our support team. We're happy to help with any questions about Supermonster.</p>
+        <a href="mailto:hello@supermonsterapp.com">Email support</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">
+        <div class="footer-brand">
+            <div class="footer-brand-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <span>Supermonster</span>
+        </div>
+        <p>Track food prices. Save as a household.</p>
+        <p style="margin-top: 8px;">Built with ❤️ by the Supermonster team</p>
+        <p style="margin-top: 4px; font-size: 13px; color: #9CA3AF;">Copyright © 2026 Supermonster. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/support">Support</a>
+    </div>
+</footer>
+
+<script>
+    // FAQ accordion toggle
+    function toggleFaq(button) {
+        const item = button.parentElement;
+        const wasOpen = item.classList.contains('open');
+
+        // Close all other items in the same section
+        const section = item.closest('.faq-section');
+        section.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+        // Toggle clicked item
+        if (!wasOpen) {
+            item.classList.add('open');
+        }
+    }
+
+    // Quick link scroll to section
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+</script>
+
+</body>
+</html>
