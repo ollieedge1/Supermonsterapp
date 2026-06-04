@@ -668,15 +668,74 @@
             .grade-btn:not(:disabled) { animation: none; }
         }
 
-        /* ─── RESPONSIVE ─── */
+        /* ─── RESPONSIVE: TABLET ─── */
         @media (max-width: 768px) {
             .hero { padding: 60px 20px 40px; }
-            .screenshots-row { justify-content: flex-start; padding: 0 20px; }
+            .hero p { font-size: 16px; }
+            .hero-icon { width: 90px; height: 90px; }
+            .store-badge img { height: 56px; }
+            .screenshots { padding: 40px 16px; }
+            .screenshots-row { justify-content: flex-start; padding: 0 16px; gap: 12px; }
             .phone-frame { width: 180px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .testimonial-nav { gap: 280px; margin-top: -80px; }
-            footer { flex-direction: column; text-align: center; align-items: center; }
+            .features { padding: 48px 20px; }
+            .features h2 { margin-bottom: 32px; }
+            .features-grid { grid-template-columns: 1fr; gap: 16px; }
+            .feature-card { padding: 24px; }
+            .testimonials { padding: 48px 20px; }
+            .testimonial-text { font-size: 16px; }
+            .testimonial-nav { gap: 120px; margin-top: -60px; }
+            .blog-preview { padding: 48px 20px; }
+            .faq { padding: 48px 20px; }
+            .faq h2 { margin-bottom: 32px; }
+            footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
             .footer-links { justify-content: center; }
+            .grader { padding: 40px 20px; }
+        }
+
+        /* ─── RESPONSIVE: MOBILE ─── */
+        @media (max-width: 480px) {
+            .nav-inner { padding: 12px 16px; }
+            .nav-brand span { font-size: 15px; }
+            .nav-cta { padding: 8px 16px; font-size: 13px; }
+            .hero { padding: 40px 16px 32px; }
+            .hero-icon { width: 72px; height: 72px; }
+            .hero p { font-size: 15px; margin-bottom: 24px; }
+            .store-badges { gap: 8px; }
+            .store-badge img { height: 44px; }
+            .screenshots { padding: 32px 0; }
+            .screenshots-row { padding: 0 16px; gap: 10px; }
+            .phone-frame { width: 150px; }
+            .phone-label h3 { font-size: 12px; }
+            .phone-label p { font-size: 10px; }
+            .features { padding: 32px 16px; }
+            .features h2 { margin-bottom: 24px; }
+            .feature-card { padding: 20px; }
+            .feature-card h3 { font-size: 16px; }
+            .feature-card p { font-size: 14px; }
+            .feature-card-img { height: 140px; }
+            .feature-card-img img { height: 90px; }
+            .testimonials { padding: 32px 16px; }
+            .testimonials h2 { margin-bottom: 28px; }
+            .testimonial-text { font-size: 15px; }
+            .testimonial-nav { gap: 80px; margin-top: -50px; }
+            .testimonial-nav button { font-size: 28px; }
+            .blog-preview { padding: 32px 16px; }
+            .blog-card { padding: 20px; }
+            .faq { padding: 32px 16px; }
+            .faq-question { font-size: 15px; }
+            .grader { padding: 32px 16px; }
+            .grader-card { padding: 20px 16px; }
+            .size-btn { padding: 10px 14px; }
+            .size-btn .num { font-size: 18px; }
+        }
+
+        /* ─── RESPONSIVE: SMALL PHONES ─── */
+        @media (max-width: 360px) {
+            .nav-brand span { font-size: 14px; }
+            .nav-cta { padding: 6px 12px; font-size: 12px; }
+            .hero h1 { font-size: 28px; }
+            .phone-frame { width: 130px; }
+            .store-badge img { height: 38px; }
         }
     </style>
 
