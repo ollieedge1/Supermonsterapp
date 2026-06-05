@@ -57,19 +57,19 @@
             color: var(--text);
         }
         .nav-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
             overflow: hidden;
+            flex-shrink: 0;
         }
-        .nav-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .nav-icon img { width: 100%; height: 100%; object-fit: cover; }
         .nav-brand span {
-            font-size: 18px;
-            font-weight: 800;
+            font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: -0.01em;
         }
         .nav-cta {
             background: var(--dark);
@@ -90,23 +90,60 @@
             max-width: var(--max-width);
             margin: 0 auto;
         }
-        .hero-icon {
-            width: 120px;
-            height: 120px;
-            display: inline-block;
-            margin-bottom: 12px;
+        .hero-app-icon {
+            width: clamp(56px, 7.5vw, 72px);
+            height: clamp(56px, 7.5vw, 72px);
+            border-radius: clamp(12px, 1.6vw, 16px);
+            overflow: hidden;
+            margin: 0 auto 12px;
+            box-shadow: 0 6px 20px rgba(242,197,6,0.28);
         }
-        .hero-icon img {
+        .hero-app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-brand {
+            font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-size: clamp(18px, 2.2vw, 22px);
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: -0.01em;
+            margin-bottom: 14px;
+        }
+        /* Cycling monster mascot — mirrors the sign-in landing screen in the app.
+           All seven characters are stacked; each is visible for ~1s with a
+           soft cross-fade, totalling a 7s loop. */
+        .hero-monster-stack {
+            position: relative;
+            width: clamp(140px, 22vw, 200px);
+            height: clamp(140px, 22vw, 200px);
+            margin: 0 auto 28px;
+        }
+        .hero-monster-stack img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 24px rgba(242,197,6,0.25));
+            opacity: 0;
+            transform: scale(0.85);
+            animation: hero-monster-cycle 7s ease-in-out infinite;
+            filter: drop-shadow(0 6px 18px rgba(242,197,6,0.35));
         }
-        .hero-label {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
+        .hero-monster-stack img:nth-child(1) { animation-delay: 0s; }
+        .hero-monster-stack img:nth-child(2) { animation-delay: 1s; }
+        .hero-monster-stack img:nth-child(3) { animation-delay: 2s; }
+        .hero-monster-stack img:nth-child(4) { animation-delay: 3s; }
+        .hero-monster-stack img:nth-child(5) { animation-delay: 4s; }
+        .hero-monster-stack img:nth-child(6) { animation-delay: 5s; }
+        .hero-monster-stack img:nth-child(7) { animation-delay: 6s; }
+        @keyframes hero-monster-cycle {
+            0%   { opacity: 0; transform: scale(0.85); }
+            3%   { opacity: 1; transform: scale(1); }
+            12%  { opacity: 1; transform: scale(1); }
+            15%  { opacity: 0; transform: scale(0.85); }
+            100% { opacity: 0; transform: scale(0.85); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-monster-stack img { animation: none; }
+            .hero-monster-stack img:first-child { opacity: 1; transform: scale(1); }
         }
         .hero h1 {
             font-size: clamp(32px, 5vw, 56px);
@@ -419,7 +456,157 @@
             margin-top: 4px;
         }
 
-        /* ─── BLOG ─��─ */
+        /* ─── INFLATION WATCH ─── */
+        .inflation-watch {
+            padding: 80px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .inflation-watch h2 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .inflation-watch-intro {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 17px;
+            max-width: 640px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .iw-card {
+            background: #fff;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            overflow: hidden;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .iw-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 24px 6px;
+        }
+        .iw-card-header-title {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+        .iw-badge {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            color: #fff;
+            background: var(--yellow);
+            padding: 3px 7px;
+            border-radius: 4px;
+        }
+        .iw-card-disclaimer {
+            padding: 4px 24px 14px;
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        .iw-card-intro {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 16px 24px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .iw-card-intro-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--yellow-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .iw-card-intro-text h3 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .iw-card-intro-text p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .iw-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .iw-row-rank {
+            width: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            text-align: center;
+        }
+        .iw-row-emoji {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-grey);
+            flex-shrink: 0;
+        }
+        .iw-row-meta {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .iw-row-emoji {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background: rgba(220, 38, 38, 0.10);
+        }
+        .iw-row-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+        .iw-row-meta-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .iw-row-meta-text .iw-row-meta-strong {
+            color: var(--yellow);
+            font-weight: 700;
+        }
+        .iw-row-pct {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 13px;
+            font-weight: 900;
+            color: #DC2626;
+            background: rgba(220, 38, 38, 0.10);
+            padding: 5px 10px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+        .iw-row-pct svg { width: 11px; height: 11px; }
+
+                /* ─── BLOG ─��─ */
         .blog-preview { padding: 80px 24px; }
         .blog-inner { max-width: 900px; margin: 0 auto; }
         .blog-preview h2 {
@@ -672,7 +859,8 @@
         @media (max-width: 768px) {
             .hero { padding: 60px 20px 40px; }
             .hero p { font-size: 16px; }
-            .hero-icon { width: 90px; height: 90px; }
+            .hero-monster-stack { width: 140px; height: 140px; margin-bottom: 20px; }
+            .hero-brand { margin-bottom: 12px; }
             .store-badge img { height: 56px; }
             .screenshots { padding: 40px 16px; }
             .screenshots-row { justify-content: flex-start; padding: 0 16px; gap: 12px; }
@@ -690,6 +878,12 @@
             footer { flex-direction: column; text-align: center; align-items: center; gap: 16px; }
             .footer-links { justify-content: center; }
             .grader { padding: 40px 20px; }
+            .inflation-watch { padding: 48px 20px; }
+            .inflation-watch h2 { margin-bottom: 12px; }
+            .iw-card-header,
+            .iw-card-disclaimer,
+            .iw-card-intro,
+            .iw-row { padding-left: 16px; padding-right: 16px; }
         }
 
         /* ─── RESPONSIVE: MOBILE ─── */
@@ -698,7 +892,9 @@
             .nav-brand span { font-size: 15px; }
             .nav-cta { padding: 8px 16px; font-size: 13px; }
             .hero { padding: 40px 16px 32px; }
-            .hero-icon { width: 72px; height: 72px; }
+            .hero-monster-stack { width: 120px; height: 120px; margin-bottom: 16px; }
+            .hero-app-icon { width: 52px; height: 52px; border-radius: 12px; margin-bottom: 8px; }
+            .hero-brand { font-size: 17px; margin-bottom: 8px; }
             .hero p { font-size: 15px; margin-bottom: 24px; }
             .store-badges { gap: 8px; }
             .store-badge img { height: 44px; }
@@ -762,15 +958,15 @@
                 "name": "What is Supermonster?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supermonster is a grocery spending tracker for households. Scan your receipts, track food price changes over time, set budgets, and share shopping lists with your family — all while levelling up a fun monster character."
+                    "text": "Supermonster is a grocery spending tracker for households. Take a photo of your receipts, track food price changes over time, set budgets, and share shopping lists with your family — all while levelling up a fun monster character."
                 }
             },
             {
                 "@type": "Question",
-                "name": "How does receipt scanning work?",
+                "name": "How does receipt capture work?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Point your camera at any supermarket receipt. Supermonster's AI reads every item name, price, and discount automatically. It takes just a few seconds and works with receipts from any UK supermarket."
+                    "text": "Take a photo of the items list on any UK supermarket receipt (avoid the barcode at the bottom). Supermonster's AI reads every item name, price, and discount automatically — it takes just a few seconds."
                 }
             },
             {
@@ -778,7 +974,7 @@
                 "name": "Is Supermonster free?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supermonster is free to download with a generous number of monthly scans included. For unlimited scanning and advanced features, there's an optional subscription."
+                    "text": "Supermonster is free to download with unlimited receipt capture. An optional subscription unlocks advanced features like price tracking, spending insights, and nutrition swap suggestions."
                 }
             },
             {
@@ -807,7 +1003,7 @@
 <nav>
     <div class="nav-inner">
         <a href="/" class="nav-brand">
-            <div class="nav-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <div class="nav-icon"><img src="appicon.png" alt="Supermonster app icon"></div>
             <span>Supermonster</span>
         </a>
         <div style="display:flex;align-items:center;gap:20px;">
@@ -820,10 +1016,19 @@
 
 <!-- HERO -->
 <section class="hero hero-stagger">
-    <div class="hero-icon"><img src="app-icon.png" alt="Supermonster mascot"></div>
-    <div class="hero-label">Supermonster</div>
-    <h1>Track food prices. Save as a household.</h1>
-    <p>Scan any receipt, spot price rises on your regular items, set household budgets, and complete quests to level up your monster.</p>
+    <div class="hero-app-icon"><img src="appicon.png" alt=""></div>
+    <div class="hero-brand">Supermonster</div>
+    <div class="hero-monster-stack" aria-hidden="true">
+        <img src="monster-chester.png" alt="">
+        <img src="monster-grumpus.png" alt="">
+        <img src="monster-blobby.png" alt="">
+        <img src="monster-fuzzy.png" alt="">
+        <img src="monster-wally.png" alt="">
+        <img src="monster-fluffbert.png" alt="">
+        <img src="monster-pixel.png" alt="">
+    </div>
+    <h1>Turn receipts<br>into knowledge.</h1>
+    <p>Track prices, understand nutrition, share shopping lists — all from a photo of your receipt.</p>
     <div class="store-badges">
         <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
             <img src="apple-download-black-btn.svg" alt="Download on the App Store">
@@ -835,39 +1040,19 @@
 <section class="screenshots">
     <div class="screenshots-row stagger-children">
         <div class="phone-frame reveal">
-            <img src="home.png" alt="Supermonster home screen with monster, progress and scan button">
-            <div class="phone-label">
-                <h3>Home</h3>
-                <p>Your monster, streaks, and one-tap scanning</p>
-            </div>
+            <img src="0.PNG" alt="Supermonster home screen with monster, progress and one-tap photo capture">
         </div>
         <div class="phone-frame reveal">
-            <img src="1.PNG" alt="Spending tab showing price rises and drops by supermarket">
-            <div class="phone-label">
-                <h3>Spending</h3>
-                <p>Track price rises across every supermarket</p>
-            </div>
+            <img src="1.PNG" alt="Spending tab showing UK Inflation Watch, price rises and drops by supermarket">
         </div>
         <div class="phone-frame reveal">
             <img src="2.PNG" alt="Nutrition tab showing health score, processing bar and swap suggestions">
-            <div class="phone-label">
-                <h3>Nutrition</h3>
-                <p>Health score, swap suggestions, and more</p>
-            </div>
         </div>
         <div class="phone-frame reveal">
             <img src="3.PNG" alt="Shopping lists with weekly shop items and household sharing">
-            <div class="phone-label">
-                <h3>Your Lists</h3>
-                <p>Shared lists that sync with your household</p>
-            </div>
         </div>
         <div class="phone-frame reveal">
             <img src="4.PNG" alt="Profile and settings screen with household and subscription options">
-            <div class="phone-label">
-                <h3>You</h3>
-                <p>Profile, household, and account settings</p>
-            </div>
         </div>
     </div>
 </section>
@@ -877,8 +1062,8 @@
     <h2 class="reveal">Everything you need to save on groceries</h2>
     <div class="features-grid stagger-children">
         <div class="feature-card reveal">
-            <h3>Instant receipt scanning</h3>
-            <p>Point your camera at any supermarket receipt. Supermonster reads every item, price, and discount in seconds using AI.</p>
+            <h3>Instant receipt capture</h3>
+            <p>Take a photo of any supermarket receipt — point your camera at the items list and Supermonster reads every item, price, and discount in seconds using AI.</p>
             <div class="feature-card-img"><img src="monster-chester.png" alt="Receipt scanning"></div>
         </div>
         <div class="feature-card reveal">
@@ -917,6 +1102,77 @@
         <p class="testimonial-text">We had no idea how much we were spending on groceries until Supermonster showed us. Saved over £200 in the first month just by being more aware.</p>
         <div class="testimonial-author">Sarah & Tom</div>
         <div class="testimonial-role">Household of 4, Manchester</div>
+    </div>
+</section>
+
+<!-- INFLATION WATCH -->
+<section class="inflation-watch">
+    <h2 class="reveal">Inflation Watch</h2>
+    <p class="inflation-watch-intro reveal">
+        A community-sourced view of how UK grocery prices are moving — which items are quietly going up,
+        and where they're cheaper. Built from anonymised shop data from Supermonster users.
+    </p>
+
+    <div class="iw-card reveal">
+        <div class="iw-card-header">
+            <span class="iw-card-header-title">Inflation Watch</span>
+            <span class="iw-badge">COMING SOON</span>
+        </div>
+        <div class="iw-card-disclaimer">Example data only — not real UK-wide stats yet.</div>
+
+        <div class="iw-card-intro">
+            <div class="iw-card-intro-icon">📈</div>
+            <div class="iw-card-intro-text">
+                <h3>UK-wide grocery price moves</h3>
+                <p>We're building a community-sourced view of which items are going up — and where they're quietly cheaper. Coming soon.</p>
+            </div>
+        </div>
+
+        <div class="iw-row">
+            <div class="iw-row-rank">🥇</div>
+            <div class="iw-row-emoji">🍊</div>
+            <div class="iw-row-meta">
+                <div class="iw-row-name">Tropicana Orange Juice</div>
+                <div class="iw-row-meta-text"><span class="iw-row-meta-strong">1.3K users</span> · 4 stores</div>
+            </div>
+            <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+18.4%</div>
+        </div>
+        <div class="iw-row">
+            <div class="iw-row-rank">🥈</div>
+            <div class="iw-row-emoji">🧈</div>
+            <div class="iw-row-meta">
+                <div class="iw-row-name">Lurpak Spreadable 500g</div>
+                <div class="iw-row-meta-text"><span class="iw-row-meta-strong">2.2K users</span> · 4 stores</div>
+            </div>
+            <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+14.2%</div>
+        </div>
+        <div class="iw-row">
+            <div class="iw-row-rank">🥉</div>
+            <div class="iw-row-emoji">🍞</div>
+            <div class="iw-row-meta">
+                <div class="iw-row-name">Hovis Thick Sliced</div>
+                <div class="iw-row-meta-text"><span class="iw-row-meta-strong">1.9K users</span> · 3 stores</div>
+            </div>
+            <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+11.8%</div>
+        </div>
+        <div class="iw-row">
+            <div class="iw-row-rank">4</div>
+            <div class="iw-row-emoji">🫘</div>
+            <div class="iw-row-meta">
+                <div class="iw-row-name">Heinz Baked Beans 415g</div>
+                <div class="iw-row-meta-text"><span class="iw-row-meta-strong">3.3K users</span> · 4 stores</div>
+            </div>
+            <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+9.6%</div>
+        </div>
+        <div class="iw-row">
+            <div class="iw-row-rank">5</div>
+            <div class="iw-row-emoji">🧀</div>
+            <div class="iw-row-meta">
+                <div class="iw-row-name">Cathedral City Mature</div>
+                <div class="iw-row-meta-text"><span class="iw-row-meta-strong">1.6K users</span> · 3 stores</div>
+            </div>
+            <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+8.4%</div>
+        </div>
     </div>
 </section>
 
@@ -1048,17 +1304,17 @@
                 <span class="faq-chevron">⌵</span>
             </button>
             <div class="faq-answer">
-                <p>Supermonster is a grocery spending tracker for households. Scan your receipts, track food price changes over time, set budgets, and share shopping lists with your family — all while levelling up a fun monster character.</p>
+                <p>Supermonster is a grocery spending tracker for households. Take a photo of your receipts, track food price changes over time, set budgets, and share shopping lists with your family — all while levelling up a fun monster character.</p>
             </div>
         </div>
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                How does receipt scanning work?
+                How does receipt capture work?
                 <span class="faq-chevron">⌵</span>
             </button>
             <div class="faq-answer">
-                <p>Point your camera at any supermarket receipt. Our AI reads every item name, price, and discount automatically. It takes just a few seconds and works with receipts from any UK supermarket.</p>
+                <p>Take a photo of the items list on any UK supermarket receipt (avoid the barcode at the bottom). Our AI reads every item name, price, and discount automatically — it takes just a few seconds.</p>
             </div>
         </div>
 
@@ -1068,7 +1324,7 @@
                 <span class="faq-chevron">⌵</span>
             </button>
             <div class="faq-answer">
-                <p>Supermonster is free to download with a generous number of monthly scans included. For unlimited scanning and advanced features, there's an optional subscription.</p>
+                <p>Yes — Supermonster is free to download with unlimited receipt capture. An optional subscription unlocks advanced features like price tracking, spending insights, and nutrition swap suggestions.</p>
             </div>
         </div>
 
