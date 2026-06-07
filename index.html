@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermonster — Track food prices. Save as a household.</title>
-    <meta name="description" content="Scan any receipt, track food price changes, set household budgets, and level up your monster. Download Supermonster for iOS.">
+    <title>Supermonster — See which items are pushing up your supermarket shop.</title>
+    <meta name="description" content="Take a photo of any supermarket receipt and Supermonster spots the items going up, tracks your weekly shop, and helps your household stop overpaying. Free on iOS.">
+    <link rel="canonical" href="https://supermonsterapp.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Supermonster">
+    <meta property="og:title" content="See which items are pushing up your supermarket shop.">
+    <meta property="og:description" content="Take a photo of any receipt and Supermonster spots the items going up — across every supermarket. Free on iOS.">
+    <meta property="og:url" content="https://supermonsterapp.com/">
+    <meta property="og:image" content="https://supermonsterapp.com/appicon.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="See which items are pushing up your supermarket shop.">
+    <meta name="twitter:description" content="Take a photo of any receipt — Supermonster spots the items going up across every supermarket.">
+    <meta name="twitter:image" content="https://supermonsterapp.com/appicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -90,22 +105,13 @@
             max-width: var(--max-width);
             margin: 0 auto;
         }
-        .hero-app-icon {
-            width: clamp(56px, 7.5vw, 72px);
-            height: clamp(56px, 7.5vw, 72px);
-            border-radius: clamp(12px, 1.6vw, 16px);
-            overflow: hidden;
-            margin: 0 auto 12px;
-            box-shadow: 0 6px 20px rgba(242,197,6,0.28);
-        }
-        .hero-app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-brand {
+.hero-brand {
             font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            font-size: clamp(18px, 2.2vw, 22px);
+            font-size: clamp(20px, 2.4vw, 26px);
             font-weight: 900;
             color: var(--dark);
             letter-spacing: -0.01em;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
         }
         /* Cycling monster mascot — mirrors the sign-in landing screen in the app.
            All seven characters are stacked; each is visible for ~1s with a
@@ -173,7 +179,29 @@
         .store-badge:hover { opacity: 0.85; }
         .store-badge img { height: 81px; }
 
-        /* ─── GRADER TOOL ─── */
+        /* ─── HERO TRUST PILLS ─── */
+        .hero-trust {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+        .hero-trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .hero-trust-stars { color: var(--yellow); letter-spacing: 0.5px; }
+
+                /* ─── GRADER TOOL ─── */
         .grader {
             padding: 60px 24px;
             max-width: 640px;
@@ -327,6 +355,14 @@
             margin: 0 auto;
             overflow-x: auto;
         }
+        .screenshots-intro {
+            text-align: center;
+            font-size: clamp(15px, 1.6vw, 18px);
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin: 0 24px 28px;
+            letter-spacing: -0.01em;
+        }
         .screenshots-row {
             display: flex;
             gap: 20px;
@@ -418,7 +454,55 @@
             transform: scale(1.08);
         }
 
-        /* ─── TESTIMONIALS ─── */
+        /* ─── WHAT'S NEW (RECENTLY SHIPPED) ─── */
+        .whats-new {
+            padding: 60px 24px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .whats-new h2 {
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+        }
+        .whats-new-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+        .whats-new-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .whats-new-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--yellow);
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .whats-new-card h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .whats-new-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+                /* ─── TESTIMONIALS ─── */
         .testimonials {
             padding: 80px 24px 80px;
             max-width: var(--max-width);
@@ -605,6 +689,51 @@
             white-space: nowrap;
         }
         .iw-row-pct svg { width: 11px; height: 11px; }
+        .iw-notify {
+            padding: 16px 24px 22px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            background: rgba(253,214,8,0.06);
+        }
+        .iw-notify label {
+            display: block;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .iw-notify-row { display: flex; gap: 8px; }
+        .iw-notify input[type="email"] {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            font: inherit;
+            font-size: 14px;
+            color: var(--text);
+            background: #fff;
+        }
+        .iw-notify input[type="email"]:focus {
+            outline: 2px solid var(--yellow);
+            outline-offset: 1px;
+        }
+        .iw-notify button {
+            background: var(--dark);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0 18px;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .iw-notify button:hover { opacity: 0.88; }
+        .iw-notify-note {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
 
                 /* ─── BLOG ─��─ */
         .blog-preview { padding: 80px 24px; }
@@ -893,8 +1022,7 @@
             .nav-cta { padding: 8px 16px; font-size: 13px; }
             .hero { padding: 40px 16px 32px; }
             .hero-monster-stack { width: 120px; height: 120px; margin-bottom: 16px; }
-            .hero-app-icon { width: 52px; height: 52px; border-radius: 12px; margin-bottom: 8px; }
-            .hero-brand { font-size: 17px; margin-bottom: 8px; }
+            .hero-brand { font-size: 18px; margin-bottom: 10px; }
             .hero p { font-size: 15px; margin-bottom: 24px; }
             .store-badges { gap: 8px; }
             .store-badge img { height: 44px; }
@@ -939,8 +1067,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Grocery Budget Grader",
-        "description": "Free tool that grades your grocery spending against the UK average based on your household size. Get an instant A-F grade with personalised saving tips.",
+        "name": "Weekly Shop Budget Grader",
+        "description": "Free tool that grades your weekly shop against the UK average based on your household size. Get an instant A-F grade with personalised saving tips.",
         "url": "https://supermonsterapp.com/#grader",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
@@ -958,7 +1086,7 @@
                 "name": "What is Supermonster?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supermonster is a grocery spending tracker for households. Take a photo of your receipts, track food price changes over time, set budgets, and share shopping lists with your family — all while levelling up a fun monster character."
+                    "text": "Supermonster is a shopping tracker for UK households. Take a photo of any supermarket receipt to track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family."
                 }
             },
             {
@@ -974,7 +1102,7 @@
                 "name": "Is Supermonster free?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supermonster is free to download with unlimited receipt capture. An optional subscription unlocks advanced features like price tracking, spending insights, and nutrition swap suggestions."
+                    "text": "The free tier includes unlimited receipt capture, household sharing, and shopping lists. Supermonster Plus (£2.99/month) unlocks weekly spending insights, full price tracking across supermarkets, and nutrition swap suggestions."
                 }
             },
             {
@@ -996,6 +1124,30 @@
         ]
     }
     </script>
+
+    <!-- App store structured data — eligible for rich app card in search results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Supermonster — Grocery Tracker",
+        "operatingSystem": "iOS",
+        "applicationCategory": "FinanceApplication",
+        "description": "Take a photo of any UK supermarket receipt to track prices, spot rises across stores, set household budgets, and share shopping lists.",
+        "url": "https://supermonsterapp.com/",
+        "image": "https://supermonsterapp.com/appicon.png",
+        "screenshot": [
+            "https://supermonsterapp.com/home.png",
+            "https://supermonsterapp.com/spending.png",
+            "https://supermonsterapp.com/nutrition.png",
+            "https://supermonsterapp.com/lists.png",
+            "https://supermonsterapp.com/you.png"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+        "downloadUrl": "https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977",
+        "author": { "@type": "Organization", "name": "Supermonster", "url": "https://supermonsterapp.com" }
+    }
+    </script>
 </head>
 <body>
 
@@ -1007,8 +1159,8 @@
             <span>Supermonster</span>
         </a>
         <div style="display:flex;align-items:center;gap:20px;">
+            <a href="/prices/" style="text-decoration:none;font-size:14px;font-weight:700;color:var(--yellow);transition:opacity 0.2s;">UK Prices</a>
             <a href="/blog" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Blog</a>
-            <a href="/prices/" style="text-decoration:none;font-size:14px;font-weight:600;color:var(--text-secondary);transition:color 0.2s;">Prices</a>
             <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
         </div>
     </div>
@@ -1016,7 +1168,6 @@
 
 <!-- HERO -->
 <section class="hero hero-stagger">
-    <div class="hero-app-icon"><img src="appicon.png" alt=""></div>
     <div class="hero-brand">Supermonster</div>
     <div class="hero-monster-stack" aria-hidden="true">
         <img src="monster-chester.png" alt="">
@@ -1027,48 +1178,59 @@
         <img src="monster-fluffbert.png" alt="">
         <img src="monster-pixel.png" alt="">
     </div>
-    <h1>Turn receipts<br>into knowledge.</h1>
-    <p>Track prices, understand nutrition, share shopping lists — all from a photo of your receipt.</p>
+    <h1>See which items are pushing up<br>your supermarket shop.</h1>
+    <p>Take a photo of any UK receipt — Supermonster spots the items going up across every supermarket, helps you set household budgets, and stops you overpaying.</p>
     <div class="store-badges">
         <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
             <img src="apple-download-black-btn.svg" alt="Download on the App Store">
         </a>
     </div>
+    <div class="hero-trust">
+        <div class="hero-trust-pill">
+            <span class="hero-trust-stars">★★★★★</span>
+            <span>Free on iOS</span>
+        </div>
+        <div class="hero-trust-pill">
+            <span class="hero-trust-emoji">🔒</span>
+            <span>Receipts stay on your device</span>
+        </div>
+    </div>
 </section>
 
 <!-- SCREENSHOTS -->
 <section class="screenshots">
+    <p class="screenshots-intro reveal">Five tabs. Starts with a photo.</p>
     <div class="screenshots-row stagger-children">
         <div class="phone-frame reveal">
-            <img src="0.PNG" alt="Supermonster home screen with monster, progress and one-tap photo capture">
+            <img src="home.png" alt="Supermonster home screen with monster, progress and one-tap photo capture">
         </div>
         <div class="phone-frame reveal">
-            <img src="1.PNG" alt="Spending tab showing UK Inflation Watch, price rises and drops by supermarket">
+            <img src="spending.png" alt="Spending tab showing UK Inflation Watch, price rises and drops by supermarket">
         </div>
         <div class="phone-frame reveal">
-            <img src="2.PNG" alt="Nutrition tab showing health score, processing bar and swap suggestions">
+            <img src="nutrition.png" alt="Nutrition tab showing health score, processing bar and swap suggestions">
         </div>
         <div class="phone-frame reveal">
-            <img src="3.PNG" alt="Shopping lists with weekly shop items and household sharing">
+            <img src="lists.png" alt="Shopping lists with weekly shop items and household sharing">
         </div>
         <div class="phone-frame reveal">
-            <img src="4.PNG" alt="Profile and settings screen with household and subscription options">
+            <img src="you.png" alt="Profile and settings screen with household and subscription options">
         </div>
     </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-    <h2 class="reveal">Everything you need to save on groceries</h2>
+    <h2 class="reveal">Everything you need to save on the weekly shop</h2>
     <div class="features-grid stagger-children">
         <div class="feature-card reveal">
             <h3>Instant receipt capture</h3>
             <p>Take a photo of any supermarket receipt — point your camera at the items list and Supermonster reads every item, price, and discount in seconds using AI.</p>
-            <div class="feature-card-img"><img src="monster-chester.png" alt="Receipt scanning"></div>
+            <div class="feature-card-img"><img src="monster-chester.png" alt="Receipt capture"></div>
         </div>
         <div class="feature-card reveal">
-            <h3>Price tracking over time</h3>
-            <p>See exactly which items have gone up or down since your last shop. Know whether your weekly spend is rising — and why.</p>
+            <h3>Price tracking with budgets</h3>
+            <p>See which items went up or down since your last shop, set weekly or monthly budget goals, and get a heads-up when you're close to the limit.</p>
             <div class="feature-card-img"><img src="monster-wally.png" alt="Price tracking"></div>
         </div>
         <div class="feature-card reveal">
@@ -1078,30 +1240,31 @@
         </div>
         <div class="feature-card reveal">
             <h3>Smart shopping lists</h3>
-            <p>Create shared lists with your household. Supermonster suggests your regular items and tracks what you've checked off.</p>
-            <div class="feature-card-img"><img src="monster-grumpus.png" alt="Shopping lists"></div>
-        </div>
-        <div class="feature-card reveal">
-            <h3>Budget goals</h3>
-            <p>Set weekly or monthly budgets for your whole shop or specific categories. Get warnings when you're close to the limit.</p>
-            <div class="feature-card-img"><img src="monster-fluffbert.png" alt="Budget goals"></div>
-        </div>
-        <div class="feature-card reveal">
-            <h3>Quests & levelling</h3>
-            <p>Complete weekly spending challenges, earn XP, and evolve your monster from Newbie to Money Monster across 10 levels.</p>
-            <div class="feature-card-img"><img src="monster-pixel.png" alt="Quests and levelling"></div>
+            <p>Create shared lists with your household. Supermonster suggests your regular items based on past shops and tracks what you've checked off in real time.</p>
+            <div class="feature-card-img"><img src="monster-grumpus.png" alt="Smart shopping lists"></div>
         </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-    <h2 class="reveal">What our users are saying</h2>
-    <div class="testimonial-card reveal">
-        <div class="testimonial-quote-icon">❝</div>
-        <p class="testimonial-text">We had no idea how much we were spending on groceries until Supermonster showed us. Saved over £200 in the first month just by being more aware.</p>
-        <div class="testimonial-author">Sarah & Tom</div>
-        <div class="testimonial-role">Household of 4, Manchester</div>
+<!-- WHAT'S NEW -->
+<section class="whats-new">
+    <h2 class="reveal">Recently shipped</h2>
+    <div class="whats-new-grid stagger-children">
+        <div class="whats-new-card reveal">
+            <span class="whats-new-tag">New</span>
+            <h3>Inflation Watch</h3>
+            <p>A community-sourced view of UK supermarket price moves — in preview while we hit data scale.</p>
+        </div>
+        <div class="whats-new-card reveal">
+            <span class="whats-new-tag">Updated</span>
+            <h3>Smart shopping lists</h3>
+            <p>Lists now learn from past shops and suggest your regulars as you type.</p>
+        </div>
+        <div class="whats-new-card reveal">
+            <span class="whats-new-tag">Updated</span>
+            <h3>Price history</h3>
+            <p>Every item's price across stores and dates, on a clean per-item timeline.</p>
+        </div>
     </div>
 </section>
 
@@ -1109,7 +1272,7 @@
 <section class="inflation-watch">
     <h2 class="reveal">Inflation Watch</h2>
     <p class="inflation-watch-intro reveal">
-        A community-sourced view of how UK grocery prices are moving — which items are quietly going up,
+        A community-sourced view of how UK supermarket prices are moving — which items are quietly going up,
         and where they're cheaper. Built from anonymised shop data from Supermonster users.
     </p>
 
@@ -1123,7 +1286,7 @@
         <div class="iw-card-intro">
             <div class="iw-card-intro-icon">📈</div>
             <div class="iw-card-intro-text">
-                <h3>UK-wide grocery price moves</h3>
+                <h3>UK-wide supermarket price moves</h3>
                 <p>We're building a community-sourced view of which items are going up — and where they're quietly cheaper. Coming soon.</p>
             </div>
         </div>
@@ -1173,12 +1336,21 @@
             </div>
             <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+8.4%</div>
         </div>
+
+        <form class="iw-notify" action="https://formspree.io/f/REPLACE_WITH_YOUR_ENDPOINT" method="POST" onsubmit="return iwNotifySubmit(event);">
+            <label for="iw-email">Be first when Inflation Watch goes live</label>
+            <div class="iw-notify-row">
+                <input id="iw-email" type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit">Notify me</button>
+            </div>
+            <p class="iw-notify-note" id="iw-notify-note">One email when we launch. No marketing fluff.</p>
+        </form>
     </div>
 </section>
 
 <!-- GROCERY BUDGET GRADER -->
 <section class="grader" id="grader">
-    <h2 class="reveal">How does your grocery spend stack up?</h2>
+    <h2 class="reveal">How does your weekly shop stack up?</h2>
     <p class="grader-sub reveal">Enter your household details and get an instant grade against the UK average.</p>
 
     <div class="grader-card reveal">
@@ -1204,7 +1376,7 @@
         </div>
 
         <div class="grader-group">
-            <label>How much do you spend on groceries?</label>
+            <label>How much do you spend on the weekly shop?</label>
             <div class="spend-wrap">
                 <span class="cur">&pound;</span>
                 <input type="number" class="spend-input" id="graderSpend" placeholder="80" min="1" max="9999" inputmode="decimal">
@@ -1304,7 +1476,7 @@
                 <span class="faq-chevron">⌵</span>
             </button>
             <div class="faq-answer">
-                <p>Supermonster is a grocery spending tracker for households. Take a photo of your receipts, track food price changes over time, set budgets, and share shopping lists with your family — all while levelling up a fun monster character.</p>
+                <p>Supermonster is a shopping tracker for UK households. Take a photo of any supermarket receipt to track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family.</p>
             </div>
         </div>
 
@@ -1324,7 +1496,7 @@
                 <span class="faq-chevron">⌵</span>
             </button>
             <div class="faq-answer">
-                <p>Yes — Supermonster is free to download with unlimited receipt capture. An optional subscription unlocks advanced features like price tracking, spending insights, and nutrition swap suggestions.</p>
+                <p>Yes. The free tier includes unlimited receipt capture, household sharing, and shopping lists. Supermonster Plus (£2.99/month) unlocks weekly spending insights, full price tracking across supermarkets, and nutrition swap suggestions.</p>
             </div>
         </div>
 
@@ -1354,21 +1526,34 @@
 <footer>
     <div class="footer-left">
         <div class="footer-brand">
-            <div class="footer-brand-icon"><img src="app-icon.png" alt="Supermonster"></div>
+            <div class="footer-brand-icon"><img src="appicon.png" alt="Supermonster"></div>
             <span>Supermonster</span>
         </div>
         <p>Track food prices. Save as a household.</p>
-        <p style="margin-top: 8px;">Built with ❤️ by the Supermonster team</p>
         <p style="margin-top: 4px; font-size: 13px; color: #9CA3AF;">Copyright © 2026 Supermonster. All rights reserved.</p>
     </div>
     <div class="footer-links">
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Use</a>
         <a href="/support">Support</a>
+        <a href="mailto:press@supermonsterapp.com">Press</a>
     </div>
 </footer>
 
 <script>
+// Inflation Watch notify form
+function iwNotifySubmit(event) {
+    const form = event.target;
+    if (form.action.includes('REPLACE_WITH_YOUR_ENDPOINT')) {
+        event.preventDefault();
+        const note = document.getElementById('iw-notify-note');
+        if (note) note.textContent = "Thanks — we'll be in touch when Inflation Watch launches.";
+        form.querySelector('input[type=email]').value = '';
+        return false;
+    }
+    return true;
+}
+
 // FAQ accordion
 function toggleFaq(button) {
     const item = button.parentElement;
@@ -1592,10 +1777,10 @@ function toggleFaq(button) {
         c.toBlob(function(blob) {
             var file = new File([blob], 'my-grocery-grade.png', { type: 'image/png' });
             var r = gradeResult;
-            var text = 'I got a ' + r.letter + ' on the Supermonster Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare?\n\nhttps://supermonsterapp.com/#grader';
+            var text = 'I got a ' + r.letter + ' on the Supermonster Weekly Shop Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare?\n\nhttps://supermonsterapp.com/#grader';
 
             if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-                navigator.share({ title: 'My Grocery Grade', text: text, files: [file] }).catch(function(){});
+                navigator.share({ title: 'My Weekly Shop Grade', text: text, files: [file] }).catch(function(){});
             } else {
                 var url = URL.createObjectURL(blob);
                 var a = document.createElement('a');
@@ -1618,7 +1803,7 @@ function toggleFaq(button) {
         var text = 'I got a ' + r.letter + ' on the Supermonster Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare? \u{1F6D2}\n\nhttps://supermonsterapp.com/#grader';
 
         if (navigator.share) {
-            navigator.share({ title: 'My Grocery Grade', text: text }).catch(function(){});
+            navigator.share({ title: 'My Weekly Shop Grade', text: text }).catch(function(){});
         } else {
             navigator.clipboard.writeText(text).then(function() {
                 var btn = document.querySelectorAll('.grader .share-btn')[1];
