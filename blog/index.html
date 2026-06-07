@@ -27,30 +27,166 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Nav */
+        /* ─── NAV (shared with homepage) ─── */
         nav {
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(250,248,242,0.92);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,248,231,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .nav-inner {
-            max-width: 900px; margin: 0 auto; padding: 16px 24px;
-            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
         }
         .nav-brand {
-            display: flex; align-items: center; gap: 12px;
-            text-decoration: none; color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
         }
-        .nav-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
         .nav-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .nav-brand span { font-size: 18px; font-weight: 800; }
+        .nav-brand span {
+            font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: -0.01em;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+        }
+        .nav-link:hover { color: var(--dark); }
+        .nav-link-prices { color: var(--yellow); font-weight: 700; }
+        .nav-store-badge {
+            display: inline-flex;
+            align-items: center;
+            line-height: 0;
+            transition: opacity 0.2s;
+        }
+        .nav-store-badge:hover { opacity: 0.85; }
+        .nav-store-badge img { height: 40px; display: block; }
         .nav-cta {
-            background: var(--dark); color: #fff; padding: 10px 24px;
-            border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 600;
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
             transition: opacity 0.2s;
         }
         .nav-cta:hover { opacity: 0.85; }
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+        }
+        .nav-toggle:hover { background: rgba(0,0,0,0.04); }
+        .nav-toggle-bar {
+            display: block;
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 1px;
+            transition: transform 0.25s, opacity 0.2s, top 0.25s;
+        }
+        .nav-toggle-bar:nth-child(1) { top: 14px; }
+        .nav-toggle-bar:nth-child(2) { top: 21px; }
+        .nav-toggle-bar:nth-child(3) { top: 28px; }
+        #siteNav.is-open .nav-toggle-bar:nth-child(1) { top: 21px; transform: rotate(45deg); }
+        #siteNav.is-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+        #siteNav.is-open .nav-toggle-bar:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+        .nav-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s;
+            z-index: 90;
+        }
+        #siteNav.is-open .nav-backdrop { opacity: 1; pointer-events: auto; }
+        @media (max-width: 640px) {
+            .nav-toggle { display: block; }
+            .nav-backdrop { display: block; }
+            .nav-store-badge img { height: 34px; }
+            .nav-actions { gap: 8px; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 12px;
+                right: 12px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+                background: var(--bg);
+                border: 1px solid rgba(0,0,0,0.08);
+                border-radius: 16px;
+                padding: 14px;
+                box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+                opacity: 0;
+                transform: translateY(-8px);
+                pointer-events: none;
+                transition: opacity 0.2s, transform 0.2s;
+                z-index: 100;
+            }
+            #siteNav.is-open .nav-links {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+            .nav-link, .nav-cta {
+                padding: 12px 14px;
+                border-radius: 10px;
+                font-size: 16px;
+                text-align: left;
+            }
+            .nav-link { color: var(--dark); }
+            .nav-link-prices { color: var(--yellow); font-weight: 800; }
+        }
+        @media (max-width: 360px) {
+            .nav-brand span { font-size: 14px; }
+            .nav-store-badge img { height: 30px; }
+        }
 
         /* Hero */
         .blog-hero {
@@ -158,14 +294,28 @@
 </head>
 <body>
 
-<nav>
+<nav id="siteNav">
     <div class="nav-inner">
         <a href="/" class="nav-brand">
-            <div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div>
+            <div class="nav-icon"><img src="../appicon.png" alt="Supermonster app icon"></div>
             <span>Supermonster</span>
         </a>
-        <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta">Download now</a>
+        <div class="nav-actions">
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-store-badge" aria-label="Download on the App Store">
+                <img src="../apple-download-black-btn.svg" alt="Download on the App Store">
+            </a>
+            <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="toggleNav()">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="/prices/" class="nav-link nav-link-prices" onclick="closeNav()">UK Prices</a>
+                <a href="/blog" class="nav-link" onclick="closeNav()">Blog</a>
+            </div>
+        </div>
     </div>
+    <div class="nav-backdrop" onclick="closeNav()" aria-hidden="true"></div>
 </nav>
 
 <section class="blog-hero">
