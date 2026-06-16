@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermonster — See which items are pushing up your supermarket shop.</title>
-    <meta name="description" content="Take a photo of any supermarket receipt and Supermonster spots the items going up, tracks your weekly shop, and helps your household stop overpaying. Free on iOS.">
+    <title>Supermonster — Track food prices at your local supermarkets</title>
+    <meta name="description" content="Track UK supermarket prices by photographing your receipts. Supermonster spots items going up at Tesco, Sainsbury's, Asda and more. Free on iOS.">
     <link rel="canonical" href="https://supermonsterapp.com/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Supermonster">
-    <meta property="og:title" content="See which items are pushing up your supermarket shop.">
+    <meta property="og:title" content="Track food prices at your local supermarkets">
     <meta property="og:description" content="Take a photo of any receipt and Supermonster spots the items going up — across every supermarket. Free on iOS.">
     <meta property="og:url" content="https://supermonsterapp.com/">
     <meta property="og:image" content="https://supermonsterapp.com/appicon.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="See which items are pushing up your supermarket shop.">
+    <meta name="twitter:title" content="Track food prices at your local supermarkets">
     <meta name="twitter:description" content="Take a photo of any receipt — Supermonster spots the items going up across every supermarket.">
     <meta name="twitter:image" content="https://supermonsterapp.com/appicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -45,6 +45,66 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;   /* belt-and-braces against any wide content */
+        }
+
+
+
+        /* ─── HERO SUPERMARKET LOGO ROW ─── */
+        .hero-supermarkets {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            max-width: 520px;
+            margin: 0;
+            flex: 1 1 420px;
+        }
+        .hero-supermarkets > img {
+            /* Each logo sits inside its own uniform white card. Fixed
+               box dimensions guarantee all 10 cards are visually identical;
+               object-fit: contain centres the logo regardless of aspect ratio. */
+            box-sizing: border-box;
+            width: 84px;
+            height: 68px;
+            padding: 10px 12px;
+            background: #FFFFFF;
+            border: 1px solid #D8D5CE;
+            border-radius: 12px;
+            object-fit: contain;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+        .hero-supermarkets > img:hover {
+            transform: translateY(-1px);
+            border-color: #9C9890;
+        }
+        @media (max-width: 640px) {
+            .hero-supermarkets {
+                gap: 8px;
+                max-width: 380px;
+            }
+            .hero-supermarkets > img {
+                width: 68px;
+                height: 56px;
+                padding: 8px 10px;
+            }
+        }
+
+        /* ─── HERO: MONSTER + SUPERMARKETS GROUP ─── */
+        .hero-meets-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            max-width: 880px;
+            margin: 0 auto 56px;
+        }
+        @media (max-width: 640px) {
+            .hero-meets-row {
+                gap: 20px;
+                margin-bottom: 40px;
+            }
         }
 
         /* ─── NAV ─── */
@@ -106,16 +166,7 @@
             align-items: center;
             gap: 16px;
         }
-        .nav-store-badge {
-            display: inline-flex;
-            align-items: center;
-            line-height: 0;
-            transition: opacity 0.2s;
-        }
-        .nav-store-badge:hover { opacity: 0.85; }
-        .nav-store-badge img { height: 40px; display: block; }
-
-                .nav-cta {
+        .nav-cta {
             background: var(--dark);
             color: #fff;
             padding: 10px 24px;
@@ -174,7 +225,6 @@
         @media (max-width: 640px) {
             .nav-toggle { display: block; }
             .nav-backdrop { display: block; }
-            .nav-store-badge img { height: 34px; }
             .nav-actions { gap: 8px; }
             .nav-links {
                 position: absolute;
@@ -218,58 +268,25 @@
             max-width: var(--max-width);
             margin: 0 auto;
         }
-.hero-brand {
-            font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            font-size: clamp(20px, 2.4vw, 26px);
-            font-weight: 900;
-            color: var(--dark);
-            letter-spacing: -0.01em;
-            margin-bottom: 18px;
-        }
-        /* Cycling monster mascot — mirrors the sign-in landing screen in the app.
-           All seven characters are stacked; each is visible for ~1s with a
-           soft cross-fade, totalling a 7s loop. */
+/* Single hero monster — replaces the previous 7-image cross-fade. */
         .hero-monster-stack {
-            position: relative;
             width: clamp(140px, 22vw, 200px);
             height: clamp(140px, 22vw, 200px);
-            margin: 0 auto 28px;
+            margin: 0;
+            flex: 0 0 auto;
         }
         .hero-monster-stack img {
-            position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            opacity: 0;
-            transform: scale(0.85);
-            animation: hero-monster-cycle 7s ease-in-out infinite;
             filter: drop-shadow(0 6px 18px rgba(242,197,6,0.35));
-        }
-        .hero-monster-stack img:nth-child(1) { animation-delay: 0s; }
-        .hero-monster-stack img:nth-child(2) { animation-delay: 1s; }
-        .hero-monster-stack img:nth-child(3) { animation-delay: 2s; }
-        .hero-monster-stack img:nth-child(4) { animation-delay: 3s; }
-        .hero-monster-stack img:nth-child(5) { animation-delay: 4s; }
-        .hero-monster-stack img:nth-child(6) { animation-delay: 5s; }
-        .hero-monster-stack img:nth-child(7) { animation-delay: 6s; }
-        @keyframes hero-monster-cycle {
-            0%   { opacity: 0; transform: scale(0.85); }
-            3%   { opacity: 1; transform: scale(1); }
-            12%  { opacity: 1; transform: scale(1); }
-            15%  { opacity: 0; transform: scale(0.85); }
-            100% { opacity: 0; transform: scale(0.85); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .hero-monster-stack img { animation: none; }
-            .hero-monster-stack img:first-child { opacity: 1; transform: scale(1); }
         }
         .hero h1 {
             font-size: clamp(32px, 5vw, 56px);
             font-weight: 900;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         .hero p {
             font-size: 18px;
@@ -283,6 +300,7 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
+            margin-bottom: 48px;
         }
         .store-badge {
             display: inline-block;
@@ -290,7 +308,7 @@
             transition: opacity 0.2s;
         }
         .store-badge:hover { opacity: 0.85; }
-        .store-badge img { height: 81px; }
+        .store-badge img { height: 64px; }
 
         /* ─── HERO TRUST PILLS ─── */
         .hero-trust {
@@ -298,7 +316,7 @@
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 8px;
             font-size: 13px;
         }
         .hero-trust-pill {
@@ -420,6 +438,7 @@
         }
         .grade-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
         .grade-subtitle { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+        .grade-title-left { text-align: left; font-size: 16px; }
         .comp-bar-wrap {
             background: var(--bg-grey); border-radius: 14px; padding: 18px; text-align: left; margin-bottom: 20px;
         }
@@ -639,7 +658,7 @@
         }
         .testimonial-text {
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.7;
             margin-bottom: 28px;
         }
@@ -884,6 +903,14 @@
         @media (max-width: 700px) { .blog-grid { grid-template-columns: 1fr; } }
 
         /* ─���─ FAQ ─── */
+        /* ─── FAQ MONSTER ─── */
+        .faq-monster {
+            display: block;
+            width: clamp(96px, 14vw, 140px);
+            height: auto;
+            margin: 0 auto 18px;
+            filter: drop-shadow(0 6px 18px rgba(242,197,6,0.35));
+        }
         .faq {
             background: var(--bg-grey);
             padding: 80px 40px;
@@ -1105,7 +1132,6 @@
             .hero { padding: 60px 32px 40px; }
             .hero p { font-size: 16px; }
             .hero-monster-stack { width: 140px; height: 140px; margin-bottom: 20px; }
-            .hero-brand { margin-bottom: 12px; }
             .store-badge img { height: 56px; }
             .screenshots { padding: 40px 16px; }
             .screenshots-row { justify-content: flex-start; padding: 0 16px; gap: 12px; }
@@ -1138,7 +1164,6 @@
             .nav-cta { padding: 8px 16px; font-size: 13px; }
             .hero { padding: 40px 16px 32px; }
             .hero-monster-stack { width: 120px; height: 120px; margin-bottom: 16px; }
-            .hero-brand { font-size: 18px; margin-bottom: 10px; }
             .hero p { font-size: 15px; margin-bottom: 24px; }
             .store-badges { gap: 8px; }
             .store-badge img { height: 44px; }
@@ -1188,7 +1213,6 @@
         /* ─── RESPONSIVE: SMALL PHONES ─── */
         @media (max-width: 360px) {
             .nav-brand span { font-size: 14px; }
-            .nav-store-badge img { height: 30px; }
             .nav-cta { padding: 6px 12px; font-size: 12px; }
             .hero h1 { font-size: 28px; }
             .phone-frame { width: 130px; }
@@ -1235,7 +1259,7 @@
                 "name": "Is Supermonster free?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The free tier includes unlimited receipt capture, household sharing, and shopping lists. Supermonster Plus (£2.99/month) unlocks weekly spending insights, full price tracking across supermarkets, and nutrition swap suggestions."
+                    "text": "Yes — Supermonster is free, with 3 receipt photos every month. Every feature (price tracking, spending insights, nutrition score, household sharing, shopping lists) is included on the free tier. Supermonster Plus (£1.99/month or £14.99/year) unlocks unlimited receipt photos and supports independent UK app development."
                 }
             },
             {
@@ -1281,6 +1305,12 @@
         "author": { "@type": "Organization", "name": "Supermonster", "url": "https://supermonsterapp.com" }
     }
     </script>
+
+    <!-- Analytics — Plausible (privacy-first, GDPR-friendly, no cookie banner).
+         Replace data-domain if your domain differs. Enable "Outbound links"
+         and "File downloads" extensions in Plausible dashboard to auto-track
+         App Store badge clicks. Swap to GA4/Fathom/PostHog by editing src. -->
+    <script defer data-domain="supermonsterapp.com" src="https://plausible.io/js/script.outbound-links.js"></script>
 </head>
 <body>
 
@@ -1292,9 +1322,7 @@
             <span>Supermonster</span>
         </a>
         <div class="nav-actions">
-            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-store-badge" aria-label="Download on the App Store">
-                <img src="apple-download-black-btn.svg" alt="Download on the App Store">
-            </a>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta" aria-label="Download Supermonster on the App Store">Download now</a>
             <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="toggleNav()">
                 <span class="nav-toggle-bar"></span>
                 <span class="nav-toggle-bar"></span>
@@ -1311,23 +1339,34 @@
 
 <!-- HERO -->
 <section class="hero hero-stagger">
-    <div class="hero-brand">Supermonster</div>
-    <div class="hero-monster-stack" aria-hidden="true">
-        <img src="monster-chester.png" alt="">
-        <img src="monster-grumpus.png" alt="">
-        <img src="monster-blobby.png" alt="">
-        <img src="monster-fuzzy.png" alt="">
-        <img src="monster-wally.png" alt="">
-        <img src="monster-fluffbert.png" alt="">
-        <img src="monster-pixel.png" alt="">
-    </div>
-    <h1>See which items are pushing up<br>your supermarket shop.</h1>
-    <p>Take a photo of any UK receipt — Supermonster spots the items going up across every supermarket, helps you set household budgets, and stops you overpaying.</p>
+    <h1>Track food prices at your local supermarkets</h1>
     <div class="store-badges">
         <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
             <img src="apple-download-black-btn.svg" alt="Download on the App Store">
         </a>
     </div>
+
+    <!-- Monster + supermarket logos grouped as a single visual block.
+         Side-by-side on desktop, stacked on mobile. -->
+    <div class="hero-meets-row">
+        <div class="hero-supermarkets" aria-label="Reads receipts from Tesco, Sainsbury's, Asda, Morrisons, Aldi, Lidl, Waitrose, M&S, Co-op, and Iceland">
+            <img src="supermarket-logos/tesco.png" alt="Tesco" loading="eager">
+            <img src="supermarket-logos/sainsburys.png" alt="Sainsbury's" loading="eager">
+            <img src="supermarket-logos/asda.png" alt="Asda" loading="eager">
+            <img src="supermarket-logos/morrisons.png" alt="Morrisons" loading="eager">
+            <img src="supermarket-logos/aldi.jpeg" alt="Aldi" loading="eager">
+            <img src="supermarket-logos/lidl.png" alt="Lidl" loading="eager">
+            <img src="supermarket-logos/waitrose.png" alt="Waitrose" loading="eager">
+            <img src="supermarket-logos/ms.png" alt="M&amp;S" loading="eager">
+            <img src="supermarket-logos/coop.png" alt="Co-op" loading="eager">
+            <img src="supermarket-logos/iceland.png" alt="Iceland" loading="eager">
+        </div>
+
+        <div class="hero-monster-stack" aria-hidden="true">
+            <img src="monster-chester.png" alt="">
+        </div>
+    </div>
+
     <div class="hero-trust">
         <div class="hero-trust-pill">
             <span class="hero-trust-stars">★★★★★</span>
@@ -1338,26 +1377,114 @@
             <span>Receipts stay on your device</span>
         </div>
     </div>
+
 </section>
 
 <!-- SCREENSHOTS -->
 <section class="screenshots">
-    <p class="screenshots-intro reveal">Five tabs. Starts with a photo.</p>
     <div class="screenshots-row stagger-children">
         <div class="phone-frame reveal">
-            <img src="home.png" alt="Supermonster home screen with monster, progress and one-tap photo capture">
+            <img loading="lazy" src="home.png" alt="Supermonster home screen with monster, progress and one-tap photo capture">
         </div>
         <div class="phone-frame reveal">
-            <img src="spending.png" alt="Spending tab showing UK Inflation Watch, price rises and drops by supermarket">
+            <img loading="lazy" src="spending.png" alt="Spending tab showing UK Inflation Watch, price rises and drops by supermarket">
         </div>
         <div class="phone-frame reveal">
-            <img src="nutrition.png" alt="Nutrition tab showing health score, processing bar and swap suggestions">
+            <img loading="lazy" src="nutrition.png" alt="Nutrition tab showing health score, processing bar and swap suggestions">
         </div>
         <div class="phone-frame reveal">
-            <img src="lists.png" alt="Shopping lists with weekly shop items and household sharing">
+            <img loading="lazy" src="lists.png" alt="Shopping lists with weekly shop items and household sharing">
         </div>
         <div class="phone-frame reveal">
-            <img src="you.png" alt="Profile and settings screen with household and subscription options">
+            <img loading="lazy" src="you.png" alt="Profile and settings screen with household and subscription options">
+        </div>
+    </div>
+</section>
+
+<!-- GROCERY BUDGET GRADER -->
+<section class="grader" id="grader">
+    <h2 class="reveal">How does your weekly shop stack up?</h2>
+    <p class="grader-sub reveal">Enter your household details and get an instant grade against the UK average.</p>
+
+    <div class="grader-card reveal">
+        <div class="grader-group">
+            <label>How many people in your household?</label>
+            <div class="size-options">
+                <button class="size-btn" data-size="1" onclick="graderSelectSize(1)">
+                    <span class="num">1</span><span class="lbl">Solo</span>
+                </button>
+                <button class="size-btn" data-size="2" onclick="graderSelectSize(2)">
+                    <span class="num">2</span><span class="lbl">Couple</span>
+                </button>
+                <button class="size-btn" data-size="3" onclick="graderSelectSize(3)">
+                    <span class="num">3</span><span class="lbl">Small</span>
+                </button>
+                <button class="size-btn" data-size="4" onclick="graderSelectSize(4)">
+                    <span class="num">4</span><span class="lbl">Family</span>
+                </button>
+                <button class="size-btn" data-size="5" onclick="graderSelectSize(5)">
+                    <span class="num">5+</span><span class="lbl">Large</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="grader-group">
+            <label>How much do you spend on the weekly shop?</label>
+            <div class="spend-wrap">
+                <span class="cur">&pound;</span>
+                <input type="number" class="spend-input" id="graderSpend" placeholder="80" min="1" max="9999" inputmode="decimal">
+            </div>
+            <div class="period-toggle">
+                <button class="period-btn active" data-period="week" onclick="graderSelectPeriod('week')">Per week</button>
+                <button class="period-btn" data-period="month" onclick="graderSelectPeriod('month')">Per month</button>
+            </div>
+        </div>
+
+        <button class="grade-btn" id="graderBtn" aria-describedby="graderSpend" onclick="graderCalculate()" disabled>Grade My Spending</button>
+    </div>
+
+    <!-- Results (hidden until graded) -->
+    <div class="grader-results" id="graderResults">
+        <div class="grade-result-card">
+            <div class="grade-letter" id="graderLetter">A</div>
+            <h3 class="grade-title" id="graderTitle">Budget Master!</h3>
+            <p class="grade-subtitle" id="graderSubtitle">You're spending well below the UK average.</p>
+
+            <div class="comp-bar-wrap">
+                <div class="comp-label">Your spend vs UK average</div>
+                <div class="comp-bar">
+                    <div class="comp-fill" id="graderFill"></div>
+                    <div class="comp-marker" id="graderMarker"></div>
+                </div>
+                <div class="comp-labels">
+                    <span class="you" id="graderYou">&pound;60/wk</span>
+                    <span id="graderAvg">UK avg: &pound;80/wk</span>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button class="share-btn" id="shareImgBtn" onclick="graderShareImage()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Share as image
+            </button>
+            <button class="share-btn" onclick="graderShare()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Share as text
+            </button>
+        </div>
+        <canvas id="graderCanvas" style="display:none;"></canvas>
+        </div>
+
+        <div class="grade-result-card tips-list" id="graderTipsCard">
+            <h3 class="grade-title grade-title-left" id="graderTipsTitle">Tips to save more</h3>
+            <div id="graderTipsContent"></div>
+        </div>
+
+        <div class="grader-cta">
+            <p>Track it properly with Supermonster</p>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
+                <img src="apple-download-black-btn.svg" alt="Download on the App Store">
+            </a>
         </div>
     </div>
 </section>
@@ -1369,44 +1496,22 @@
         <div class="feature-card reveal">
             <h3>Instant receipt capture</h3>
             <p>Take a photo of any supermarket receipt — point your camera at the items list and Supermonster reads every item, price, and discount in seconds using AI.</p>
-            <div class="feature-card-img"><img src="monster-chester.png" alt="Receipt capture"></div>
+            <div class="feature-card-img"><img loading="lazy" src="monster-chester.png" alt="Receipt capture"></div>
         </div>
         <div class="feature-card reveal">
             <h3>Price tracking with budgets</h3>
             <p>See which items went up or down since your last shop, set weekly or monthly budget goals, and get a heads-up when you're close to the limit.</p>
-            <div class="feature-card-img"><img src="monster-wally.png" alt="Price tracking"></div>
+            <div class="feature-card-img"><img loading="lazy" src="monster-wally.png" alt="Price tracking"></div>
         </div>
         <div class="feature-card reveal">
             <h3>Household sharing</h3>
             <p>Link with your partner or family. Shared shopping lists, combined spending view, and household budgets — all synced in real time.</p>
-            <div class="feature-card-img"><img src="monster-fuzzy.png" alt="Household sharing"></div>
+            <div class="feature-card-img"><img loading="lazy" src="monster-fuzzy.png" alt="Household sharing"></div>
         </div>
         <div class="feature-card reveal">
             <h3>Smart shopping lists</h3>
             <p>Create shared lists with your household. Supermonster suggests your regular items based on past shops and tracks what you've checked off in real time.</p>
-            <div class="feature-card-img"><img src="monster-grumpus.png" alt="Smart shopping lists"></div>
-        </div>
-    </div>
-</section>
-
-<!-- WHAT'S NEW -->
-<section class="whats-new">
-    <h2 class="reveal">Recently shipped</h2>
-    <div class="whats-new-grid stagger-children">
-        <div class="whats-new-card reveal">
-            <span class="whats-new-tag">New</span>
-            <h3>Inflation Watch</h3>
-            <p>A community-sourced view of UK supermarket price moves — in preview while we hit data scale.</p>
-        </div>
-        <div class="whats-new-card reveal">
-            <span class="whats-new-tag">Updated</span>
-            <h3>Smart shopping lists</h3>
-            <p>Lists now learn from past shops and suggest your regulars as you type.</p>
-        </div>
-        <div class="whats-new-card reveal">
-            <span class="whats-new-tag">Updated</span>
-            <h3>Price history</h3>
-            <p>Every item's price across stores and dates, on a clean per-item timeline.</p>
+            <div class="feature-card-img"><img loading="lazy" src="monster-grumpus.png" alt="Smart shopping lists"></div>
         </div>
     </div>
 </section>
@@ -1480,6 +1585,13 @@
             <div class="iw-row-pct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>+8.4%</div>
         </div>
 
+        <!--
+            ⚠️ TODO BEFORE LAUNCH: replace REPLACE_WITH_YOUR_ENDPOINT below with a
+            real Formspree (or similar) endpoint. Until then, iwNotifySubmit()
+            intercepts the submit and saves the email to localStorage as a
+            recoverable fallback so emails aren't lost. Free Formspree:
+            https://formspree.io
+        -->
         <form class="iw-notify" action="https://formspree.io/f/REPLACE_WITH_YOUR_ENDPOINT" method="POST" onsubmit="return iwNotifySubmit(event);">
             <label for="iw-email">Be first when Inflation Watch goes live</label>
             <div class="iw-notify-row">
@@ -1488,94 +1600,6 @@
             </div>
             <p class="iw-notify-note" id="iw-notify-note">One email when we launch. No marketing fluff.</p>
         </form>
-    </div>
-</section>
-
-<!-- GROCERY BUDGET GRADER -->
-<section class="grader" id="grader">
-    <h2 class="reveal">How does your weekly shop stack up?</h2>
-    <p class="grader-sub reveal">Enter your household details and get an instant grade against the UK average.</p>
-
-    <div class="grader-card reveal">
-        <div class="grader-group">
-            <label>How many people in your household?</label>
-            <div class="size-options">
-                <button class="size-btn" data-size="1" onclick="graderSelectSize(1)">
-                    <span class="num">1</span><span class="lbl">Solo</span>
-                </button>
-                <button class="size-btn" data-size="2" onclick="graderSelectSize(2)">
-                    <span class="num">2</span><span class="lbl">Couple</span>
-                </button>
-                <button class="size-btn" data-size="3" onclick="graderSelectSize(3)">
-                    <span class="num">3</span><span class="lbl">Small</span>
-                </button>
-                <button class="size-btn" data-size="4" onclick="graderSelectSize(4)">
-                    <span class="num">4</span><span class="lbl">Family</span>
-                </button>
-                <button class="size-btn" data-size="5" onclick="graderSelectSize(5)">
-                    <span class="num">5+</span><span class="lbl">Large</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="grader-group">
-            <label>How much do you spend on the weekly shop?</label>
-            <div class="spend-wrap">
-                <span class="cur">&pound;</span>
-                <input type="number" class="spend-input" id="graderSpend" placeholder="80" min="1" max="9999" inputmode="decimal">
-            </div>
-            <div class="period-toggle">
-                <button class="period-btn active" data-period="week" onclick="graderSelectPeriod('week')">Per week</button>
-                <button class="period-btn" data-period="month" onclick="graderSelectPeriod('month')">Per month</button>
-            </div>
-        </div>
-
-        <button class="grade-btn" id="graderBtn" onclick="graderCalculate()" disabled>Grade My Spending</button>
-    </div>
-
-    <!-- Results (hidden until graded) -->
-    <div class="grader-results" id="graderResults">
-        <div class="grade-result-card">
-            <div class="grade-letter" id="graderLetter">A</div>
-            <h3 class="grade-title" id="graderTitle">Budget Master!</h3>
-            <p class="grade-subtitle" id="graderSubtitle">You're spending well below the UK average.</p>
-
-            <div class="comp-bar-wrap">
-                <div class="comp-label">Your spend vs UK average</div>
-                <div class="comp-bar">
-                    <div class="comp-fill" id="graderFill"></div>
-                    <div class="comp-marker" id="graderMarker"></div>
-                </div>
-                <div class="comp-labels">
-                    <span class="you" id="graderYou">&pound;60/wk</span>
-                    <span id="graderAvg">UK avg: &pound;80/wk</span>
-                </div>
-            </div>
-
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <button class="share-btn" id="shareImgBtn" onclick="graderShareImage()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Share as image
-            </button>
-            <button class="share-btn" onclick="graderShare()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                Share as text
-            </button>
-        </div>
-        <canvas id="graderCanvas" style="display:none;"></canvas>
-        </div>
-
-        <div class="grade-result-card tips-list" id="graderTipsCard">
-            <h3 class="grade-title" id="graderTipsTitle" style="text-align:left;font-size:16px;">Tips to save more</h3>
-            <div id="graderTipsContent"></div>
-        </div>
-
-        <div class="grader-cta">
-            <p>Track it properly with Supermonster</p>
-            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
-                <img src="apple-download-black-btn.svg" alt="Download on the App Store">
-            </a>
-        </div>
     </div>
 </section>
 
@@ -1611,54 +1635,55 @@
 <!-- FAQ -->
 <section class="faq">
     <div class="faq-inner">
+        <img class="faq-monster reveal" src="monster-fuzzy.png" alt="" aria-hidden="true">
         <h2 class="reveal">Frequently Asked Questions</h2>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-what-is-supermonster-1" onclick="toggleFaq(this)">
                 What is Supermonster?
-                <span class="faq-chevron">⌵</span>
+                <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-what-is-supermonster-1">
                 <p>Supermonster is a shopping tracker for UK households. Take a photo of any supermarket receipt to track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family.</p>
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-how-does-receipt-capture-work-2" onclick="toggleFaq(this)">
                 How does receipt capture work?
-                <span class="faq-chevron">⌵</span>
+                <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-how-does-receipt-capture-work-2">
                 <p>Take a photo of the items list on any UK supermarket receipt (avoid the barcode at the bottom). Our AI reads every item name, price, and discount automatically — it takes just a few seconds.</p>
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-is-supermonster-free-3" onclick="toggleFaq(this)">
                 Is Supermonster free?
-                <span class="faq-chevron">⌵</span>
+                <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer">
-                <p>Yes. The free tier includes unlimited receipt capture, household sharing, and shopping lists. Supermonster Plus (£2.99/month) unlocks weekly spending insights, full price tracking across supermarkets, and nutrition swap suggestions.</p>
+            <div class="faq-answer" id="faq-answer-is-supermonster-free-3">
+                <p>Yes — Supermonster is free, with 3 receipt photos every month. Every feature (price tracking, spending insights, nutrition score, household sharing, shopping lists) is included on the free tier. Supermonster Plus (£1.99/month or £14.99/year) unlocks unlimited receipt photos and supports independent UK app development.</p>
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-can-i-share-with-my-partner-4" onclick="toggleFaq(this)">
                 Can I share with my partner?
-                <span class="faq-chevron">⌵</span>
+                <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-can-i-share-with-my-partner-4">
                 <p>Yes! Create a household and share a code with your partner. You'll both see shared shopping lists, combined spending data, and household budgets — all synced in real time.</p>
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-is-my-data-private-5" onclick="toggleFaq(this)">
                 Is my data private?
-                <span class="faq-chevron">⌵</span>
+                <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-is-my-data-private-5">
                 <p>Your personal data is never shared. You can optionally opt in to share anonymised shopping data to help build better price insights for everyone, but this is entirely your choice and can be changed anytime in Settings.</p>
             </div>
         </div>
@@ -1708,12 +1733,22 @@ document.addEventListener('keydown', function(e) {
 function iwNotifySubmit(event) {
     const form = event.target;
     if (form.action.includes('REPLACE_WITH_YOUR_ENDPOINT')) {
+        // Fallback path until Formspree endpoint is wired. Persist the email
+        // to localStorage so nothing is lost — owner can recover later.
         event.preventDefault();
+        const emailInput = form.querySelector('input[type=email]');
+        try {
+            const captured = JSON.parse(localStorage.getItem('pending_iw_emails') || '[]');
+            captured.push({ email: emailInput.value, at: new Date().toISOString() });
+            localStorage.setItem('pending_iw_emails', JSON.stringify(captured));
+        } catch (e) { /* localStorage might be unavailable */ }
+        if (window.plausible) plausible('IW Notify Submit (fallback)');
         const note = document.getElementById('iw-notify-note');
         if (note) note.textContent = "Thanks — we'll be in touch when Inflation Watch launches.";
-        form.querySelector('input[type=email]').value = '';
+        emailInput.value = '';
         return false;
     }
+    if (window.plausible) plausible('IW Notify Submit');
     return true;
 }
 
@@ -1721,10 +1756,18 @@ function iwNotifySubmit(event) {
 function toggleFaq(button) {
     const item = button.parentElement;
     const wasOpen = item.classList.contains('open');
-    // Close all
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Close all + reset aria
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const b = i.querySelector('.faq-question');
+        if (b) b.setAttribute('aria-expanded', 'false');
+    });
     // Toggle clicked
-    if (!wasOpen) item.classList.add('open');
+    if (!wasOpen) {
+        item.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+    }
+    if (window.plausible) plausible('FAQ Open', { props: { question: button.textContent.trim().slice(0, 60) } });
 }
 
 /* ─── GROCERY BUDGET GRADER ─── */
