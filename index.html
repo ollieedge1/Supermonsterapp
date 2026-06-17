@@ -547,13 +547,18 @@
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Explicit breakpoints — clean 4 / 2 / 1 layouts so we never end
+               up with a single orphan card on its own row. */
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
+        }
+        @media (max-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
         }
         .feature-card {
             background: var(--bg-grey);
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 24px;
             transition: background 0.2s;
         }
         .feature-card:hover { background: #E6E1D9; }
