@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Programmatic SEO page generator for Supermonster
+ * Programmatic SEO page generator for Superbasket
  * Generates static HTML pages for: [item] at [store] and [store] vs [store]
  * Run: node generate-prices.js
  */
@@ -130,7 +130,7 @@ function priceChange(item, store) {
 
 const SHARED_CSS = `
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root { --yellow: #F2C506; --yellow-light: #FFF8D6; --dark: #1A1A2E; --text: #1A1A2E; --text-secondary: #6B7280; --bg: #FAF8F2; --bg-grey: #F0EBE6; --green: #22C55E; --red: #EF4444; }
+:root { --brand: #C8102E; --brand-light: #FBE4E8; --dark: #1A1A2E; --text: #1A1A2E; --text-secondary: #6B7280; --bg: #FAF8F2; --bg-grey: #F0EBE6; --green: #22C55E; --red: #EF4444; }
 body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); }
 .nav-inner { max-width: 900px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
@@ -173,7 +173,7 @@ strong { color: var(--text); }
 .comp-table td { padding: 12px 14px; border-bottom: 1px solid #E5E7EB; }
 .comp-table tr:last-child td { border-bottom: none; }
 .comp-table .cheapest { background: #F0FDF4; font-weight: 700; color: #15803D; }
-.comp-table .current { background: var(--yellow-light); font-weight: 700; }
+.comp-table .current { background: var(--brand-light); font-weight: 700; }
 
 /* FAQ */
 .faq-item { border-bottom: 1px solid #E5E7EB; }
@@ -188,7 +188,7 @@ strong { color: var(--text); }
 .cta-card { background: var(--dark); border-radius: 20px; padding: 36px; text-align: center; color: #fff; margin: 40px 0; }
 .cta-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
 .cta-card p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
-.cta-card .btn { display: inline-block; background: var(--yellow); color: var(--dark); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; }
+.cta-card .btn { display: inline-block; background: var(--brand); color: #fff; padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; }
 .cta-card .btn:hover { opacity: 0.9; }
 
 /* Related links */
@@ -218,16 +218,16 @@ footer a:hover { color: var(--text); }
 
 function nav() {
   return `<nav><div class="nav-inner">
-  <a href="/" class="nav-brand"><div class="nav-icon"><img src="../app-icon.png" alt="Supermonster"></div><span>Supermonster</span></a>
+  <a href="/" class="nav-brand"><div class="nav-icon"><img src="../app-icon.png" alt="Superbasket"></div><span>Superbasket</span></a>
   <div class="nav-links"><a href="/blog">Blog</a><a href="/prices/">Prices</a><a href="${APP_STORE_URL}" class="nav-cta">Download now</a></div>
 </div></nav>`;
 }
 
 function footer() {
   return `<footer><div class="footer-left">
-  <div class="footer-brand"><div class="footer-brand-icon"><img src="../app-icon.png" alt="Supermonster"></div><span>Supermonster</span></div>
+  <div class="footer-brand"><div class="footer-brand-icon"><img src="../app-icon.png" alt="Superbasket"></div><span>Superbasket</span></div>
   <p>Track food prices. Save as a household.</p>
-  <p style="margin-top:8px;">Copyright &copy; 2026 Supermonster. All rights reserved.</p>
+  <p style="margin-top:8px;">Copyright &copy; 2026 Superbasket. All rights reserved.</p>
 </div><div class="footer-links">
   <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
 </div></footer>`;
@@ -311,7 +311,7 @@ function generateItemPage(item, storeKey) {
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title} | Supermonster</title>
+<title>${title} | Superbasket</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="https://supermonsterapp.com/prices/${item.slug}-${store.slug}.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -354,8 +354,8 @@ ${nav()}
 
 <div class="cta-card">
   <h3>Track ${item.name.toLowerCase()} prices automatically</h3>
-  <p>Scan your receipt and Supermonster tracks every price — so you'll know the moment it goes up.</p>
-  <a href="${APP_STORE_URL}" class="btn">Download Supermonster</a>
+  <p>Scan your receipt and Superbasket tracks every price — so you'll know the moment it goes up.</p>
+  <a href="${APP_STORE_URL}" class="btn">Download Superbasket</a>
 </div>
 
 <h2>Frequently asked questions</h2>
@@ -403,7 +403,7 @@ function generateComparisonPage(storeA, storeB) {
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title} | Supermonster</title>
+<title>${title} | Superbasket</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="https://supermonsterapp.com/prices/${storeA}-vs-${storeB}.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -421,7 +421,7 @@ function generateComparisonPage(storeA, storeB) {
 .vs-summary .stat .label { color: var(--text-secondary); }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${desc}","author":{"@type":"Organization","name":"Supermonster"},"publisher":{"@type":"Organization","name":"Supermonster","url":"https://supermonsterapp.com"},"datePublished":"2026-05-01"}
+{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${desc}","author":{"@type":"Organization","name":"Superbasket"},"publisher":{"@type":"Organization","name":"Superbasket","url":"https://supermonsterapp.com"},"datePublished":"2026-05-01"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is ${a.name} or ${b.name} cheaper for groceries?","acceptedAnswer":{"@type":"Answer","text":"${winnerName} is ${savingPct}% cheaper than ${loserName} across ${ITEMS.length} everyday grocery items. The total basket costs ${pound(aTotal)} at ${a.name} versus ${pound(bTotal)} at ${b.name}, a difference of ${pound(saving)}. Over a year of weekly shops, that's roughly ${pound(saving * 52)} in savings."}},{"@type":"Question","name":"How much can I save switching from ${loserName} to ${winnerName}?","acceptedAnswer":{"@type":"Answer","text":"Switching from ${loserName} to ${winnerName} saves approximately ${pound(saving)} per shop on a basket of ${ITEMS.length} common items. ${winnerName} wins on ${winner === storeA ? aWins : bWins} out of ${ITEMS.length} items. Over a year, that adds up to roughly ${pound(saving * 52)}."}}]}
@@ -464,7 +464,7 @@ ${nav()}
 <div class="cta-card">
   <h3>Compare your own supermarket spending</h3>
   <p>Scan receipts from different stores and see which one actually costs you less.</p>
-  <a href="${APP_STORE_URL}" class="btn">Download Supermonster</a>
+  <a href="${APP_STORE_URL}" class="btn">Download Superbasket</a>
 </div>
 
 <div class="related">
@@ -521,7 +521,7 @@ const indexHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UK Grocery Prices by Supermarket — Supermonster</title>
+<title>UK Grocery Prices by Supermarket — Superbasket</title>
 <meta name="description" content="Compare grocery prices across Tesco, Aldi, Lidl, Sainsbury's, Asda, Morrisons, Waitrose and Co-op. Updated May 2026.">
 <link rel="canonical" href="https://supermonsterapp.com/prices/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -552,7 +552,7 @@ ${indexItems}
 <div class="cta-card">
   <h3>Track your own grocery prices</h3>
   <p>Scan receipts and build a personal price database. Know when prices rise before your wallet does.</p>
-  <a href="${APP_STORE_URL}" class="btn">Download Supermonster</a>
+  <a href="${APP_STORE_URL}" class="btn">Download Superbasket</a>
 </div>
 </div>
 ${footer()}

@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermonster — Track food prices at your local supermarkets</title>
-    <meta name="description" content="Track UK supermarket prices by photographing your receipts. Supermonster spots items going up at Tesco, Sainsbury's, Asda and more. Free on iOS.">
+    <title>Superbasket — See what your shop would cost at every UK supermarket</title>
+    <meta name="description" content="Snap your receipt and Superbasket shows what the same shop would have cost at Tesco, Sainsbury's, Asda, Aldi, Lidl and the rest. Save money with one tap. Free on iOS.">
     <link rel="canonical" href="https://supermonsterapp.com/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Supermonster">
-    <meta property="og:title" content="Track food prices at your local supermarkets">
-    <meta property="og:description" content="Take a photo of any receipt and Supermonster spots the items going up — across every supermarket. Free on iOS.">
+    <meta property="og:site_name" content="Superbasket">
+    <meta property="og:title" content="See what your shop would cost at every UK supermarket">
+    <meta property="og:description" content="Snap your receipt — Superbasket shows what the same shop would have cost at Tesco, Sainsbury's, Asda, Aldi, Lidl and the rest. Free on iOS.">
     <meta property="og:url" content="https://supermonsterapp.com/">
     <meta property="og:image" content="https://supermonsterapp.com/appicon.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Track food prices at your local supermarkets">
-    <meta name="twitter:description" content="Take a photo of any receipt — Supermonster spots the items going up across every supermarket.">
+    <meta name="twitter:title" content="See what your shop would cost at every UK supermarket">
+    <meta name="twitter:description" content="Snap your receipt — see what the same shop would have cost at every other UK supermarket.">
     <meta name="twitter:image" content="https://supermonsterapp.com/appicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,8 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --yellow: #F2C506;
-            --yellow-light: #FFF8D6;
+            --brand: #C8102E;
+            --brand-light: #FBE4E8;
             --dark: #1A1A2E;
             --text: #1A1A2E;
             --text-secondary: #6B7280;
@@ -160,7 +160,7 @@
             transition: color 0.2s;
         }
         .nav-link:hover { color: var(--dark); }
-        .nav-link-prices { color: var(--yellow); font-weight: 700; }
+        .nav-link-prices { color: var(--brand); font-weight: 700; }
         .nav-actions {
             display: flex;
             align-items: center;
@@ -257,7 +257,7 @@
                 text-align: left;
             }
             .nav-link { color: var(--dark); }
-            .nav-link-prices { color: var(--yellow); font-weight: 800; }
+            .nav-link-prices { color: var(--brand); font-weight: 800; }
             .nav-cta { font-weight: 700; text-align: center; }
         }
 
@@ -279,7 +279,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 6px 18px rgba(242,197,6,0.35));
+            filter: drop-shadow(0 6px 18px rgba(200,16,46,0.35));
         }
         .hero h1 {
             font-size: clamp(32px, 5vw, 56px);
@@ -330,7 +330,7 @@
             font-weight: 600;
             color: var(--text-secondary);
         }
-        .hero-trust-stars { color: var(--yellow); letter-spacing: 0.5px; }
+        .hero-trust-stars { color: var(--brand); letter-spacing: 0.5px; }
 
                 /* ─── GRADER TOOL ─── */
         .grader {
@@ -381,10 +381,10 @@
             transition: all 0.15s;
             font-family: inherit;
         }
-        .size-btn:hover { border-color: var(--yellow); }
+        .size-btn:hover { border-color: var(--brand); }
         .size-btn.active {
-            border-color: var(--yellow);
-            background: var(--yellow-light);
+            border-color: var(--brand);
+            background: var(--brand-light);
         }
         .size-btn .num { font-size: 20px; font-weight: 800; display: block; }
         .size-btn .lbl { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
@@ -403,7 +403,7 @@
         }
         .spend-input::-webkit-outer-spin-button,
         .spend-input::-webkit-inner-spin-button { -webkit-appearance: none; }
-        .spend-input:focus { border-color: var(--yellow); }
+        .spend-input:focus { border-color: var(--brand); }
         .period-toggle {
             display: flex; background: var(--bg-grey); border-radius: 10px; padding: 4px; margin-top: 10px;
         }
@@ -417,7 +417,7 @@
         }
         .grade-btn {
             width: 100%; padding: 18px; border: none; border-radius: 14px;
-            background: linear-gradient(135deg, #F2C506, #FFD60A);
+            background: linear-gradient(135deg, #C8102E, #E8232A);
             color: var(--dark); font-size: 17px; font-weight: 800;
             font-family: inherit; cursor: pointer; transition: opacity 0.2s;
         }
@@ -467,7 +467,7 @@
             background: #fff; font-size: 13px; font-weight: 600; font-family: inherit;
             cursor: pointer; color: var(--text); transition: border-color 0.15s;
         }
-        .share-btn:hover { border-color: var(--yellow); }
+        .share-btn:hover { border-color: var(--brand); }
         .grader-cta {
             text-align: center; margin-top: 20px; padding: 24px;
             background: var(--dark); border-radius: 16px; color: #fff;
@@ -576,7 +576,7 @@
         .feature-card-img {
             width: 100%;
             height: 180px;
-            background: var(--yellow-light);
+            background: var(--brand-light);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -622,8 +622,8 @@
             font-weight: 900;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--dark);
-            background: var(--yellow);
+            color: #fff;
+            background: var(--brand);
             padding: 3px 8px;
             border-radius: 4px;
             margin-bottom: 10px;
@@ -725,7 +725,7 @@
             font-weight: 900;
             letter-spacing: 0.06em;
             color: #fff;
-            background: var(--yellow);
+            background: var(--brand);
             padding: 3px 7px;
             border-radius: 4px;
         }
@@ -746,7 +746,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--yellow-light);
+            background: var(--brand-light);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -813,7 +813,7 @@
             line-height: 1.4;
         }
         .iw-row-meta-text .iw-row-meta-strong {
-            color: var(--yellow);
+            color: var(--brand);
             font-weight: 700;
         }
         .iw-row-pct {
@@ -853,7 +853,7 @@
             background: #fff;
         }
         .iw-notify input[type="email"]:focus {
-            outline: 2px solid var(--yellow);
+            outline: 2px solid var(--brand);
             outline-offset: 1px;
         }
         .iw-notify button {
@@ -914,7 +914,7 @@
             width: clamp(96px, 14vw, 140px);
             height: auto;
             margin: 0 auto 18px;
-            filter: drop-shadow(0 6px 18px rgba(242,197,6,0.35));
+            filter: drop-shadow(0 6px 18px rgba(200,16,46,0.35));
         }
         .faq {
             background: var(--bg-grey);
@@ -1113,8 +1113,8 @@
             animation: subtlePulse 2.5s ease-in-out infinite;
         }
         @keyframes subtlePulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(242,197,6,0.3); }
-            50% { box-shadow: 0 0 0 8px rgba(242,197,6,0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(200,16,46,0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(200,16,46,0); }
         }
 
         /* Blog card hover lift is already there, add scale */
@@ -1235,7 +1235,7 @@
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
-        "author": { "@type": "Organization", "name": "Supermonster", "url": "https://supermonsterapp.com" }
+        "author": { "@type": "Organization", "name": "Superbasket", "url": "https://supermonsterapp.com" }
     }
     </script>
     <script type="application/ld+json">
@@ -1245,10 +1245,10 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What is Supermonster?",
+                "name": "What is Superbasket?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supermonster is a shopping tracker for UK households. Take a photo of any supermarket receipt to track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family."
+                    "text": "Superbasket is a shopping tracker for UK households. Take a photo of any supermarket receipt to track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family."
                 }
             },
             {
@@ -1256,15 +1256,15 @@
                 "name": "How does receipt capture work?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Take a photo of the items list on any UK supermarket receipt (avoid the barcode at the bottom). Supermonster's AI reads every item name, price, and discount automatically — it takes just a few seconds."
+                    "text": "Take a photo of the items list on any UK supermarket receipt (avoid the barcode at the bottom). Superbasket's AI reads every item name, price, and discount automatically — it takes just a few seconds."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Is Supermonster free?",
+                "name": "Is Superbasket free?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes — Supermonster is free, with 3 receipt photos every month. Every feature (price tracking, spending insights, nutrition score, household sharing, shopping lists) is included on the free tier. Supermonster Plus (£1.99/month or £14.99/year) unlocks unlimited receipt photos and supports independent UK app development."
+                    "text": "Yes — Superbasket is free, with 3 receipt photos every month. Every feature (price tracking, spending insights, nutrition score, household sharing, shopping lists) is included on the free tier. Superbasket Plus (£1.99/month or £14.99/year) unlocks unlimited receipt photos and supports independent UK app development."
                 }
             },
             {
@@ -1292,7 +1292,7 @@
     {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Supermonster — Grocery Tracker",
+        "name": "Superbasket — Grocery Tracker",
         "operatingSystem": "iOS",
         "applicationCategory": "FinanceApplication",
         "description": "Take a photo of any UK supermarket receipt to track prices, spot rises across stores, set household budgets, and share shopping lists.",
@@ -1307,7 +1307,7 @@
         ],
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
         "downloadUrl": "https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977",
-        "author": { "@type": "Organization", "name": "Supermonster", "url": "https://supermonsterapp.com" }
+        "author": { "@type": "Organization", "name": "Superbasket", "url": "https://supermonsterapp.com" }
     }
     </script>
 
@@ -1323,18 +1323,18 @@
 <nav id="siteNav">
     <div class="nav-inner">
         <a href="/" class="nav-brand">
-            <div class="nav-icon"><img src="appicon.png" alt="Supermonster app icon"></div>
-            <span>Supermonster</span>
+            <div class="nav-icon"><img src="appicon.png" alt="Superbasket app icon"></div>
+            <span>Superbasket</span>
         </a>
         <div class="nav-actions">
-            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta" aria-label="Download Supermonster on the App Store">Download now</a>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta" aria-label="Download Superbasket on the App Store">Download now</a>
         </div>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero hero-stagger">
-    <h1>Track food prices at your local supermarkets</h1>
+    <h1>See what your shop would have cost at every UK supermarket</h1>
     <div class="store-badges">
         <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
             <img src="apple-download-black-btn.svg" alt="Download on the App Store">
@@ -1379,7 +1379,7 @@
 <section class="screenshots">
     <div class="screenshots-row stagger-children">
         <div class="phone-frame reveal">
-            <img loading="lazy" src="home.png" alt="Supermonster home screen with monster, progress and one-tap photo capture">
+            <img loading="lazy" src="home.png" alt="Superbasket home screen with monster, progress and one-tap photo capture">
         </div>
         <div class="phone-frame reveal">
             <img loading="lazy" src="spending.png" alt="Spending tab showing UK Inflation Watch, price rises and drops by supermarket">
@@ -1476,7 +1476,7 @@
         </div>
 
         <div class="grader-cta">
-            <p>Track it properly with Supermonster</p>
+            <p>Track it properly with Superbasket</p>
             <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="store-badge">
                 <img src="apple-download-black-btn.svg" alt="Download on the App Store">
             </a>
@@ -1490,7 +1490,7 @@
     <div class="features-grid stagger-children">
         <div class="feature-card reveal">
             <h3>Instant receipt capture</h3>
-            <p>Take a photo of any supermarket receipt — point your camera at the items list and Supermonster reads every item, price, and discount in seconds using AI.</p>
+            <p>Take a photo of any supermarket receipt — point your camera at the items list and Superbasket reads every item, price, and discount in seconds using AI.</p>
             <div class="feature-card-img"><img loading="lazy" src="monster-chester.png" alt="Receipt capture"></div>
         </div>
         <div class="feature-card reveal">
@@ -1505,7 +1505,7 @@
         </div>
         <div class="feature-card reveal">
             <h3>Smart shopping lists</h3>
-            <p>Create shared lists with your household. Supermonster suggests your regular items based on past shops and tracks what you've checked off in real time.</p>
+            <p>Create shared lists with your household. Superbasket suggests your regular items based on past shops and tracks what you've checked off in real time.</p>
             <div class="feature-card-img"><img loading="lazy" src="monster-grumpus.png" alt="Smart shopping lists"></div>
         </div>
     </div>
@@ -1516,7 +1516,7 @@
     <h2 class="reveal">Inflation Watch</h2>
     <p class="inflation-watch-intro reveal">
         A community-sourced view of how UK supermarket prices are moving — which items are quietly going up,
-        and where they're cheaper. Built from anonymised shop data from Supermonster users.
+        and where they're cheaper. Built from anonymised shop data from Superbasket users.
     </p>
 
     <div class="iw-card reveal">
@@ -1634,12 +1634,12 @@
         <h2 class="reveal">Frequently Asked Questions</h2>
 
         <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-what-is-supermonster-1" onclick="toggleFaq(this)">
-                What is Supermonster?
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-what-is-superbasket-1" onclick="toggleFaq(this)">
+                What is Superbasket?
                 <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer" id="faq-answer-what-is-supermonster-1">
-                <p>Supermonster is a shopping tracker for UK households. Take a photo of any supermarket receipt to track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family.</p>
+            <div class="faq-answer" id="faq-answer-what-is-superbasket-1">
+                <p>Superbasket is a shopping tracker for UK households, fronted by Chester — a friendly monster who reads your receipt and shows you what the same shop would have cost at every other UK supermarket. Track price changes on the items you buy regularly, set weekly budgets, and share shopping lists with your partner or family.</p>
             </div>
         </div>
 
@@ -1654,12 +1654,12 @@
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-is-supermonster-free-3" onclick="toggleFaq(this)">
-                Is Supermonster free?
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-is-superbasket-free-3" onclick="toggleFaq(this)">
+                Is Superbasket free?
                 <span class="faq-chevron" aria-hidden="true">⌵</span>
             </button>
-            <div class="faq-answer" id="faq-answer-is-supermonster-free-3">
-                <p>Yes — Supermonster is free, with 3 receipt photos every month. Every feature (price tracking, spending insights, nutrition score, household sharing, shopping lists) is included on the free tier. Supermonster Plus (£1.99/month or £14.99/year) unlocks unlimited receipt photos and supports independent UK app development.</p>
+            <div class="faq-answer" id="faq-answer-is-superbasket-free-3">
+                <p>Yes — Superbasket is free, with 3 receipt photos every month. Every feature (price tracking, spending insights, nutrition score, household sharing, shopping lists) is included on the free tier. Superbasket Plus (£1.99/month or £14.99/year) unlocks unlimited receipt photos and supports independent UK app development.</p>
             </div>
         </div>
 
@@ -1689,11 +1689,11 @@
 <footer>
     <div class="footer-left">
         <div class="footer-brand">
-            <div class="footer-brand-icon"><img src="appicon.png" alt="Supermonster"></div>
-            <span>Supermonster</span>
+            <div class="footer-brand-icon"><img src="appicon.png" alt="Superbasket"></div>
+            <span>Superbasket</span>
         </div>
         <p>Track food prices. Save as a household.</p>
-        <p style="margin-top: 4px; font-size: 13px; color: #9CA3AF;">Copyright © 2026 Supermonster. All rights reserved.</p>
+        <p style="margin-top: 4px; font-size: 13px; color: #9CA3AF;">Copyright © 2026 Superbasket. All rights reserved.</p>
     </div>
     <div class="footer-links">
         <a href="/privacy">Privacy Policy</a>
@@ -1780,14 +1780,14 @@ function toggleFaq(button) {
     const TIPS = {
         low: [
             { icon: '\u{1F3C6}', bg: '#F0FDF4', text: '<strong>You\'re crushing it.</strong> Keep scanning receipts to make sure prices don\'t creep up on your regular items.' },
-            { icon: '\u{1F4CA}', bg: '#F0FDF4', text: '<strong>Track your wins.</strong> Use Supermonster to see exactly how much you\'re saving compared to last month.' },
+            { icon: '\u{1F4CA}', bg: '#F0FDF4', text: '<strong>Track your wins.</strong> Use Superbasket to see exactly how much you\'re saving compared to last month.' },
             { icon: '\u{1F6D2}', bg: '#FFF8D6', text: '<strong>Share your wisdom.</strong> Your household could save even more with shared shopping lists.' },
         ],
         mid: [
             { icon: '\u{1F50D}', bg: '#FFF8D6', text: '<strong>Check for price creep.</strong> Items you buy every week often rise 5-10% without you noticing.' },
             { icon: '\u{1F4CB}', bg: '#FFF8D6', text: '<strong>Stick to a list.</strong> Impulse buys add an average of £15/week. A shared shopping list keeps the whole household honest.' },
             { icon: '\u{1F504}', bg: '#FEF3C7', text: '<strong>Try own-brand swaps.</strong> Switching 5 branded items to own-brand can save £8-12 per shop.' },
-            { icon: '\u{1F4C5}', bg: '#FEF3C7', text: '<strong>Set a weekly budget.</strong> Even a rough target helps. Supermonster warns you when you\'re close to your limit.' },
+            { icon: '\u{1F4C5}', bg: '#FEF3C7', text: '<strong>Set a weekly budget.</strong> Even a rough target helps. Superbasket warns you when you\'re close to your limit.' },
         ],
         high: [
             { icon: '\u{1F6A8}', bg: '#FEF2F2', text: '<strong>Start with one change.</strong> Pick your most expensive regular item and find a cheaper alternative. That alone could save £200/year.' },
@@ -1950,20 +1950,20 @@ function toggleFaq(button) {
         ctx.fillText('avg', avgX - 8, barY + 26);
 
         // Yellow accent line
-        ctx.fillStyle = '#F2C506';
+        ctx.fillStyle = '#C8102E';
         ctx.beginPath(); ctx.roundRect(24, 280, 552, 3, 1.5); ctx.fill();
 
         // Footer: branding + CTA
-        ctx.fillStyle = '#F2C506';
+        ctx.fillStyle = '#C8102E';
         ctx.font = '800 16px Inter, -apple-system, sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillText('Supermonster', 24, 314);
+        ctx.fillText('Superbasket', 24, 314);
         ctx.fillStyle = 'rgba(255,255,255,0.5)';
         ctx.font = '500 13px Inter, -apple-system, sans-serif';
         ctx.fillText('supermonsterapp.com', 162, 314);
 
         ctx.textAlign = 'right';
-        ctx.fillStyle = '#F2C506';
+        ctx.fillStyle = '#C8102E';
         ctx.font = '700 13px Inter, -apple-system, sans-serif';
         ctx.fillText('Get your grade free →', W - 24, 314);
 
@@ -1978,7 +1978,7 @@ function toggleFaq(button) {
         c.toBlob(function(blob) {
             var file = new File([blob], 'my-grocery-grade.png', { type: 'image/png' });
             var r = gradeResult;
-            var text = 'I got a ' + r.letter + ' on the Supermonster Weekly Shop Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare?\n\nhttps://supermonsterapp.com/#grader';
+            var text = 'I got a ' + r.letter + ' on the Superbasket Weekly Shop Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare?\n\nhttps://supermonsterapp.com/#grader';
 
             if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
                 navigator.share({ title: 'My Weekly Shop Grade', text: text, files: [file] }).catch(function(){});
@@ -2001,7 +2001,7 @@ function toggleFaq(button) {
     window.graderShare = function() {
         if (!gradeResult) return;
         var r = gradeResult;
-        var text = 'I got a ' + r.letter + ' on the Supermonster Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare? \u{1F6D2}\n\nhttps://supermonsterapp.com/#grader';
+        var text = 'I got a ' + r.letter + ' on the Superbasket Grocery Budget Grader! Spending £' + r.weeklySpend + '/wk for a household of ' + r.householdSize + ' (UK avg: £' + r.avgWeekly + '/wk). How do you compare? \u{1F6D2}\n\nhttps://supermonsterapp.com/#grader';
 
         if (navigator.share) {
             navigator.share({ title: 'My Weekly Shop Grade', text: text }).catch(function(){});

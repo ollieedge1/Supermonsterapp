@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery Budget Grader — Supermonster</title>
+    <title>Grocery Budget Grader — Superbasket</title>
     <meta name="description" content="How does your weekly shop compare? Enter your household size and spending to get an instant grade, personalised tips, and see how you stack up against the UK average.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,8 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --yellow: #F2C506;
-            --yellow-light: #FFF8D6;
+            --brand: #C8102E;
+            --brand-light: #FBE4E8;
             --dark: #1A1A2E;
             --text: #1A1A2E;
             --text-secondary: #6B7280;
@@ -152,10 +152,10 @@
             transition: all 0.15s;
             font-family: inherit;
         }
-        .size-btn:hover { border-color: var(--yellow); }
+        .size-btn:hover { border-color: var(--brand); }
         .size-btn.active {
-            border-color: var(--yellow);
-            background: var(--yellow-light);
+            border-color: var(--brand);
+            background: var(--brand-light);
         }
         .size-btn .num {
             font-size: 22px;
@@ -195,7 +195,7 @@
         }
         .spend-input::-webkit-outer-spin-button,
         .spend-input::-webkit-inner-spin-button { -webkit-appearance: none; }
-        .spend-input:focus { border-color: var(--yellow); }
+        .spend-input:focus { border-color: var(--brand); }
 
         /* Period toggle */
         .period-toggle {
@@ -230,7 +230,7 @@
             padding: 18px;
             border: none;
             border-radius: 14px;
-            background: linear-gradient(135deg, #F2C506, #FFD60A);
+            background: linear-gradient(135deg, #C8102E, #E8232A);
             color: var(--dark);
             font-size: 17px;
             font-weight: 800;
@@ -415,7 +415,7 @@
             transition: border-color 0.15s;
             margin-top: 16px;
         }
-        .share-btn:hover { border-color: var(--yellow); }
+        .share-btn:hover { border-color: var(--brand); }
 
         /* Footer */
         footer {
@@ -445,11 +445,11 @@
 <nav id="siteNav">
     <div class="nav-inner">
         <a href="/" class="nav-brand">
-            <div class="nav-icon"><img src="appicon.png" alt="Supermonster app icon"></div>
-            <span>Supermonster</span>
+            <div class="nav-icon"><img src="appicon.png" alt="Superbasket app icon"></div>
+            <span>Superbasket</span>
         </a>
         <div class="nav-actions">
-            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta" aria-label="Download Supermonster on the App Store">Download now</a>
+            <a href="https://apps.apple.com/gb/app/supermonster-grocery-tracker/id6763580977" class="nav-cta" aria-label="Download Superbasket on the App Store">Download now</a>
         </div>
     </div>
 </nav>
@@ -567,14 +567,14 @@ const GRADES = [
 const TIPS = {
     low: [
         { icon: '🏆', bg: '#F0FDF4', text: '<strong>You\'re crushing it.</strong> Keep scanning receipts to make sure prices don\'t creep up on your regular items.' },
-        { icon: '📊', bg: '#F0FDF4', text: '<strong>Track your wins.</strong> Use Supermonster to see exactly how much you\'re saving compared to last month.' },
+        { icon: '📊', bg: '#F0FDF4', text: '<strong>Track your wins.</strong> Use Superbasket to see exactly how much you\'re saving compared to last month.' },
         { icon: '🛒', bg: '#FFF8D6', text: '<strong>Share your wisdom.</strong> Your household could save even more with shared shopping lists.' },
     ],
     mid: [
         { icon: '🔍', bg: '#FFF8D6', text: '<strong>Check for price creep.</strong> Items you buy every week often rise 5-10% without you noticing. Scan receipts to catch it.' },
         { icon: '📋', bg: '#FFF8D6', text: '<strong>Stick to a list.</strong> Impulse buys add an average of £15/week. A shared shopping list keeps the whole household honest.' },
         { icon: '🔄', bg: '#FEF3C7', text: '<strong>Try own-brand swaps.</strong> Switching 5 branded items to own-brand can save £8-12 per shop.' },
-        { icon: '📅', bg: '#FEF3C7', text: '<strong>Set a weekly budget.</strong> Even a rough target helps. Supermonster warns you when you\'re close to your limit.' },
+        { icon: '📅', bg: '#FEF3C7', text: '<strong>Set a weekly budget.</strong> Even a rough target helps. Superbasket warns you when you\'re close to your limit.' },
     ],
     high: [
         { icon: '🚨', bg: '#FEF2F2', text: '<strong>Start with one change.</strong> Pick your most expensive regular item and find a cheaper alternative. That alone could save £200/year.' },
@@ -681,7 +681,7 @@ function shareResult() {
     const r = window._gradeResult;
     if (!r) return;
 
-    const text = `I got a ${r.letter} on the Supermonster Grocery Budget Grader! Spending £${r.weeklySpend}/wk for a household of ${r.householdSize} (UK avg: £${r.avgWeekly}/wk). How do you compare? 🛒\n\nhttps://supermonsterapp.com/grader`;
+    const text = `I got a ${r.letter} on the Superbasket Grocery Budget Grader! Spending £${r.weeklySpend}/wk for a household of ${r.householdSize} (UK avg: £${r.avgWeekly}/wk). How do you compare? 🛒\n\nhttps://supermonsterapp.com/grader`;
 
     if (navigator.share) {
         navigator.share({ title: 'My Grocery Grade', text: text }).catch(() => {});
