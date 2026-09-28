@@ -1,0 +1,103 @@
+/* Superbasket v2 chrome — shared by every page except the homepage.
+   Loaded AFTER each page's own <style>, so it wins on anything it touches.
+   Page content keeps its own layout rules; this file re-skins the frame
+   (red canvas, cream sheet, ink outlines) and the type. */
+
+:root{
+  --sb-canvas:#C8102E; --sb-canvas-2:#E8232A; --sb-deep:#9B0C23; --sb-ink:#24070D;
+  --sb-cream:#FBF6EE; --sb-paper:#FFFDF8; --sb-blush:#FBE1E6; --sb-sun:#F2C506;
+  --sb-muted:#7A5C61; --sb-green:#1F6B3A;
+  --sb-display:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --sb-body:"Archivo",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  --sb-wrap:940px;
+  /* remap the old page tokens so existing content rules pick up the new palette */
+  --brand:#C8102E; --brand-light:#FBE1E6; --dark:#24070D; --text:#24070D;
+  --text-secondary:#7A5C61; --bg:#FBF6EE; --bg-grey:#F4ECE2;
+}
+html{scroll-behavior:smooth}
+body{background:var(--sb-canvas)!important;color:var(--sb-ink);font-family:var(--sb-body)!important;padding-top:0!important;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--sb-sun);outline-offset:3px;border-radius:8px}
+
+/* ---------- nav (identical to the homepage) ---------- */
+.sb-nav{position:fixed;top:28px;left:0;right:0;z-index:100;padding:0 16px}
+.sb-nav-inner{max-width:var(--sb-wrap);margin:0 auto;display:flex;align-items:center;gap:24px;min-height:78px;
+  padding:18px 18px 18px 20px;border-radius:999px;border:2px solid var(--sb-ink);background:var(--sb-cream);color:var(--sb-ink);box-shadow:0 6px 0 var(--sb-ink)}
+.sb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--sb-ink);font:italic 900 17px var(--sb-display);font-stretch:112%}
+.sb-brand img{width:40px;height:40px;border-radius:10px;border:2px solid var(--sb-ink)}
+.sb-links{display:flex;gap:32px;list-style:none;margin:0 auto;padding:0}
+.sb-links a{text-decoration:none;font:500 16px var(--sb-body);color:var(--sb-ink);opacity:.85;white-space:nowrap}
+.sb-links a:hover,.sb-links a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.sb-dl{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--sb-ink);color:#fff!important;
+  font:italic 900 16px var(--sb-display);font-stretch:112%;padding:8px 18px;min-height:40px;border-radius:999px;border:2px solid var(--sb-ink);
+  white-space:nowrap;box-shadow:0 4px 0 var(--sb-deep);transition:transform .08s,box-shadow .08s}
+.sb-dl:active{transform:translateY(3px);box-shadow:0 1px 0 var(--sb-deep)}
+.sb-dl svg{width:18px;height:18px;fill:currentColor;margin-top:-2px}
+
+/* ---------- page head on the canvas ---------- */
+.sb-main{padding:154px 16px 40px}
+.sb-crumb{max-width:var(--sb-wrap);margin:0 auto 18px;font:500 15px var(--sb-body);color:rgba(255,255,255,.9)}
+.sb-crumb a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- the sheet: all existing page content lives in here ---------- */
+.sb-sheet{max-width:var(--sb-wrap);margin:0 auto;background:var(--sb-cream);color:var(--sb-ink);
+  border:2px solid var(--sb-ink);border-radius:60px;box-shadow:0 6px 0 var(--sb-ink);overflow:hidden;padding:56px 0 40px}
+.sb-sheet > *:first-child{margin-top:0!important;padding-top:0!important}
+/* old full-bleed sections sit inside the sheet now: no backgrounds, sane padding */
+.sb-sheet section,.sb-sheet .hero,.sb-sheet .page-hero{background:transparent!important;padding-top:24px!important;padding-bottom:24px!important;min-height:0!important}
+.sb-sheet section:first-child,.sb-sheet .hero:first-child{padding-top:0!important}
+.sb-sheet article{padding-top:0!important}
+.sb-sheet > :not(section):not(article):not(script):not(style){padding-left:48px;padding-right:48px}
+
+/* type */
+.sb-sheet h1{font:italic 900 clamp(34px,5vw,52px)/1.05 var(--sb-display)!important;font-stretch:112%!important;letter-spacing:-.02em!important;color:var(--sb-ink)!important;text-transform:none!important}
+.sb-sheet h2{font:italic 900 clamp(22px,2.8vw,28px)/1.15 var(--sb-display)!important;font-stretch:112%!important;letter-spacing:-.01em!important}
+.sb-sheet h3{font-family:var(--sb-display)!important;font-weight:800!important}
+.sb-sheet p,.sb-sheet li,.sb-sheet td,.sb-sheet th{font-family:var(--sb-body)}
+.sb-sheet p a:not([class]),.sb-sheet li a:not([class]),.sb-sheet td a:not([class]){color:var(--sb-canvas);text-decoration:underline;text-underline-offset:3px}
+.sb-sheet .blog-cta-inner{border:2px solid var(--sb-ink)!important;border-radius:32px!important;box-shadow:0 5px 0 var(--sb-ink)!important}
+.sb-sheet .blog-cta-inner > a{background:linear-gradient(180deg,var(--sb-canvas-2),var(--sb-canvas))!important;color:#fff!important;border:2px solid #fff!important;border-radius:999px!important;font:italic 900 16px var(--sb-display)!important;font-stretch:112%!important;text-decoration:none!important}
+.sb-sheet hr{border:0;border-top:2px dashed rgba(36,7,13,.2)}
+
+/* cards and boxes inside content pick up the outline treatment */
+.sb-sheet .card,.sb-sheet .faq-item,.sb-sheet .article-card,.sb-sheet .article-card.featured,.sb-sheet a.article,.sb-sheet .article,
+.sb-sheet .price-box,.sb-sheet .price-hero,.sb-sheet .comp-table,.sb-sheet .cta-card,.sb-sheet .article-cta,
+.sb-sheet .contact-card,.sb-sheet .quick-link,.sb-sheet .grade-result-card,.sb-sheet .grader-card,.sb-sheet .info-box,.sb-sheet .callout{
+  background:var(--sb-paper)!important;border:2px solid var(--sb-ink)!important;border-radius:24px!important;box-shadow:0 5px 0 var(--sb-ink)!important}
+.sb-sheet table{border-collapse:separate;border-spacing:0}
+.sb-sheet .comp-table{overflow:hidden}
+.sb-sheet .comp-table th{background:var(--sb-blush)!important;color:var(--sb-ink)!important}
+.sb-sheet .comp-table .current,.sb-sheet .comp-table tr.cheapest td{background:var(--sb-blush)!important}
+
+/* any primary button inside content becomes the physical red button */
+.sb-sheet .btn,.sb-sheet .cta-card .btn,.sb-sheet .article-cta a,.sb-sheet .grade-btn,.sb-sheet .contact-btn,.sb-sheet .nav-cta{
+  display:inline-flex!important;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--sb-canvas-2),var(--sb-canvas))!important;
+  color:#fff!important;border:2px solid var(--sb-ink)!important;border-radius:999px!important;box-shadow:0 5px 0 var(--sb-ink)!important;
+  font:italic 900 16px var(--sb-display)!important;font-stretch:112%!important;padding:12px 24px!important;text-decoration:none!important}
+.sb-sheet .grade-btn:disabled{background:var(--sb-cream)!important;color:rgba(36,7,13,.55)!important}
+
+/* the old in-content footers/navs never show */
+.sb-sheet > nav,.sb-sheet > footer{display:none!important}
+
+/* ---------- download band ---------- */
+.sb-band{max-width:var(--sb-wrap);margin:48px auto 0;text-align:center;color:#fff;padding:40px 16px 120px}
+.sb-band img{width:96px;height:96px;border-radius:24px;border:3px solid var(--sb-ink);box-shadow:0 6px 0 var(--sb-ink);margin:0 auto 22px;display:block}
+.sb-band h2{font:italic 900 clamp(36px,5vw,52px)/1.03 var(--sb-display);font-stretch:112%;letter-spacing:-.02em;margin:0 0 12px}
+.sb-band p{font:400 19px/1.3 var(--sb-body);color:rgba(255,255,255,.9);margin:0 0 26px}
+.sb-band .sb-dl{display:inline-flex;width:auto;min-height:47px;padding:10px 22px;background:linear-gradient(180deg,var(--sb-canvas-2),var(--sb-canvas));box-shadow:0 5px 0 var(--sb-ink)}
+
+/* ---------- footer ---------- */
+footer.sb-footer{background:var(--sb-ink)!important;color:rgba(255,255,255,.72)!important;padding:34px 16px 44px!important;font:14px var(--sb-body)!important;margin:0!important;border:0!important;display:block!important}
+.sb-footer .sb-foot{max-width:var(--sb-wrap);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px}
+.sb-footer ul{display:flex;flex-wrap:wrap;gap:10px 24px;list-style:none;margin:0 0 0 auto;padding:0}
+.sb-footer a{color:rgba(255,255,255,.8)!important;text-decoration:none}
+.sb-footer a:hover{color:#fff!important}
+
+/* ---------- responsive ---------- */
+@media (max-width:720px){
+  .sb-links{display:none}
+  .sb-nav-inner{justify-content:space-between;min-height:64px;padding:10px 10px 10px 14px}
+  .sb-main{padding-top:120px}
+  .sb-sheet{border-radius:36px;padding:34px 0 24px}
+  .sb-sheet > :not(section):not(article):not(script):not(style){padding-left:22px;padding-right:22px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
